@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Settings\StoreSettingRequest;
-use App\Http\Requests\Admin\Settings\UpdateSettingRequest;
-use App\Models\Setting;
+use App\Http\Requests\Admin\Users\StoreUserProgressRequest;
+use App\Http\Requests\Admin\Users\UpdateUserProgressRequest;
+use App\Models\UserProgress;
 
-class SettingController extends Controller
+class UserProgressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\Settings\StoreSettingRequest  $request
+     * @param  \App\Http\Requests\Admin\Users\StoreUserProgressRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSettingRequest $request)
+    public function store(StoreUserProgressRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function show(UserProgress $userProgress)
     {
         //
     }
@@ -54,10 +54,10 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function edit(UserProgress $userProgress)
     {
         //
     }
@@ -65,11 +65,11 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Admin\Settings\UpdateSettingRequest  $request
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Http\Requests\Admin\Users\UpdateUserProgressRequest  $request
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSettingRequest $request, Setting $setting)
+    public function update(UpdateUserProgressRequest $request, UserProgress $userProgress)
     {
         //
     }
@@ -77,10 +77,10 @@ class SettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Setting  $setting
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setting $setting)
+    public function destroy(UserProgress $userProgress)
     {
         //
     }

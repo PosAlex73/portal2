@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePlanRequest;
-use App\Http\Requests\UpdatePlanRequest;
+use App\Http\Requests\Admin\Commercial\StorePlanRequest;
+use App\Http\Requests\Admin\Commercial\UpdatePlanRequest;
 use App\Models\Plan;
 
 class PlanController extends Controller
@@ -32,7 +32,7 @@ class PlanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePlanRequest  $request
+     * @param  \App\Http\Requests\Admin\Commercial\StorePlanRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePlanRequest $request)
@@ -65,7 +65,7 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePlanRequest  $request
+     * @param  \App\Http\Requests\Admin\Commercial\UpdatePlanRequest  $request
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */

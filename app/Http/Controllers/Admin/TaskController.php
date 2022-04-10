@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Requests\Admin\Courses\StoreTaskRequest;
+use App\Http\Requests\Admin\Courses\UpdateTaskRequest;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -32,7 +32,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\StoreTaskRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTaskRequest $request)
@@ -65,7 +65,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTaskRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\UpdateTaskRequest  $request
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */

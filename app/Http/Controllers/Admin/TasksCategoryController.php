@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTasksCategoryRequest;
-use App\Http\Requests\UpdateTasksCategoryRequest;
+use App\Http\Requests\Admin\Courses\StoreTasksCategoryRequest;
+use App\Http\Requests\Admin\Courses\UpdateTasksCategoryRequest;
 use App\Models\TasksCategory;
 
 class TasksCategoryController extends Controller
@@ -32,7 +32,7 @@ class TasksCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTasksCategoryRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\StoreTasksCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTasksCategoryRequest $request)
@@ -65,7 +65,7 @@ class TasksCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTasksCategoryRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\UpdateTasksCategoryRequest  $request
      * @param  \App\Models\TasksCategory  $tasksCategory
      * @return \Illuminate\Http\Response
      */

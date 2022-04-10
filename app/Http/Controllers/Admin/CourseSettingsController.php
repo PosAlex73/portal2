@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCourseSettingsRequest;
-use App\Http\Requests\UpdateCourseSettingsRequest;
+use App\Http\Requests\Admin\Courses\StoreCourseSettingsRequest;
+use App\Http\Requests\Admin\Courses\UpdateCourseSettingsRequest;
 use App\Models\CourseSettings;
 
 class CourseSettingsController extends Controller
@@ -32,7 +32,7 @@ class CourseSettingsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCourseSettingsRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\StoreCourseSettingsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCourseSettingsRequest $request)
@@ -65,7 +65,7 @@ class CourseSettingsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCourseSettingsRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\UpdateCourseSettingsRequest  $request
      * @param  \App\Models\CourseSettings  $courseSettings
      * @return \Illuminate\Http\Response
      */

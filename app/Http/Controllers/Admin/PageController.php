@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePageRequest;
-use App\Http\Requests\UpdatePageRequest;
+use App\Http\Requests\Admin\Pages\StorePageRequest;
+use App\Http\Requests\Admin\Pages\UpdatePageRequest;
 use App\Models\Page;
 
 class PageController extends Controller
@@ -32,7 +32,7 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePageRequest  $request
+     * @param  \App\Http\Requests\Admin\Pages\StorePageRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePageRequest $request)
@@ -65,7 +65,7 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePageRequest  $request
+     * @param  \App\Http\Requests\Admin\Pages\UpdatePageRequest  $request
      * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */

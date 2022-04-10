@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Requests\Admin\Commercial\StoreOrderRequest;
+use App\Http\Requests\Admin\Commercial\UpdateOrderRequest;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -32,7 +32,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \App\Http\Requests\Admin\Commercial\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrderRequest $request)
@@ -65,7 +65,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \App\Http\Requests\Admin\Commercial\UpdateOrderRequest  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */

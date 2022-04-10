@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTaskReviewRequest;
-use App\Http\Requests\UpdateTaskReviewRequest;
+use App\Http\Requests\Admin\Courses\StoreTaskReviewRequest;
+use App\Http\Requests\Admin\Courses\UpdateTaskReviewRequest;
 use App\Models\TaskReview;
 
 class TaskReviewController extends Controller
@@ -32,7 +32,7 @@ class TaskReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskReviewRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\StoreTaskReviewRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTaskReviewRequest $request)
@@ -65,7 +65,7 @@ class TaskReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTaskReviewRequest  $request
+     * @param  \App\Http\Requests\Admin\Courses\UpdateTaskReviewRequest  $request
      * @param  \App\Models\TaskReview  $taskReview
      * @return \Illuminate\Http\Response
      */

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreArticleCommentRequest;
-use App\Http\Requests\UpdateArticleCommentRequest;
+use App\Http\Requests\Admin\Pages\StoreArticleCommentRequest;
+use App\Http\Requests\Admin\Pages\UpdateArticleCommentRequest;
 use App\Models\ArticleComment;
 
 class ArticleCommentController extends Controller
@@ -32,7 +32,7 @@ class ArticleCommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreArticleCommentRequest  $request
+     * @param  \App\Http\Requests\Admin\Pages\StoreArticleCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreArticleCommentRequest $request)
@@ -65,7 +65,7 @@ class ArticleCommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateArticleCommentRequest  $request
+     * @param  \App\Http\Requests\Admin\Pages\UpdateArticleCommentRequest  $request
      * @param  \App\Models\ArticleComment  $articleComment
      * @return \Illuminate\Http\Response
      */
