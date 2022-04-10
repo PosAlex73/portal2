@@ -17,7 +17,7 @@ class UserProgressFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'data' => ''
         ];
     }
 }

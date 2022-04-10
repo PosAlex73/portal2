@@ -17,7 +17,7 @@ class UserSettingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'values' => ''
         ];
     }
 }

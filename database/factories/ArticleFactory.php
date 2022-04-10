@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ArticleStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'text' => $this->faker->text(500),
+            'image' => $this->faker->imageUrl,
+            'status' => ArticleStatuses::ACTIVE,
         ];
     }
 }

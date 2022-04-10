@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreCategoryRequest;
 use App\Http\Requests\Admin\Courses\UpdateCategoryRequest;
@@ -16,7 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -26,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -37,7 +41,11 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'status']);
+        $category = Category::create($fields);
+        session()->flash('status', __('vats.category_was_created'));
+
+        return redirect(route('categories.edit', ['category' => $category]));
     }
 
     /**
@@ -59,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', ['category' => $category]);
     }
 
     /**
@@ -71,7 +79,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $fields = $request->safe()->only(['title', 'status']);
+        $category->update($fields);
+        session()->flash('status', __('vars.category_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +94,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        session()->flash('status', __('vars.category_was_deleted'));
+
+        return redirect()->to('categories.index');
     }
 }

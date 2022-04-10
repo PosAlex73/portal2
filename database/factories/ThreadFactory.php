@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class ThreadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'status' => CommonStatuses::ACTIVE
         ];
     }
 }

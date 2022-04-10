@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\StoreArticleCommentRequest;
 use App\Http\Requests\Admin\Pages\UpdateArticleCommentRequest;
+use App\Models\Article;
 use App\Models\ArticleComment;
 
 class ArticleCommentController extends Controller
@@ -14,19 +15,13 @@ class ArticleCommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Article $article)
     {
-        //
-    }
+        $comments = $article->comments;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('admin.article.comments', [
+            'comments' => $comments, 'article' => $article
+        ]);
     }
 
     /**
@@ -35,31 +30,14 @@ class ArticleCommentController extends Controller
      * @param  \App\Http\Requests\Admin\Pages\StoreArticleCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleCommentRequest $request)
+    public function store(StoreArticleCommentRequest $request, Article $article)
     {
-        //
-    }
+        $fields = $request->safe()->only(['user_id', 'status', 'text']);
+        $article->comments()->create($fields);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ArticleComment  $articleComment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ArticleComment $articleComment)
-    {
-        //
-    }
+        $request->session()->flash('status', __('vars.comment_was_created'));
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ArticleComment  $articleComment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ArticleComment $articleComment)
-    {
-        //
+        return redirect()->to(route('article_comments.index', ['article' => $article]));
     }
 
     /**
@@ -71,7 +49,12 @@ class ArticleCommentController extends Controller
      */
     public function update(UpdateArticleCommentRequest $request, ArticleComment $articleComment)
     {
-        //
+        $fields = $request->safe()->only(['user_id', 'status', 'text']);
+        $articleComment->update($fields);
+
+        $request->session()->flash('status', __('vars.comment_was_updated'));
+
+        return redirect()->to(route('article_comments.index', ['article' => $articleComment->article->id]));
     }
 
     /**
@@ -82,6 +65,9 @@ class ArticleCommentController extends Controller
      */
     public function destroy(ArticleComment $articleComment)
     {
-        //
+        $articleComment->delete();
+        session()->flash('status', __('vars.comment_was_deleted'));
+
+        return redirect()->to('article_comments.index', ['article' => $articleComment->article->id]);
     }
 }

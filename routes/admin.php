@@ -25,5 +25,7 @@ Route::prefix('/boss')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 
+    Route::get('/articles/comments/{article}', [\App\Http\Controllers\Admin\ArticleCommentController::class, 'index'])->name('article_comments.index');
+    Route::post('/articles/comments/{article}', [\App\Http\Controllers\Admin\ArticleCommentController::class, 'store'])->name('article_comments.store');
 
 });

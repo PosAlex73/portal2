@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\StoreArticleRequest;
 use App\Http\Requests\Admin\Pages\UpdateArticleRequest;
@@ -16,7 +18,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.articles.index', ['article' => $articles]);
     }
 
     /**
@@ -26,7 +30,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create');
     }
 
     /**
@@ -37,7 +41,11 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        $article = Article::create($fields);
+        $request->session()->flash('status', __('vars.article_was_created'));
+
+        return redirect()->to(route('articles.edit', ['article' => $article]));
     }
 
     /**
@@ -59,7 +67,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin.articles.edit', ['article' => $article]);
     }
 
     /**
@@ -71,7 +79,11 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        $article->update($fields);
+        $request->session()->flash('status', __('vars.article_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +94,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        session()->flash('status', __('vars.article_was_deleted'));
+
+        return redirect()->to(route('articles.index'));
     }
 }

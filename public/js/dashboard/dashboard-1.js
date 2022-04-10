@@ -3,7 +3,7 @@
 
 
  var dzChartlist = function(){
-	
+
 	var screenWidth = $(window).width();
 	var marketChart = function(){
 		 var options = {
@@ -44,7 +44,7 @@
 				fontSize: '12px',
 				fontFamily: 'Poppins',
 				fontWeight: 400
-				
+
 			},
 			formatter: function (value) {
 			  return value + "k";
@@ -59,7 +59,7 @@
 				fontSize: '12px',
 				fontFamily: 'Poppins',
 				fontWeight: 400
-				
+
 			},
 		  }
         },
@@ -108,7 +108,7 @@
         var chart = new ApexCharts(document.querySelector("#currentChart"), options);
         chart.render();
 	}
-	
+
 	var recentContact = function(){
 		jQuery('.testimonial-one').owlCarousel({
 			loop:true,
@@ -127,11 +127,11 @@
 				},
 				600:{
 					items:5
-				},	
+				},
 				991:{
 					items:5
-				},			
-				
+				},
+
 				1200:{
 					items:7
 				},
@@ -141,39 +141,39 @@
 			}
 		})
 	}
-	
-	
+
+
 	/* Function ============ */
 		return {
 			init:function(){
 			},
-			
-			
+
+
 			load:function(){
 					marketChart();
 					currentChart();
 					recentContact();
-					
+
 			},
-			
+
 			resize:function(){
 			}
 		}
-	
+
 	}();
 
-	
-		
-	jQuery(window).on('load',function(){
-		setTimeout(function(){
-			dzChartlist.load();
-		}, 1000); 
-		
-	});
+
+
+	// jQuery(window).on('load',function(){
+	// 	setTimeout(function(){
+	// 		dzChartlist.load();
+	// 	}, 1000);
+	//
+	// });
 
 	jQuery(window).on('resize',function(){
-		
-		
-	});     
+
+
+	});
 
 })(jQuery);

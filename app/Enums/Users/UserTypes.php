@@ -11,7 +11,6 @@ class UserTypes
     public const ADMIN = 'A';
     public const SIMPLE = 'S';
     public const MODERATOR = 'M';
-    public const SPEC = 'D';
 
     public static function getAdminTypes()
     {

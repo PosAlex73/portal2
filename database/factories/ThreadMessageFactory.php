@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\MessageStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class ThreadMessageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->text(50),
+            'status' => MessageStatuses::UNREAD
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreCourseRequest;
 use App\Http\Requests\Admin\Courses\UpdateCourseRequest;
@@ -16,7 +18,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.courses.index', ['courses' => $courses]);
     }
 
     /**
@@ -26,7 +30,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.courses.create');
     }
 
     /**
@@ -37,7 +41,11 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id']);
+        $course = Course::create($fields);
+        session()->flash('status', __('vars.course_was_created'));
+
+        return redirect()->to(route('courses.edit', ['course' => $course]));
     }
 
     /**
@@ -59,7 +67,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.courses.edit', $course);
     }
 
     /**
@@ -71,7 +79,9 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id']);
+        $course->update($fields);
+        session()->flash('status', __('vars.course_was_updated'));
     }
 
     /**
@@ -82,6 +92,9 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        session()->flash('status', __('vars.course_was_deleted'));
+
+        return redirect(route('courses.index'));
     }
 }

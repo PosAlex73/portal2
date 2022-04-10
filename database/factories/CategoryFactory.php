@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'status' => CommonStatuses::ACTIVE,
         ];
     }
 }
