@@ -13,7 +13,7 @@ class UpdateThreadMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateThreadMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'message' => 'required|min:2|max:255',
         ];
     }
 }

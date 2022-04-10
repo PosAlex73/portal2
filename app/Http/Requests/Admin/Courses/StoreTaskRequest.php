@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin\Courses;
 
+use App\Enums\CommonStatuses;
+use App\Enums\Tasks\TaskTypes;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTaskRequest extends FormRequest
 {
@@ -13,7 +16,7 @@ class StoreTaskRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,11 @@ class StoreTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:2|max:255',
+            'description' => 'required',
+            'data' => 'required',
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'type' => ['required', Rule::in(TaskTypes::getAll())],
         ];
     }
 }

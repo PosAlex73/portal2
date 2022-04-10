@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Commercial;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePromotionRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StorePromotionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,9 @@ class StorePromotionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:2|max:255',
+            'description' => 'required',
+            'status' => ['required', Rule::in(CommonStatuses::getAll())]
         ];
     }
 }

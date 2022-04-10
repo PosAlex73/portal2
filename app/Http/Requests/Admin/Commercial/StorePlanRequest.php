@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin\Commercial;
 
+use App\Enums\Orders\OrderStatuses;
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePlanRequest extends FormRequest
 {
@@ -13,7 +16,7 @@ class StorePlanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,9 @@ class StorePlanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:2|max:255',
+            'description' => 'required',
+            'status' => ['required', Rule::in(OrderStatuses::getAll())]
         ];
     }
 }

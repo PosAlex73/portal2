@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Pages;
 
+use App\Enums\ArticleStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePageRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StorePageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,10 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:2|max:255',
+            'text' => 'required|min:2',
+            'status' => ['required', Rule::in(ArticleStatuses::getAll())],
+            'url' => 'required',
         ];
     }
 }

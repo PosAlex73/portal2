@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Pages;
 
+use App\Enums\MessageStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreArticleCommentRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreArticleCommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,7 @@ class StoreArticleCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'text' => 'required|min:2'
         ];
     }
 }
