@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreTaskReviewRequest;
-use App\Http\Requests\UpdateTaskReviewRequest;
-use App\Models\TaskReview;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreThreadRequest;
+use App\Http\Requests\UpdateThreadRequest;
+use App\Models\Thread;
 
-class TaskReviewController extends Controller
+class ThreadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class TaskReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskReviewRequest  $request
+     * @param  \App\Http\Requests\StoreThreadRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTaskReviewRequest $request)
+    public function store(StoreThreadRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class TaskReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TaskReview  $taskReview
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(TaskReview $taskReview)
+    public function show(Thread $thread)
     {
         //
     }
@@ -53,10 +54,10 @@ class TaskReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TaskReview  $taskReview
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(TaskReview $taskReview)
+    public function edit(Thread $thread)
     {
         //
     }
@@ -64,11 +65,11 @@ class TaskReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTaskReviewRequest  $request
-     * @param  \App\Models\TaskReview  $taskReview
+     * @param  \App\Http\Requests\UpdateThreadRequest  $request
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskReviewRequest $request, TaskReview $taskReview)
+    public function update(UpdateThreadRequest $request, Thread $thread)
     {
         //
     }
@@ -76,10 +77,10 @@ class TaskReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TaskReview  $taskReview
+     * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TaskReview $taskReview)
+    public function destroy(Thread $thread)
     {
         //
     }

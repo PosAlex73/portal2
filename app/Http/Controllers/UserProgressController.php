@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreThreadMessageRequest;
-use App\Http\Requests\UpdateThreadMessageRequest;
-use App\Models\ThreadMessage;
+use App\Http\Requests\StoreUserProgressRequest;
+use App\Http\Requests\UpdateUserProgressRequest;
+use App\Models\UserProgress;
 
-class ThreadMessageController extends Controller
+class UserProgressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class ThreadMessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreThreadMessageRequest  $request
+     * @param  \App\Http\Requests\StoreUserProgressRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreThreadMessageRequest $request)
+    public function store(StoreUserProgressRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class ThreadMessageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ThreadMessage  $threadMessage
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function show(ThreadMessage $threadMessage)
+    public function show(UserProgress $userProgress)
     {
         //
     }
@@ -53,10 +53,10 @@ class ThreadMessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ThreadMessage  $threadMessage
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function edit(ThreadMessage $threadMessage)
+    public function edit(UserProgress $userProgress)
     {
         //
     }
@@ -64,11 +64,11 @@ class ThreadMessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateThreadMessageRequest  $request
-     * @param  \App\Models\ThreadMessage  $threadMessage
+     * @param  \App\Http\Requests\UpdateUserProgressRequest  $request
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateThreadMessageRequest $request, ThreadMessage $threadMessage)
+    public function update(UpdateUserProgressRequest $request, UserProgress $userProgress)
     {
         //
     }
@@ -76,10 +76,10 @@ class ThreadMessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ThreadMessage  $threadMessage
+     * @param  \App\Models\UserProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ThreadMessage $threadMessage)
+    public function destroy(UserProgress $userProgress)
     {
         //
     }

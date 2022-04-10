@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title', 'description', 'data', 'status', 'type', 'course_id'
+    ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(TaskReview::class);
+    }
 }

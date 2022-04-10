@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreUserSettingRequest;
-use App\Http\Requests\UpdateUserSettingRequest;
-use App\Models\UserSetting;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreArticleCommentRequest;
+use App\Http\Requests\UpdateArticleCommentRequest;
+use App\Models\ArticleComment;
 
-class UserSettingController extends Controller
+class ArticleCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class UserSettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserSettingRequest  $request
+     * @param  \App\Http\Requests\StoreArticleCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserSettingRequest $request)
+    public function store(StoreArticleCommentRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class UserSettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserSetting  $userSetting
+     * @param  \App\Models\ArticleComment  $articleComment
      * @return \Illuminate\Http\Response
      */
-    public function show(UserSetting $userSetting)
+    public function show(ArticleComment $articleComment)
     {
         //
     }
@@ -53,10 +54,10 @@ class UserSettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserSetting  $userSetting
+     * @param  \App\Models\ArticleComment  $articleComment
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserSetting $userSetting)
+    public function edit(ArticleComment $articleComment)
     {
         //
     }
@@ -64,11 +65,11 @@ class UserSettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserSettingRequest  $request
-     * @param  \App\Models\UserSetting  $userSetting
+     * @param  \App\Http\Requests\UpdateArticleCommentRequest  $request
+     * @param  \App\Models\ArticleComment  $articleComment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserSettingRequest $request, UserSetting $userSetting)
+    public function update(UpdateArticleCommentRequest $request, ArticleComment $articleComment)
     {
         //
     }
@@ -76,10 +77,10 @@ class UserSettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserSetting  $userSetting
+     * @param  \App\Models\ArticleComment  $articleComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserSetting $userSetting)
+    public function destroy(ArticleComment $articleComment)
     {
         //
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('payment');
             $table->integer('total');
             $table->text('data');
+            $table->string('status', 1)->default(\App\Enums\Orders\OrderStatuses::OPEN);
             $table->timestamps();
         });
     }

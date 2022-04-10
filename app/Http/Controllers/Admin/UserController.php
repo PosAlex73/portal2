@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreTasksCategoryRequest;
-use App\Http\Requests\UpdateTasksCategoryRequest;
-use App\Models\TasksCategory;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class TasksCategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class TasksCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTasksCategoryRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTasksCategoryRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class TasksCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TasksCategory  $tasksCategory
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(TasksCategory $tasksCategory)
+    public function show(User $user)
     {
         //
     }
@@ -53,10 +53,10 @@ class TasksCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TasksCategory  $tasksCategory
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(TasksCategory $tasksCategory)
+    public function edit(User $user)
     {
         //
     }
@@ -64,11 +64,11 @@ class TasksCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTasksCategoryRequest  $request
-     * @param  \App\Models\TasksCategory  $tasksCategory
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTasksCategoryRequest $request, TasksCategory $tasksCategory)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -76,10 +76,10 @@ class TasksCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TasksCategory  $tasksCategory
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TasksCategory $tasksCategory)
+    public function destroy(User $user)
     {
         //
     }

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class TaskReview extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'task_id', 'user_id', 'text'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
 }

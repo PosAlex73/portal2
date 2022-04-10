@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreThreadRequest;
-use App\Http\Requests\UpdateThreadRequest;
-use App\Models\Thread;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePageRequest;
+use App\Http\Requests\UpdatePageRequest;
+use App\Models\Page;
 
-class ThreadController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class ThreadController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreThreadRequest  $request
+     * @param  \App\Http\Requests\StorePageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreThreadRequest $request)
+    public function store(StorePageRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class ThreadController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Thread  $thread
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show(Page $page)
     {
         //
     }
@@ -53,10 +54,10 @@ class ThreadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Thread  $thread
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit(Page $page)
     {
         //
     }
@@ -64,11 +65,11 @@ class ThreadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateThreadRequest  $request
-     * @param  \App\Models\Thread  $thread
+     * @param  \App\Http\Requests\UpdatePageRequest  $request
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateThreadRequest $request, Thread $thread)
+    public function update(UpdatePageRequest $request, Page $page)
     {
         //
     }
@@ -76,10 +77,10 @@ class ThreadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Thread  $thread
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Page $page)
     {
         //
     }

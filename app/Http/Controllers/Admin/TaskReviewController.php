@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTaskReviewRequest;
+use App\Http\Requests\UpdateTaskReviewRequest;
+use App\Models\TaskReview;
 
-class CourseController extends Controller
+class TaskReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCourseRequest  $request
+     * @param  \App\Http\Requests\StoreTaskReviewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCourseRequest $request)
+    public function store(StoreTaskReviewRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\TaskReview  $taskReview
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(TaskReview $taskReview)
     {
         //
     }
@@ -53,10 +54,10 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\TaskReview  $taskReview
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(TaskReview $taskReview)
     {
         //
     }
@@ -64,11 +65,11 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCourseRequest  $request
-     * @param  \App\Models\Course  $course
+     * @param  \App\Http\Requests\UpdateTaskReviewRequest  $request
+     * @param  \App\Models\TaskReview  $taskReview
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(UpdateTaskReviewRequest $request, TaskReview $taskReview)
     {
         //
     }
@@ -76,10 +77,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\TaskReview  $taskReview
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(TaskReview $taskReview)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StorePageRequest;
-use App\Http\Requests\UpdatePageRequest;
-use App\Models\Page;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTasksCategoryRequest;
+use App\Http\Requests\UpdateTasksCategoryRequest;
+use App\Models\TasksCategory;
 
-class PageController extends Controller
+class TasksCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePageRequest  $request
+     * @param  \App\Http\Requests\StoreTasksCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePageRequest $request)
+    public function store(StoreTasksCategoryRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Page  $page
+     * @param  \App\Models\TasksCategory  $tasksCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(TasksCategory $tasksCategory)
     {
         //
     }
@@ -53,10 +54,10 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Page  $page
+     * @param  \App\Models\TasksCategory  $tasksCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit(TasksCategory $tasksCategory)
     {
         //
     }
@@ -64,11 +65,11 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePageRequest  $request
-     * @param  \App\Models\Page  $page
+     * @param  \App\Http\Requests\UpdateTasksCategoryRequest  $request
+     * @param  \App\Models\TasksCategory  $tasksCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePageRequest $request, Page $page)
+    public function update(UpdateTasksCategoryRequest $request, TasksCategory $tasksCategory)
     {
         //
     }
@@ -76,10 +77,10 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Page  $page
+     * @param  \App\Models\TasksCategory  $tasksCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy(TasksCategory $tasksCategory)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StorePlanRequest;
-use App\Http\Requests\UpdatePlanRequest;
-use App\Models\Plan;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserSettingRequest;
+use App\Http\Requests\UpdateUserSettingRequest;
+use App\Models\UserSetting;
 
-class PlanController extends Controller
+class UserSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class PlanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePlanRequest  $request
+     * @param  \App\Http\Requests\StoreUserSettingRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePlanRequest $request)
+    public function store(StoreUserSettingRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class PlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Models\UserSetting  $userSetting
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show(UserSetting $userSetting)
     {
         //
     }
@@ -53,10 +54,10 @@ class PlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Models\UserSetting  $userSetting
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plan $plan)
+    public function edit(UserSetting $userSetting)
     {
         //
     }
@@ -64,11 +65,11 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePlanRequest  $request
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Http\Requests\UpdateUserSettingRequest  $request
+     * @param  \App\Models\UserSetting  $userSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePlanRequest $request, Plan $plan)
+    public function update(UpdateUserSettingRequest $request, UserSetting $userSetting)
     {
         //
     }
@@ -76,10 +77,10 @@ class PlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Plan  $plan
+     * @param  \App\Models\UserSetting  $userSetting
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plan $plan)
+    public function destroy(UserSetting $userSetting)
     {
         //
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreCourseSettingsRequest;
-use App\Http\Requests\UpdateCourseSettingsRequest;
-use App\Models\CourseSettings;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePlanRequest;
+use App\Http\Requests\UpdatePlanRequest;
+use App\Models\Plan;
 
-class CourseSettingsController extends Controller
+class PlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class CourseSettingsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCourseSettingsRequest  $request
+     * @param  \App\Http\Requests\StorePlanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCourseSettingsRequest $request)
+    public function store(StorePlanRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class CourseSettingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CourseSettings  $courseSettings
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(CourseSettings $courseSettings)
+    public function show(Plan $plan)
     {
         //
     }
@@ -53,10 +54,10 @@ class CourseSettingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CourseSettings  $courseSettings
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(CourseSettings $courseSettings)
+    public function edit(Plan $plan)
     {
         //
     }
@@ -64,11 +65,11 @@ class CourseSettingsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCourseSettingsRequest  $request
-     * @param  \App\Models\CourseSettings  $courseSettings
+     * @param  \App\Http\Requests\UpdatePlanRequest  $request
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCourseSettingsRequest $request, CourseSettings $courseSettings)
+    public function update(UpdatePlanRequest $request, Plan $plan)
     {
         //
     }
@@ -76,10 +77,10 @@ class CourseSettingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CourseSettings  $courseSettings
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CourseSettings $courseSettings)
+    public function destroy(Plan $plan)
     {
         //
     }
