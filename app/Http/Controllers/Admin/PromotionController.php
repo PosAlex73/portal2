@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Commercial\StorePromotionRequest;
 use App\Http\Requests\Admin\Commercial\UpdatePromotionRequest;
@@ -16,7 +17,9 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $promotions = Promotion::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.promotions.index', ['promotions' => $promotions]);
     }
 
     /**
@@ -26,7 +29,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.promotions.create');
     }
 
     /**
@@ -37,7 +40,11 @@ class PromotionController extends Controller
      */
     public function store(StorePromotionRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $promotion = Promotion::create($fields);
+        session()->flash('status', __('vars.promotion_was_created'));
+
+        return redirect(route('promotions.edit', ['promotions' => $promotion]));
     }
 
     /**
@@ -59,7 +66,7 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        //
+        return view('admin.promotions.edit', ['promotion' => $promotion]);
     }
 
     /**
@@ -71,7 +78,11 @@ class PromotionController extends Controller
      */
     public function update(UpdatePromotionRequest $request, Promotion $promotion)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $promotion->update($fields);
+        session()->flash('status', __('vars.promotions_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +93,9 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        $promotion->delete();
+        session()->flash('status', __('vats.promotion_was_deleted'));
+
+        return redirect(route('promotions.index'));
     }
 }

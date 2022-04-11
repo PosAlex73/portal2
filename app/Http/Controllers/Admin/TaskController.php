@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreTaskRequest;
 use App\Http\Requests\Admin\Courses\UpdateTaskRequest;
@@ -16,7 +17,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.tasks.index', ['tasks', $tasks]);
     }
 
     /**
@@ -26,7 +29,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tasks.create');
     }
 
     /**
@@ -37,7 +40,11 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'data', 'status', 'type', 'course_id']);
+        $task = Task::create($fields);
+        session()->flash('status', __('vars.task_was_created'));
+
+        return redirect(route('tasks.edit', ['task' => $task]));
     }
 
     /**
@@ -59,7 +66,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('admin.tasks.edit', ['task' => $task]);
     }
 
     /**
@@ -71,7 +78,11 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'data', 'status', 'type', 'course_id']);
+        $task->update($fields);
+        session()->flash('status', __('vars.task_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +93,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        session()->flash('status', __('vars.task_was_deleted'));
+
+        return redirect(route('tasks.index'));
     }
 }

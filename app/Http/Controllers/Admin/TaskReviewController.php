@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreTaskReviewRequest;
 use App\Http\Requests\Admin\Courses\UpdateTaskReviewRequest;
@@ -16,7 +17,9 @@ class TaskReviewController extends Controller
      */
     public function index()
     {
-        //
+        $task_reviews = TaskReview::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.task_reviews.index', ['task_reviews' => $task_reviews]);
     }
 
     /**
@@ -26,7 +29,7 @@ class TaskReviewController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.task_reviews.create');
     }
 
     /**
@@ -37,7 +40,11 @@ class TaskReviewController extends Controller
      */
     public function store(StoreTaskReviewRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['task_id', 'user_id', 'text']);
+        $task_review = TaskReview::create($fields);
+        session()->flash('status', __('vars.review_was_created'));
+
+        return redirect(route('task_reviews.edit', ['task_review' => $task_review]));
     }
 
     /**
@@ -59,7 +66,7 @@ class TaskReviewController extends Controller
      */
     public function edit(TaskReview $taskReview)
     {
-        //
+        return view('admin.task_reviews.edit', ['task_review' => $taskReview]);
     }
 
     /**
@@ -71,7 +78,11 @@ class TaskReviewController extends Controller
      */
     public function update(UpdateTaskReviewRequest $request, TaskReview $taskReview)
     {
-        //
+        $fields = $request->safe()->only(['task_id', 'user_id', 'text']);
+        $taskReview->update($fields);
+        session()->flash('status', __('vars.review_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +93,9 @@ class TaskReviewController extends Controller
      */
     public function destroy(TaskReview $taskReview)
     {
-        //
+        $taskReview->delete();
+        session()->flash('status', __('vars.review_was_deleted'));
+
+        return redirect(route('task_reviews.index'));
     }
 }

@@ -16,7 +16,7 @@ class ThreadMessageController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

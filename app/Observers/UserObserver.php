@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Settings\UserSettings;
 
 class UserObserver
 {
@@ -14,7 +15,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        $user->profile()->create();
+        $user->settings()->create(['values' => UserSettings::getUserDefaultSettings()]);
     }
 
     /**

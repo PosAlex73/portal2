@@ -16,7 +16,7 @@ class UserProgressController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreThreadRequest;
 use App\Http\Requests\Admin\Users\UpdateThreadRequest;
 use App\Models\Thread;
+use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
@@ -16,39 +18,9 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $threads = Thread::paginate(SettingTypes::ADMIN_PAGINATION);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Admin\Users\StoreThreadRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreThreadRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Thread $thread)
-    {
-        //
+        return view('admin.threads.index', ['threads' => $threads]);
     }
 
     /**
@@ -59,7 +31,7 @@ class ThreadController extends Controller
      */
     public function edit(Thread $thread)
     {
-        //
+        return view('admin.threads.edit', ['thread' => $thread]);
     }
 
     /**
@@ -69,19 +41,12 @@ class ThreadController extends Controller
      * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateThreadRequest $request, Thread $thread)
+    public function update(Request $request, Thread $thread)
     {
-        //
-    }
+        $status = $request->get('status');
+        $thread->update(['status' => $status]);
+        session()->flash('status', __('vars.thread_was_updated'));
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Thread $thread)
-    {
-        //
+        return redirect()->back();
     }
 }

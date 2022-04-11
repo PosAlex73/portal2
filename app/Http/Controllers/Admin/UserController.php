@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\StoreUserRequest;
+use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use function Symfony\Component\String\u;
 
 class UserController extends Controller
 {
@@ -15,7 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -25,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -34,9 +40,20 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $fields = $request->safe()->only([
+            'first_name',
+            'last_name',
+            'type',
+            'status',
+            'email',
+            'password']);
+
+        $user = User::create($fields);
+        session()->flash('status', __('vars.user_was_created'));
+
+        return redirect(route('users.edit', ['user' => $user]));
     }
 
     /**
@@ -58,7 +75,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -68,9 +85,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $fields = $request->safe()->only([
+            'first_name',
+            'last_name',
+            'type',
+            'status',
+            'email']);
+
+        $user->update($fields);
+        session()->flash('status', __('vars.user_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +108,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        session()->flash('status', __('vars.user_was_deleted'));
+
+        return redirect()->to(route('users.index'));
     }
 }

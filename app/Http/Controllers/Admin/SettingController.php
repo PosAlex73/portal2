@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\StoreSettingRequest;
 use App\Http\Requests\Admin\Settings\UpdateSettingRequest;
 use App\Models\Setting;
+use App\Settings\Settings;
 
 class SettingController extends Controller
 {
@@ -16,50 +17,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Admin\Settings\StoreSettingRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSettingRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Setting $setting)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Setting $setting)
-    {
-        //
+        return view('admin.settings.index');
     }
 
     /**
@@ -71,17 +29,15 @@ class SettingController extends Controller
      */
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
-        //
-    }
+        $field_types = Settings::getFlatSettings();
+        $settings = $request->only($field_types);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Setting $setting)
-    {
-        //
+        foreach ($settings as $title => $value) {
+            Setting::where('title', $title)->update(['value' => $value ?? '']);
+        }
+
+        $request->session()->flash('status', __('vars.settings_was_updated'));
+
+        return redirect()->to(route('settings.index'));
     }
 }

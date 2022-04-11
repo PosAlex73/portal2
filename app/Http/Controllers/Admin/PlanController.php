@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Commercial\StorePlanRequest;
 use App\Http\Requests\Admin\Commercial\UpdatePlanRequest;
@@ -16,7 +17,9 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //
+        $plans = Plan::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.plans.index', ['plans' => $plans]);
     }
 
     /**
@@ -26,7 +29,7 @@ class PlanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.plans.create');
     }
 
     /**
@@ -37,7 +40,11 @@ class PlanController extends Controller
      */
     public function store(StorePlanRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'price']);
+        $plan = Plan::create($fields);
+        session()->flash('status', __('vars.plan_was_created'));
+
+        return redirect(route('plans.edit', ['plan' => $plan]));
     }
 
     /**
@@ -59,7 +66,7 @@ class PlanController extends Controller
      */
     public function edit(Plan $plan)
     {
-        //
+        return view('admin.plans.edit', ['plan' => $plan]);
     }
 
     /**
@@ -71,7 +78,11 @@ class PlanController extends Controller
      */
     public function update(UpdatePlanRequest $request, Plan $plan)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'price']);
+        $plan->update($fields);
+        session()->flash('status', __('vars.plan_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +93,8 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan)
     {
-        //
+        $plan->delete();
+
+        return redirect()->to(route('plans.index'));
     }
 }

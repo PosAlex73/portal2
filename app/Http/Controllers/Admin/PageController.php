@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\StorePageRequest;
 use App\Http\Requests\Admin\Pages\UpdatePageRequest;
@@ -16,7 +17,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::paginate(SettingTypes::ADMIN_PAGINATION);
+
+        return view('admin.pages.index', ['pages' => $pages]);
     }
 
     /**
@@ -26,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -37,7 +40,11 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'status', 'url', 'category_id', 'image']);
+        $page = Page::create($fields);
+        session()->flash('status', __('vars.page_was_created'));
+
+        return redirect(route('pages.edit', ['page' => $page]));
     }
 
     /**
@@ -48,7 +55,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+
     }
 
     /**
@@ -59,7 +66,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view('admin.pages.edit', ['page' => $page]);
     }
 
     /**
@@ -71,7 +78,11 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'status', 'url', 'category_id', 'image']);
+        $page->update($fields);
+        session()->flash('status', __('vars.page_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +93,9 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+        session()->flash('status', __('vars.page_was_deleted'));
+
+        return redirect(route('pages.index'));
     }
 }

@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'type',
+        'status',
         'email',
         'password',
     ];
@@ -76,5 +78,10 @@ class User extends Authenticatable
     public function settings()
     {
         return $this->hasOne(UserSetting::class);
+    }
+
+    public function progress()
+    {
+        return $this->hasOne(UserProgress::class);
     }
 }
