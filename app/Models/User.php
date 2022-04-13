@@ -84,4 +84,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserProgress::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return trim($this->first_name . ' ' . $this->lastname);
+    }
 }

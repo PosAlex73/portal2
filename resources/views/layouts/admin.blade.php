@@ -12,6 +12,11 @@
 <div id="main-wrapper">
     @include('components.admin.header')
     <x-menus.admin-sidebar />
+    <div class="content-body">
+        <div class="container-fluid">
+            @yield('content')
+        </div>
+    </div>
     @include('components.admin.footer')
     @include('components.admin.scripts')
 </div>
