@@ -16,7 +16,7 @@ class UserObserver
     public function created(User $user)
     {
         $user->profile()->create();
-        $user->settings()->create(['values' => UserSettings::getUserDefaultSettings()]);
+        $user->settings()->create(['values' => serialize(UserSettings::getUserDefaultSettings())]);
     }
 
     /**

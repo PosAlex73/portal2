@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+    @includeWhen(!empty(session('status')), 'flash.flashs', ['message' => session('status')])
+
     <div class="content-body">
         <div class="container-fluid">
             <div class="row page-titles mx-0">

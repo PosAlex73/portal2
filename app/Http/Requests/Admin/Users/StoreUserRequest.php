@@ -32,6 +32,7 @@ class StoreUserRequest extends FormRequest
             'type' => ['required', Rule::in(UserTypes::getAll())],
             'status' => ['required', Rule::in(UserStatuses::getAll())],
             'email' => 'required|email',
+            'password' => 'required|confirmed'
         ];
     }
 }

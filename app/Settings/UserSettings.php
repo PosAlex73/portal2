@@ -6,6 +6,6 @@ class UserSettings
 {
     public static function getUserDefaultSettings()
     {
-        return [];
+        return ['fake' => 1];
     }
 }

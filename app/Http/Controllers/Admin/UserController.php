@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -49,6 +50,7 @@ class UserController extends Controller
             'email',
             'password']);
 
+        $fields['password'] = Hash::make($fields['password']);
         $user = User::create($fields);
         session()->flash('status', __('vars.user_was_created'));
 

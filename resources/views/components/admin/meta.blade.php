@@ -13,6 +13,9 @@
     <meta name="format-detection" content="telephone=no">
     <title>Zenix - Crypto Admin Dashboard </title>
     <!-- Favicon icon -->
+
+    <link rel="stylesheet" href="{{ asset('./vendor/toastr/css/toastr.min.css') }}">
+
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('./images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('./vendor/chartist/css/chartist.min.css') }}">
     <link href="{{ asset('./vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
