@@ -11,8 +11,11 @@ use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\ThreadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserProfileController;
+use App\Http\Controllers\Admin\UserProgressController;
+use App\Http\Controllers\Admin\UserSettingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +33,6 @@ Route::prefix('/boss')->group(function () {
     Route::resource('promotions', PromotionController::class);
     Route::resource('plans', PlanController::class);
     Route::resource('users', UserController::class);
-    Route::resource('user_profiles', UserProfileController::class);
     Route::resource('tasks', TaskController::class);
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
@@ -40,4 +42,8 @@ Route::prefix('/boss')->group(function () {
     Route::post('/articles/comments/{article}', [ArticleCommentController::class, 'store'])->name('article_comments.store');
 
     Route::get('users/import', [UserController::class, 'import'])->name('users.import');
+    Route::get('users/profile/{user}', [UserProfileController::class, 'edit'])->name('users.profiles');
+    Route::get('users/settings/{user}', [UserSettingController::class, 'edit'])->name('users.settings');
+    Route::get('users/progress/{user}', [UserProgressController::class, 'index'])->name('users.progress');
+    Route::get('users/thread/{user}', [ThreadController::class, 'thread'])->name('thread.edit');
 });
