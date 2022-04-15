@@ -14,6 +14,7 @@
     <x-menus.admin-sidebar />
     <div class="content-body">
         <div class="container-fluid">
+            <x-bread-crumbs />
             @yield('content')
         </div>
     </div>

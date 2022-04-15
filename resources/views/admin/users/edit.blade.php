@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    <x-bread-crumbs />
     @include('flash.errors')
     <div class="card">
         <x-admin.user-tabs :user="$user" />

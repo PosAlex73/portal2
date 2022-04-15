@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreThreadRequest;
 use App\Http\Requests\Admin\Users\UpdateThreadRequest;
 use App\Models\Thread;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
@@ -16,11 +17,14 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function thread(User $user)
     {
-        $threads = Thread::paginate(SettingTypes::ADMIN_PAGINATION);
+        $thread = $user->thread;
 
-        return view('admin.threads.index', ['threads' => $threads]);
+        return view('admin.users.thread', [
+            'user' => $user,
+            'thread' => $thread
+        ]);
     }
 
     /**

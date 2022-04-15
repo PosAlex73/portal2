@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreUserProgressRequest;
 use App\Http\Requests\Admin\Users\UpdateUserProgressRequest;
+use App\Models\User;
 use App\Models\UserProgress;
 
 class UserProgressController extends Controller
@@ -14,9 +17,14 @@ class UserProgressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
+        $progress = UserProgress::where('user_id', $user->id)->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
+        return view('admin.users.progress_list', [
+            'user' => $user,
+            'progress' => $progress
+        ]);
     }
 
     /**

@@ -6,14 +6,18 @@ use Illuminate\View\Component;
 
 class BreadCrumbs extends Component
 {
+    public $breadcrumbs;
+    public $user;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user = '')
     {
-        //
+        $this->breadcrumbs = \Diglactic\Breadcrumbs\Breadcrumbs::generate();
+        $this->user = $user;
     }
 
     /**
