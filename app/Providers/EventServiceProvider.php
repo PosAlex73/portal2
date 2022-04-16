@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Article;
 use App\Models\Order;
 use App\Models\User;
+use App\Observers\ArticleObserver;
 use App\Observers\OrderObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -33,7 +34,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         User::observe(UserObserver::class);
-        Article::observe(Article::class);
+        Article::observe(ArticleObserver::class);
         Order::observe(OrderObserver::class);
     }
 

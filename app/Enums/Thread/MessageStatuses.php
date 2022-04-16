@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Enums\Thread;
+
+use App\Enums\Enumable;
 
 class MessageStatuses
 {

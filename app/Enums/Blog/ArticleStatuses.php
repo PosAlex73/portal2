@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Enums\Blog;
+
+use App\Enums\Enumable;
 
 class ArticleStatuses
 {

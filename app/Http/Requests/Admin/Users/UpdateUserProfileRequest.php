@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Users;
 
+use App\Utils\Countries;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserProfileRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateUserProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,12 @@ class UpdateUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'phone' => '',
+            'contacted_email' => 'nullable|email',
+            'age' => 'integer',
+            'country' => [Rule::in(array_keys(Countries::getCountiesList()))],
+            'experience' => 'integer',
+            'about' => ''
         ];
     }
 }

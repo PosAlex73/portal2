@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\MessageStatuses;
+use App\Enums\Thread\MessageStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

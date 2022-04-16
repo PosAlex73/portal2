@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('phone', 32);
-            $table->string('contacted_email', 64);
-            $table->string('age', 2);
-            $table->string('country', 3);
-            $table->string('experience', 2);
-            $table->text('about');
+            $table->string('phone', 32)->nullable(true);
+            $table->string('contacted_email', 64)->nullable(true);
+            $table->string('age', 2)->nullable(true);
+            $table->string('country', 3)->nullable(true);
+            $table->string('experience', 2)->nullable(true);
+            $table->text('about')->nullable(true);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();

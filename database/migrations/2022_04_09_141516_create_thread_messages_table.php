@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('message')->nullable(false);
             $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->references('id')->on('users');
-            $table->string('status', 1)->nullable(false)->default(\App\Enums\MessageStatuses::UNREAD);
+            $table->string('status', 1)->nullable(false)->default(\App\Enums\Thread\MessageStatuses::UNREAD);
             $table->timestamps();
         });
     }

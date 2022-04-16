@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin\Pages;
 
-use App\Enums\ArticleStatuses;
+use App\Enums\Blog\ArticleStatuses;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

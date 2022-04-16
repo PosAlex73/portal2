@@ -46,4 +46,11 @@ Route::prefix('/boss')->group(function () {
     Route::get('users/settings/{user}', [UserSettingController::class, 'edit'])->name('users.settings');
     Route::get('users/progress/{user}', [UserProgressController::class, 'index'])->name('users.progress');
     Route::get('users/thread/{user}', [ThreadController::class, 'thread'])->name('thread.edit');
+
+    Route::post('users/progress/', [UserProgressController::class, 'create'])->name('users.progress.create');
+    Route::put('users/progress', [UserProgressController::class, 'store'])->name('users.progress.store');
+    Route::delete('users/progress', [UserProgressController::class, 'delete'])->name('users.progress.destroy');
+
+    Route::put('users/profile/{profile}', [UserProfileController::class, 'update'])->name('users.profiles.update');
+    Route::put('users/settings/', [UserSettingController::class, 'update'])->name('users.settings.update');
 });

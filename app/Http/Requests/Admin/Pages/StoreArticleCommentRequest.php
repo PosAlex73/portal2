@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Admin\Pages;
 
-use App\Enums\MessageStatuses;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreArticleCommentRequest extends FormRequest
 {

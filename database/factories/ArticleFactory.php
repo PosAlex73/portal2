@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\ArticleStatuses;
+use App\Enums\Blog\ArticleStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

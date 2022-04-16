@@ -2,17 +2,17 @@
 
 namespace App\Observers;
 
-use App\Models\Articale;
+use App\Models\Article;
 
 class ArticleObserver
 {
     /**
      * Handle the Articale "created" event.
      *
-     * @param  \App\Models\Articale  $articale
+     * @param  \App\Models\Article  $articale
      * @return void
      */
-    public function created(Articale $articale)
+    public function created(Article $articale)
     {
         //
     }
@@ -20,10 +20,10 @@ class ArticleObserver
     /**
      * Handle the Articale "updated" event.
      *
-     * @param  \App\Models\Articale  $articale
+     * @param  \App\Models\Article  $articale
      * @return void
      */
-    public function updated(Articale $articale)
+    public function updated(Article $articale)
     {
         //
     }
@@ -31,10 +31,10 @@ class ArticleObserver
     /**
      * Handle the Articale "deleted" event.
      *
-     * @param  \App\Models\Articale  $articale
+     * @param  \App\Models\Article  $articale
      * @return void
      */
-    public function deleted(Articale $articale)
+    public function deleted(Article $articale)
     {
         //
     }
@@ -42,10 +42,10 @@ class ArticleObserver
     /**
      * Handle the Articale "restored" event.
      *
-     * @param  \App\Models\Articale  $articale
+     * @param  \App\Models\Article  $articale
      * @return void
      */
-    public function restored(Articale $articale)
+    public function restored(Article $articale)
     {
         //
     }
@@ -53,10 +53,10 @@ class ArticleObserver
     /**
      * Handle the Articale "force deleted" event.
      *
-     * @param  \App\Models\Articale  $articale
+     * @param  \App\Models\Article  $articale
      * @return void
      */
-    public function forceDeleted(Articale $articale)
+    public function forceDeleted(Article $articale)
     {
         //
     }

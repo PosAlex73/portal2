@@ -17,7 +17,9 @@ class UserProfileController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.profile', ['user' => $user]);
+        $profile = $user->profile;
+
+        return view('admin.users.profile', ['user' => $user, 'profile' => $profile]);
     }
 
     /**
@@ -27,10 +29,10 @@ class UserProfileController extends Controller
      * @param  \App\Models\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserProfileRequest $request, UserProfile $userProfile)
+    public function update(UpdateUserProfileRequest $request, UserProfile $profile)
     {
         $fields = $request->safe()->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
-        $userProfile->update($fields);
+        $profile->update($fields);
         session()->flash('status', __('vars.profile_was_updated'));
 
         return redirect()->back();
