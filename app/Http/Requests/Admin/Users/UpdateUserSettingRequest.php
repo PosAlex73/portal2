@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Users;
 
+use App\Enums\Settings\UserSettingTypes;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserSettingRequest extends FormRequest
@@ -13,7 +14,7 @@ class UpdateUserSettingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,6 @@ class UpdateUserSettingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return array_fill_keys(UserSettingTypes::getAll(), '');
     }
 }

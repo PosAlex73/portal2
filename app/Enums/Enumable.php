@@ -10,4 +10,11 @@ trait Enumable
 
         return $ref->getConstants();
     }
+
+    public static function getKeysAsValues()
+    {
+        $ref = new \ReflectionClass(__CLASS__);
+
+        return array_values($ref->getConstants());
+    }
 }

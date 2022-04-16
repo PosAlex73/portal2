@@ -26,12 +26,12 @@ class UpdateUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => '',
+            'phone' => 'nullable|integer|max:32',
             'contacted_email' => 'nullable|email',
-            'age' => 'integer',
+            'age' => 'nullable|integer|min:15|max:75',
             'country' => [Rule::in(array_keys(Countries::getCountiesList()))],
-            'experience' => 'integer',
-            'about' => ''
+            'experience' => 'nullable|integer',
+            'about' => 'nullable|string'
         ];
     }
 }

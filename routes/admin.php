@@ -52,5 +52,5 @@ Route::prefix('/boss')->group(function () {
     Route::delete('users/progress', [UserProgressController::class, 'delete'])->name('users.progress.destroy');
 
     Route::put('users/profile/{profile}', [UserProfileController::class, 'update'])->name('users.profiles.update');
-    Route::put('users/settings/', [UserSettingController::class, 'update'])->name('users.settings.update');
+    Route::put('users/settings/{user_settings}', [UserSettingController::class, 'update'])->name('users.settings.update');
 });

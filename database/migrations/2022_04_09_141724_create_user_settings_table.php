@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\CommonStatuses;
+use App\Enums\Settings\UserSettingTypes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +19,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->text('values');
+            $table->string(UserSettingTypes::STATUS, 1)->default(CommonStatuses::ACTIVE);
+            $table->string(UserSettingTypes::GET_BLOG_NOTIFICATIONS, 1)->default(CommonStatuses::ACTIVE);
+            $table->string(UserSettingTypes::GET_NOTIFICATIONS, 1)->default(CommonStatuses::ACTIVE);
+            $table->string(UserSettingTypes::GET_REVIEW_NOTIFICATIONS, 1)->default(CommonStatuses::ACTIVE);
+            $table->string(UserSettingTypes::GET_NEWS_NOTIFICATIONS, 1)->default(CommonStatuses::ACTIVE);
             $table->timestamps();
         });
     }

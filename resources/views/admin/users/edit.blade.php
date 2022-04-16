@@ -5,8 +5,9 @@
         <x-admin.user-tabs :user="$user" />
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('users.store') }}" method="post">
+                <form action="{{ route('users.update', ['user' => $user]) }}" method="post">
                     @csrf
+                    @method('PUT')
                     @include('fields.input', ['name' => 'first_name', 'value' => $user->first_name])
                     @include('fields.input', ['name' => 'last_name', 'value' => $user->last_name])
                     @include('fields.select', ['name' => 'status', 'variants' => $user_statuses, 'selected' => $user->status])
