@@ -226,6 +226,7 @@
                 </ul>
             </div>
         </nav>
+        {{-- FIXME add subheader --}}
         <div class="sub-header">
             <div class="d-flex align-items-center flex-wrap me-auto">
                 <h5 class="dashboard_bar">Dashboard</h5>

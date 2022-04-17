@@ -40,3 +40,8 @@ Breadcrumbs::for('thread.edit', function (BreadcrumbTrail $trail, $user) {
     $trail->parent('users.index');
     $trail->push(__('vars.thread'), route('thread.edit', $user));
 });
+
+Breadcrumbs::for('courses.edit', function (BreadcrumbTrail $trail, $course) {
+    $trail->parent('courses.index');
+    $trail->push(__('vars.courses'), route('courses.edit', $course));
+});

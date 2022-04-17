@@ -12,14 +12,21 @@ use App\Models\UserProgress;
 
 class UserProgressController extends Controller
 {
+    public function index()
+    {
+        $progress = UserProgress::with(['user', 'order'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.progress.index', ['progress' => $progress]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function list(User $user)
     {
-        $progress = UserProgress::where('user_id', $user->id)->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $progress = UserProgress::with('course')->where('user_id', $user->id)->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.users.progress_list', [
             'user' => $user,

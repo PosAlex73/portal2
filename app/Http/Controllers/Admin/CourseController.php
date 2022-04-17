@@ -18,7 +18,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $courses = Course::with(['category'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.courses.index', ['courses' => $courses]);
     }

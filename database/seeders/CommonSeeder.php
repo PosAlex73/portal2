@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\ArticleComment;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Order;
 use App\Models\Page;
 use App\Models\Plan;
 use App\Models\Promotion;
@@ -98,10 +99,16 @@ class CommonSeeder extends Seeder
 
         foreach ($users as $user) {
             $course = $courses->random();
+
+            $order = Order::factory()->for($user)->create();
             UserProgress::factory()->for($user)->create([
-                'course_id' => $course->id
+                'course_id' => $course->id,
+                'order_id' => $order->id
             ]);
+
         }
+
+
 
         $settings = Settings::getSettings();
 

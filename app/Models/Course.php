@@ -13,6 +13,10 @@ class Course extends Model
         'title', 'description', 'short_description', 'image', 'status', 'category_id'
     ];
 
+    protected $attributes = [
+        'price' => 0
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
