@@ -14,10 +14,9 @@ class BreadCrumbs extends Component
      *
      * @return void
      */
-    public function __construct($user = '')
+    public function __construct()
     {
         $this->breadcrumbs = \Diglactic\Breadcrumbs\Breadcrumbs::generate();
-        $this->user = $user;
     }
 
     /**

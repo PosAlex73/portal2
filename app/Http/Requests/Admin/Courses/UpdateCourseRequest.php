@@ -30,7 +30,8 @@ class UpdateCourseRequest extends FormRequest
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'status' => ['required', Rule::in(CourseStatuses::getAll())]
+            'status' => ['required', Rule::in(CourseStatuses::getAll())],
+            'price' => 'nullable|numeric'
         ];
     }
 }

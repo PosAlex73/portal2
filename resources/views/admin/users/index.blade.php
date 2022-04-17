@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header d-sm-flex d-block">
             <div class="me-auto mb-sm-0 mb-3">
-                <h4 class="card-title mb-2">{{ __('vars.user_listion') }}</h4>
+                <h4 class="card-title mb-2">{{ __('vars.user_list') }}</h4>
             </div>
             <a href="{{ route('users.import') }}" class="btn btn-info light me-3"><i class="las la-download scale3 me-2"></i>{{ __('vars.import_users') }}</a>
             <a href="{{ route('users.create') }}" class="btn btn-info">+ {{ __('vars.add_user') }}</a>

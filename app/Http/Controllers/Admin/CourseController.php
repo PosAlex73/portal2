@@ -67,7 +67,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('admin.courses.edit', $course);
+        return view('admin.courses.edit', ['course' => $course]);
     }
 
     /**
@@ -79,9 +79,11 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id']);
+        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id', 'price']);
         $course->update($fields);
         session()->flash('status', __('vars.course_was_updated'));
+
+        return redirect()->back();
     }
 
     /**
