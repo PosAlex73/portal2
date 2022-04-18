@@ -13,8 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-
-
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
@@ -22,7 +20,7 @@ return new class extends Migration
             $table->string('short_description', 512);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->string('image', 1024);
+            $table->string('image', 1024)->nullable(true)->default('');
             $table->integer('price')->default(0);
             $table->string('status', 1)->default(\App\Enums\Courses\CourseStatuses::IN_PROGRESS);
             $table->timestamps();

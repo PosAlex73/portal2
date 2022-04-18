@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\Admin\Commercial;
 
-use App\Enums\Orders\OrderStatuses;
-use App\Models\Order;
+use App\Enums\CommonStatuses;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -29,7 +28,9 @@ class StorePlanRequest extends FormRequest
         return [
             'title' => 'required|min:2|max:255',
             'description' => 'required',
-            'status' => ['required', Rule::in(OrderStatuses::getAll())]
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'short_description' => 'nullable|min:2|max:1024',
+            'price' => 'nullable|numeric'
         ];
     }
 }

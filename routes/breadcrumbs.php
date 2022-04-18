@@ -41,7 +41,30 @@ Breadcrumbs::for('thread.edit', function (BreadcrumbTrail $trail, $user) {
     $trail->push(__('vars.thread'), route('thread.edit', $user));
 });
 
+Breadcrumbs::for('courses.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.courses'), route('courses.index'));
+});
+
 Breadcrumbs::for('courses.edit', function (BreadcrumbTrail $trail, $course) {
     $trail->parent('courses.index');
-    $trail->push(__('vars.courses'), route('courses.edit', $course));
+    $trail->push(__('vars.courses'), route('courses.edit', $course->id));
+});
+
+Breadcrumbs::for('courses.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('courses.index');
+    $trail->push(__('vars.courses_create'), route('courses.create'));
+});
+
+Breadcrumbs::for('plans.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.plans'), route('plans.index'));
+});
+
+Breadcrumbs::for('plans.edit', function (BreadcrumbTrail $trail, $plan) {
+    $trail->parent('plans.index');
+    $trail->push(__('vars.plans'), route('plans.edit', $plan));
+});
+
+Breadcrumbs::for('plans.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('plans.index');
+    $trail->push(__('vars.plans_create'), route('plans.create'));
 });

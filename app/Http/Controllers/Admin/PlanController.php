@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Commercial\StorePlanRequest;
 use App\Http\Requests\Admin\Commercial\UpdatePlanRequest;
@@ -17,7 +18,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plans = Plan::paginate(SettingTypes::ADMIN_PAGINATION);
+        $plans = Plan::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.plans.index', ['plans' => $plans]);
     }

@@ -7,14 +7,13 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('courses.store') }}" method="post">
+                <form action="{{ route('plans.store') }}" method="post">
                     @csrf
                     @include('fields.input', ['name' => 'title'])
                     @include('fields.textarea', ['name' => 'description'])
                     @include('fields.input', ['name' => 'short_description'])
+                    <x-common.common-statuses-select />
                     @include('fields.number', ['name' => 'price'])
-                    <x-common.categories />
-                    <x-admin.course-statuses />
                     @include('fields.image', ['name' => 'image'])
                     @include('buttons.submit')
                 </form>
