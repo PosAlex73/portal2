@@ -9,7 +9,7 @@ class Alert extends Facade
     /**
      * Class for alert facades
      *
-     * @return string|void
+     * @return string
      */
     public static function getFacadeAccessor()
     {
