@@ -42,7 +42,8 @@ class CommonSeeder extends Seeder
             'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),
             'type' => UserTypes::ADMIN,
-            'status' => CommonStatuses::ACTIVE
+            'status' => CommonStatuses::ACTIVE,
+            'permissions' => '{"platform.systems.roles":true,"platform.systems.users":true,"platform.systems.attachment":true,"platform.index":true}'
         ]);
 
         $user = User::create([
