@@ -97,6 +97,8 @@ class PlatformProvider extends OrchidServiceProvider
     }
 
     /**
+     * Register profile menus
+     *
      * @return Menu[]
      */
     public function registerProfileMenu(): array
