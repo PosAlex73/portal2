@@ -18,9 +18,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $articles = Article::with(['category'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
-        return view('admin.articles.index', ['article' => $articles]);
+        return view('admin.articles.index', ['articles' => $articles]);
     }
 
     /**
