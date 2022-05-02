@@ -30,6 +30,7 @@ class UpdatePageRequest extends FormRequest
             'text' => 'required|min:2',
             'status' => ['required', Rule::in(ArticleStatuses::getAll())],
             'url' => 'required',
+            'category_id' => 'required'
         ];
     }
 }

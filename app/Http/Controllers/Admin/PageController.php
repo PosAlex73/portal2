@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\Settings\SettingTypes;
+use  App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\StorePageRequest;
 use App\Http\Requests\Admin\Pages\UpdatePageRequest;
@@ -17,7 +18,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::paginate(SettingTypes::ADMIN_PAGINATION);
+        $pages = Page::with(['category'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.pages.index', ['pages' => $pages]);
     }
