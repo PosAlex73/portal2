@@ -68,3 +68,17 @@ Breadcrumbs::for('plans.create', function (BreadcrumbTrail $trail) {
     $trail->parent('plans.index');
     $trail->push(__('vars.plans_create'), route('plans.create'));
 });
+
+Breadcrumbs::for('categories.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.categories'), route('categories.index'));
+});
+
+Breadcrumbs::for('categories.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('categories.index');
+    $trail->push(__('vars.categories_create'), route('categories.create'));
+});
+
+Breadcrumbs::for('categories.edit', function (BreadcrumbTrail $trail, $category) {
+    $trail->parent('categories.index');
+    $trail->push(__('vars.categories_edit'), route('categories.edit', $category));
+});
