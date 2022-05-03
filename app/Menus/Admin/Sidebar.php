@@ -25,6 +25,7 @@ class Sidebar implements IMenu
             new Link(__('vars.categories'), 'categories.index'),
             new Link(__('vars.blog'), 'articles.index', 'box'),
             new Link(__('vars.pages'), 'pages.index', 'box'),
+            new Link(__('vars.settings'), 'settings.index', 'box'),
         ]);
     }
 }

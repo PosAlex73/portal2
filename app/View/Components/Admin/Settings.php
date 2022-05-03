@@ -35,7 +35,7 @@ class Settings extends Component
      */
     public function render()
     {
-        return view('admin.components.settings.settings');
+        return view('components.admin.settings');
     }
 
     private function tabSettings()
