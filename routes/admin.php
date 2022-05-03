@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/boss/login', [AuthenticatedSessionController::class, 'adminLogin'])->name('admin.login');
 
-//Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
-Route::prefix('/boss')->group(function () {
+Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('articles', ArticleController::class);
