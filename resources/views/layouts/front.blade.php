@@ -11,6 +11,7 @@
 </div>
 <div id="main-wrapper">
     @include('components.front.header')
+    <x-menus.front-tar />
     <div class="content-body">
         <div class="container-fluid">
             @yield('content')
