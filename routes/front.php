@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\TaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('front.index');
@@ -28,10 +29,10 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/profile/courses', [CourseController::class, 'myCourses'])->name('front.user.courses');
 
     Route::get('/order/', [OrderController::class, 'order'])->name('front.order');
-    Route::post('/order/{order}', [OrderController::class, 'createOrder'])->name('front.create_order');
+    Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
 });
 
 Route::prefix('course/')->middleware(['auth'])->group(function (){
     Route::get('/{course}', [CourseController::class, 'course'])->name('front.user.courses');
-    Route::get('/task/{task}', [\App\Http\Controllers\Front\TaskController::class, 'task'])->name('front.task');
+    Route::get('/task/{task}', [TaskController::class, 'task'])->name('front.task');
 });

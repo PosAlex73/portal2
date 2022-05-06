@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\Users\UpdateUserProfileRequest;
+use App\Http\Requests\Front\Users\UpdateUserRequest;
+use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +30,15 @@ class ProfileController extends Controller
         $fields = $request->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
         $profile->update($fields);
         Alert::set('status', __('vars.profile_was_updated'));
+
+        return redirect()->back();
+    }
+
+    public function updateUserData(UpdateUserRequest $request, User $user)
+    {
+        $fields = $request->safe()->only(['first_name', 'last_name', 'email']);
+        $user->update($fields);
+        Alert::set('status', __('vars.user_was_updated'));
 
         return redirect()->back();
     }
