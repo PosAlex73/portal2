@@ -11,14 +11,16 @@ class NewCourseAdd extends Notification
 {
     use Queueable;
 
+    public $course;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($course)
     {
-        //
+        $this->course = $course;
     }
 
     /**

@@ -11,14 +11,16 @@ class NewPlaced extends Notification
 {
     use Queueable;
 
+    public $new;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($new)
     {
-        //
+        $this->new = $new;
     }
 
     /**

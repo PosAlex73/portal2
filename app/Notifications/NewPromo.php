@@ -11,14 +11,16 @@ class NewPromo extends Notification
 {
     use Queueable;
 
+    public $promotion;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($promotion)
     {
-        //
+        $this->promotion = $promotion;
     }
 
     /**
