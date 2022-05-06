@@ -2,10 +2,13 @@
 
 namespace App\Observers;
 
+use App\Enums\Blog\ArticleStatuses;
 use App\Enums\CommonStatuses;
 use App\Enums\Settings\UserSettingTypes;
 use App\Models\Article;
+use App\Notifications\ArticlePublished;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class ArticleObserver
 {
@@ -17,12 +20,7 @@ class ArticleObserver
      */
     public function created(Article $article)
     {
-        $users_to_notify = DB::table('user_settings')
-            ->where([
-            UserSettingTypes::GET_BLOG_NOTIFICATIONS, '=', CommonStatuses::ACTIVE
-        ])->get('user_id');
-
-
+        $this->notifyUsers($article);
     }
 
     /**
@@ -33,7 +31,7 @@ class ArticleObserver
      */
     public function updated(Article $article)
     {
-        //
+        $this->notifyUsers($article);
     }
 
     /**
@@ -67,5 +65,19 @@ class ArticleObserver
     public function forceDeleted(Article $article)
     {
         //
+    }
+
+    private function notifyUsers($article)
+    {
+        if ($article->status !== ArticleStatuses::ACTIVE) {
+            return false;
+        }
+
+        $users_to_notify = DB::table('user_settings')
+            ->where([
+                UserSettingTypes::GET_BLOG_NOTIFICATIONS, '=', CommonStatuses::ACTIVE
+            ])->get('user_id');
+
+        Notification::send($users_to_notify, new ArticlePublished($article));
     }
 }
