@@ -18,7 +18,6 @@
             @yield('content')
         </div>
     </div>
-    @include('components.admin.footer')
     @include('components.admin.scripts')
 </div>
 </body>

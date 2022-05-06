@@ -30,6 +30,9 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
 
     Route::get('/order/', [OrderController::class, 'order'])->name('front.order');
     Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
+
+    //blog
+    Route::post('/blog/comment/{article}', [BlogController::class, 'publicComment'])->name('front.blog.comment');
 });
 
 Route::prefix('course/')->middleware(['auth'])->group(function (){
