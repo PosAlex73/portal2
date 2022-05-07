@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\Users\UserTypes;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
@@ -16,6 +18,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if (in_array($user->type, UserTypes::getAdminTypes())) {
+            return $next($request);
+        }
+
+        return redirect()->to(route('login'));
     }
 }

@@ -20,6 +20,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/boss/login', [AuthenticatedSessionController::class, 'adminLogin'])->name('admin.login');
+Route::get('/boss', function () {
+    return redirect()->to(route('dashboard'));
+});
 
 Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
