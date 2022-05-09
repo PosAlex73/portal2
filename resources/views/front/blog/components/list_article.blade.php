@@ -4,13 +4,13 @@
             <div class="col-md-5 col-xxl-12">
                 <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
                     <div class="new-arrivals-img-contnent">
-                        <img class="img-fluid" src="images/product/2.jpg" alt="">
+                        <img class="img-fluid" src="{{ $article->image }}" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-md-7 col-xxl-12">
                 <div class="new-arrival-content position-relative">
-                    <h4><a href="ecom-product-detail.html">Solid Women's V-neck Dark T-Shirt</a></h4>
+                    <h4><a href="{{ route('front.blog.article', ['article' => $article]) }}">{{ $article->title }}</a></h4>
                     <div class="comment-review star-rating">
                         <ul>
                             <li><i class="fa fa-star"></i></li>
@@ -19,13 +19,11 @@
                             <li><i class="fa fa-star-half-empty"></i></li>
                             <li><i class="fa fa-star-half-empty"></i></li>
                         </ul>
-                        <span class="review-text">(34 reviews) / </span><a class="product-review" href=""  data-bs-toggle="modal" data-bs-target="#reviewModal">Write a review?</a>
-                        <p class="price">$320.00</p>
+                        <span class="review-text">({{ $article->comments_count }} {{ __('vars.reviews') }}) / </span><a class="product-review" href=""  data-bs-toggle="modal" data-bs-target="#reviewModal">{{ __('vars.write_review') }}</a>
                     </div>
-                    <p>Availability: <span class="item"> In stock <i class="fa fa-check-circle text-success"></i></span></p>
-                    <p>Product code: <span class="item">0405689</span> </p>
-                    <p>Brand: <span class="item">Lee</span></p>
-                    <p class="text-content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                    <p>{{ __('vars.write') }}: <span class="item">{{ $article->created_at }}</span> </p>
+                    <p>{{ __('vars.author') }}: <span class="item">{{ $article->author }}</span></p>
+                    <p class="text-content">{{ $article->short_description }}</p>
                 </div>
             </div>
         </div>

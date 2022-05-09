@@ -32,7 +32,7 @@ class BlogController extends Controller
         $user_id = Auth::user()->id;
 
         $validator = Validator::make(['user_id' => $user_id], [
-            'user_id' => 'required|exists:user,id',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         if ($validator->fails()) {
@@ -42,7 +42,7 @@ class BlogController extends Controller
         }
 
         $fields['user_id'] = $user_id;
-        $article->comments()->update($fields);
+        $article->comments()->create($fields);
         Alert::set('status', __('comment_was_add'));
 
         return redirect()->back();

@@ -22,4 +22,14 @@ class Article extends Model
     {
         return $this->hasMany(ArticleComment::class);
     }
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->text, 0, 30) . '...';
+    }
+
+    public function getCommentsCountAttribute()
+    {
+        return $this->comments()->count();
+    }
 }
