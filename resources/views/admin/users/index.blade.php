@@ -73,6 +73,7 @@
 
                     </tbody>
                 </table>
+                <x-common.pagination route="users.index" :items="$users" />
             </div>
             @else
                 <p>{{ __('vars.no_users_found') }}</p>

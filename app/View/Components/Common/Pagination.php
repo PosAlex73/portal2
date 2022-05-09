@@ -2,23 +2,22 @@
 
 namespace App\View\Components\Common;
 
-use App\Enums\Orders\Currencies;
 use Illuminate\View\Component;
 
-class Currency extends Component
+class Pagination extends Component
 {
-    public $selected;
-    public $value;
+    public $route;
+    public $items;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($value = 0, $selected = '')
+    public function __construct($route, $items = [])
     {
-        $this->value = $value;
-        $this->selected = !empty($selected) ? $selected : Currencies::getDefault();
+        $this->route = $route;
+        $this->items = $items;
     }
 
     /**
@@ -28,6 +27,6 @@ class Currency extends Component
      */
     public function render()
     {
-        return view('components.common.currency');
+        return view('components.common.pagination');
     }
 }
