@@ -16,4 +16,5 @@ class SettingEnums
     public const NUMBER = 'number';
     public const FILE = 'file';
     public const IMAGE = 'image';
+    public const RICH_TEXT = 'rich_text';
 }

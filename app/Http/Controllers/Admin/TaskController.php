@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreTaskRequest;
 use App\Http\Requests\Admin\Courses\UpdateTaskRequest;
@@ -17,7 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::paginate(SettingTypes::ADMIN_PAGINATION);
+        $tasks = Task::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.tasks.index', ['tasks', $tasks]);
     }

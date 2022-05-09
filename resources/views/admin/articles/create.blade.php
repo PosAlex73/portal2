@@ -13,7 +13,7 @@
                     @include('fields.textarea', ['name' => 'text'])
                     @include('fields.image', ['name' => 'image'])
                     <x-common.categories />
-                    <x-common.common-statuses-select />
+                    <x-admin.statuses statuses="App\Enums\Blog\ArticleStatuses" label="article" />
                     @include('buttons.submit')
                 </form>
             </div>

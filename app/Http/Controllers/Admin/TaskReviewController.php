@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreTaskReviewRequest;
 use App\Http\Requests\Admin\Courses\UpdateTaskReviewRequest;
@@ -17,7 +18,7 @@ class TaskReviewController extends Controller
      */
     public function index()
     {
-        $task_reviews = TaskReview::paginate(SettingTypes::ADMIN_PAGINATION);
+        $task_reviews = TaskReview::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.task_reviews.index', ['task_reviews' => $task_reviews]);
     }

@@ -17,6 +17,7 @@ class SettingTypes
     public const FRONT_PAGINATION = 'front_pagination';
 
     public const LOGO = 'logo';
+    public const MAIN_HERO = 'main_hero';
 
     public const SOCIAL_LOGIN = 'social_login';
 }

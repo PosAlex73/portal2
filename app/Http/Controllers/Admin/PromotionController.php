@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Commercial\StorePromotionRequest;
 use App\Http\Requests\Admin\Commercial\UpdatePromotionRequest;
@@ -17,7 +18,7 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $promotions = Promotion::paginate(SettingTypes::ADMIN_PAGINATION);
+        $promotions = Promotion::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.promotions.index', ['promotions' => $promotions]);
     }

@@ -7,56 +7,61 @@ use App\Models\Order;
 class OrderObserver
 {
     /**
-     * Handle the Articale "created" event.
+     * Handle the Order "created" event.
      *
-     * @param  \App\Models\Order  $articale
+     * @param  \App\Models\Order  $order
+     *
      * @return void
      */
-    public function created(Order $articale)
+    public function created(Order $order)
     {
         //
     }
 
     /**
-     * Handle the Articale "updated" event.
+     * Handle the Order "updated" event.
      *
-     * @param  \App\Models\Order  $articale
+     * @param  \App\Models\Order  $order
+     *
      * @return void
      */
-    public function updated(Order $articale)
+    public function updated(Order $order)
     {
         //
     }
 
     /**
-     * Handle the Articale "deleted" event.
+     * Handle the Order "deleted" event.
      *
-     * @param  \App\Models\Order  $articale
+     * @param  \App\Models\Order  $order
+     *
      * @return void
      */
-    public function deleted(Order $articale)
+    public function deleted(Order $orde)
     {
         //
     }
 
     /**
-     * Handle the Articale "restored" event.
+     * Handle the Order "restored" event.
      *
-     * @param  \App\Models\Order  $articale
+     * @param  \App\Models\Order  $order
+     *
      * @return void
      */
-    public function restored(Order $articale)
+    public function restored(Order $order)
     {
         //
     }
 
     /**
-     * Handle the Articale "force deleted" event.
+     * Handle the Order "force deleted" event.
      *
-     * @param  \App\Models\Order  $articale
+     * @param  \App\Models\Order  $order
+     *
      * @return void
      */
-    public function forceDeleted(Order $articale)
+    public function forceDeleted(Order $order)
     {
         //
     }

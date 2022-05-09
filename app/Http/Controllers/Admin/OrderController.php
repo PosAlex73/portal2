@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with(['users'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $orders = Order::with(['user'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.orders.index', ['orders' => $orders]);
     }

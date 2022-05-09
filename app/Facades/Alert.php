@@ -13,6 +13,6 @@ class Alert extends Facade
      */
     public static function getFacadeAccessor()
     {
-        parent::getFacadeAccessor();
+        return \App\Alerts\Alert::class;
     }
 }
