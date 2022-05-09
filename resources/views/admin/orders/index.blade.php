@@ -25,18 +25,18 @@
                     @foreach($orders as $order)
                         <tr>
                             <td><strong>{{ $order->id }}</strong></td>
-                            <td>{{ $plan->user->full_name }}</td>
-                            <td>{{ __('vars.payments_' . $plan->payment) }}</td>
-                            <td>{{ $plan->total }}</td>
-                            <td>{{ $plan->created_at }}</td>
+                            <td>{{ $order->user->full_name }}</td>
+                            <td>{{ __('vars.payments_' . $order->payment) }}</td>
+                            <td><x-common.currency :value="$order->total" /></td>
+                            <td>{{ $order->created_at }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
                                         <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('plans.edit', ['plan' => $plan]) }}">{{ __('vars.edit') }}</a>
-                                        <a class="dropdown-item" href="{{ route('plans.destroy', ['plan' => $plan]) }}">{{ __('vars.delete') }}</a>
+                                        <a class="dropdown-item" href="{{ route('orders.edit', ['order' => $order]) }}">{{ __('vars.edit') }}</a>
+                                        <a class="dropdown-item" href="{{ route('orders.destroy', ['order' => $order]) }}">{{ __('vars.delete') }}</a>
                                     </div>
                                 </div>
                             </td>

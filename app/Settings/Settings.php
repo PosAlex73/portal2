@@ -21,6 +21,11 @@ class Settings
                     'type' => SettingEnums::SELECT,
                     'variants' => Langs::getAll()
                 ],
+                SettingTypes::MAIN_HERO => [
+                    'title' => SettingTypes::MAIN_HERO,
+                    'value' => '',
+                    'type' => SettingEnums::RICH_TEXT
+                ],
                 SettingTypes::SITE_TILE => [
                     'title' => SettingTypes::SITE_TILE,
                     'value' => '',

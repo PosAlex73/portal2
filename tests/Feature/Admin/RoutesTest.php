@@ -10,7 +10,37 @@ class RoutesTest extends TestCase
 {
     public function setUp(): void
     {
+        parent::setUp();
         $this->user_admin = User::factory()->create(['type' => UserTypes::ADMIN]);
+        $this->user_simple = User::factory()->create(['type' => UserTypes::SIMPLE]);
+
+        $this->list_routes = [
+            'articles.index',
+            'articles.create',
+            'categories.index',
+            'categories.create',
+            'courses.index',
+            'courses.create',
+            'orders.index',
+            'orders.create',
+            'pages.index',
+            'pages.create',
+            'promotions.index',
+            'promotions.create',
+            'plans.index',
+            'plans.create',
+            'users.index',
+            'users.create',
+            'tasks.index',
+            'tasks.create',
+        ];
+    }
+
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        $this->user_simple->delete();
+        $this->user_admin->delete();
     }
 
     /**
@@ -22,28 +52,18 @@ class RoutesTest extends TestCase
     {
         $response = $this->get(url('/boss'));
         $response->assertRedirect(route('dashboard'));
-
-        $user_simple = User::factory()->create(['type' => UserTypes::SIMPLE]);
-        $response = $this->actingAs($user_simple)->get(route('dashboard'));
+        $response = $this->actingAs($this->user_simple)->get(route('dashboard'));
         $response->assertRedirect();
-
-        $user_admin = User::factory()->create(['type' => UserTypes::ADMIN]);
-        $response = $this->actingAs($user_admin)->get(route('dashboard'));
+        $response = $this->actingAs($this->user_admin)->get(route('dashboard'));
         $response->assertStatus(200);
     }
 
     public function testAdminRoutes()
     {
-        $response = $this->get(route('article.index'))->assertStatus(200);
-
-//        Route::resource('articles', ArticleController::class);
-//        Route::resource('categories', CategoryController::class);
-//        Route::resource('courses', CourseController::class);
-//        Route::resource('orders', OrderController::class);
-//        Route::resource('pages', PageController::class);
-//        Route::resource('promotions', PromotionController::class);
-//        Route::resource('plans', PlanController::class);
-//        Route::resource('users', UserController::class);
-//        Route::resource('tasks', TaskController::class);
+        foreach($this->list_routes as $route) {
+            $this->get(route($route))->assertStatus(302);
+            $this->actingAs($this->user_admin)->get(route($route))->assertStatus(200);
+            $this->actingAs($this->user_simple)->get(route($route))->assertRedirect();
+        }
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App\View\Components\Menus;
 
+use App\Menus\Front\MainToolbar;
 use Illuminate\View\Component;
 
 class FrontTar extends Component
 {
+    public $menu;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +16,7 @@ class FrontTar extends Component
      */
     public function __construct()
     {
-        //
+        $this->menu = MainToolbar::getMenu();
     }
 
     /**

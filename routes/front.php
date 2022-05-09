@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\PromotionController;
 use App\Http\Controllers\Front\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ Route::get('/course/{course}', [CourseController::class, 'course'])->name('front
 Route::get('/page/{page}/', [PageController::class, 'page'])->name('front.page');
 Route::get('/blog/', [BlogController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{article}', [BlogController::class, 'article'])->name('front.blog.article');
+Route::get('/promotions', [PromotionController::class, 'promotions'])->name('front.promotions');
+Route::get('/promotions/{promotion}', [PromotionController::class, 'promotion'])->name('front.promotion');
 
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {

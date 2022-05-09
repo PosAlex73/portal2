@@ -70,11 +70,6 @@ class User extends Authenticatable
         return $this->hasOne(UserProfile::class);
     }
 
-    public function courses()
-    {
-        return $this->hasMany(UserProgress::class);
-    }
-
     public function settings()
     {
         return $this->hasOne(UserSetting::class);

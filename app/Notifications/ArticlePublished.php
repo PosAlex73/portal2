@@ -57,7 +57,10 @@ class ArticlePublished extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'title' => $this->article->title,
+            'text' => $this->article->text,
+            'category_id' => $this->article->category_id,
+            'article_id' => $this->article->id
         ];
     }
 }

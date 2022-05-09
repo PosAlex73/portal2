@@ -63,12 +63,6 @@ class CommonSeeder extends Seeder
 
         $users = User::all();
 
-        foreach ($users as $user) {
-            Thread::factory()->for($user)->create();
-            UserProfile::factory()->for($user)->create();
-            UserSetting::factory()->for($user)->create();
-        }
-
         $threads = Thread::all();
         foreach ($threads as $thread) {
             ThreadMessage::factory()->count(1, 15)->for($thread)->create([
@@ -79,7 +73,7 @@ class CommonSeeder extends Seeder
         $categories = Category::all();
 
         foreach ($categories as $category) {
-            Article::factory()->count(mt_rand(1, 3))->for($category)->create();
+            Article::factory()->count(mt_rand(1, 3))->for($category)->createQuietly();
             Page::factory()->for($category)->create();
             Course::factory()->count(mt_rand(1, 5))->for($category)->create();
         }
@@ -87,7 +81,7 @@ class CommonSeeder extends Seeder
         $articles = Article::all();
         foreach ($articles as $article) {
             $user = $users->random();
-            ArticleComment::factory()->count(mt_rand(0, 15))->for($article)->create([
+            ArticleComment::factory()->count(mt_rand(0, 15))->for($article)->createQuietly([
                 'user_id' => $user->id
             ]);
         }
@@ -107,8 +101,6 @@ class CommonSeeder extends Seeder
             ]);
 
         }
-
-
 
         $settings = Settings::getSettings();
 

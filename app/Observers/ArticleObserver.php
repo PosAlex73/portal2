@@ -6,6 +6,7 @@ use App\Enums\Blog\ArticleStatuses;
 use App\Enums\CommonStatuses;
 use App\Enums\Settings\UserSettingTypes;
 use App\Models\Article;
+use App\Models\User;
 use App\Notifications\ArticlePublished;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
@@ -74,9 +75,9 @@ class ArticleObserver
         }
 
         $users_to_notify = DB::table('user_settings')
-            ->where([
-                UserSettingTypes::GET_BLOG_NOTIFICATIONS, '=', CommonStatuses::ACTIVE
-            ])->get('user_id');
+            ->where(UserSettingTypes::GET_BLOG_NOTIFICATIONS, '=', CommonStatuses::ACTIVE)->get('user_id')->toArray();
+
+        $users_to_notify = User::whereIn('id', array_column($users_to_notify, 'user_id'))->get();
 
         Notification::send($users_to_notify, new ArticlePublished($article));
     }
