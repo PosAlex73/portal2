@@ -2,23 +2,18 @@
 
 namespace App\View\Components\Common;
 
-use App\Enums\Orders\Currencies;
 use Illuminate\View\Component;
 
-class Currency extends Component
+class Rating extends Component
 {
-    public $selected;
-    public $value;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($value = 0, $selected = '')
+    public function __construct()
     {
-        $this->value = $value;
-        $this->selected = !empty($selected) ? $selected : Currencies::getDefault();
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class Currency extends Component
      */
     public function render()
     {
-        return view('components.common.currency');
+        return view('components.common.rating');
     }
 }

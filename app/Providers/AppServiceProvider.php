@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Alerts\Alert;
+use App\Models\Setting;
+use App\Settings\Set;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        App::bind(Set::class, function ($app) {
+            return new Set(Setting::all());
+        });
+
+        App::singleton(Alert::class, function () {
+            return new Alert();
+        });
     }
 }
