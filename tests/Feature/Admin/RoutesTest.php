@@ -66,4 +66,29 @@ class RoutesTest extends TestCase
             $this->actingAs($this->user_simple)->get(route($route))->assertRedirect();
         }
     }
+
+    public function testUsersRoutes()
+    {
+        $user_routes = [
+            'users.profiles',
+            'users.settings',
+            'users.progress',
+        ];
+
+        foreach ($user_routes as $route) {
+            $this->get(route($route, ['user' => $this->user_simple]))->assertStatus(200);
+        }
+    }
+
+    public function testUserCreate()
+    {
+        $user_info = [
+            'first_name',
+            'last_name',
+            'type',
+            'status',
+            'email',
+            'password',
+        ];
+    }
 }

@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class UserObserver
 {
@@ -42,6 +41,7 @@ class UserObserver
         $user->profile()->delete();
         $user->thread()->delete();
         $user->progress()->delete();
+        $user->settings()->delete();
     }
 
     /**
