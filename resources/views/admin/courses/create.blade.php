@@ -15,6 +15,7 @@
                     @include('fields.number', ['name' => 'price'])
                     <x-common.categories />
                     <x-admin.course-statuses />
+                    <x-admin.course-types />
                     @include('fields.image', ['name' => 'image'])
                     @include('buttons.submit')
                 </form>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Courses\CourseStatuses;
+use App\Enums\Courses\CourseTypes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +24,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('image', 1024)->nullable(true)->default('');
             $table->integer('price')->default(0);
-            $table->string('status', 1)->default(\App\Enums\Courses\CourseStatuses::IN_PROGRESS);
+            $table->string('type', 1)->default(CourseTypes::FREE);
+            $table->string('status', 1)->default(CourseStatuses::IN_PROGRESS);
             $table->timestamps();
         });
 

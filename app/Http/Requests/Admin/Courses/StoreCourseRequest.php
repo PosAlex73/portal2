@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Courses;
 
 use App\Enums\Courses\CourseStatuses;
+use App\Enums\Courses\CourseTypes;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -30,7 +31,8 @@ class StoreCourseRequest extends FormRequest
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'status' => ['required', Rule::in(CourseStatuses::getAll())]
+            'status' => ['required', Rule::in(CourseStatuses::getAll())],
+            'type' => ['required', Rule::in(CourseTypes::getAll())]
         ];
     }
 }
