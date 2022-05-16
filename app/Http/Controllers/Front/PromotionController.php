@@ -13,7 +13,7 @@ class PromotionController extends Controller
 {
     public function promotions()
     {
-        $promotions = Promotion::whehe([
+        $promotions = Promotion::where([
             'status' => CommonStatuses::ACTIVE
         ])->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 

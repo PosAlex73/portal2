@@ -1,11 +1,13 @@
 <?php
 
-namespace App\View\Components\Common;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class Rating extends Component
+class CourseTypes extends Component
 {
+    public $types;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,7 @@ class Rating extends Component
      */
     public function __construct()
     {
-        //
+        $this->types = \App\Enums\Courses\CourseTypes::getAll();
     }
 
     /**
@@ -23,6 +25,6 @@ class Rating extends Component
      */
     public function render()
     {
-        return view('components.common.rating');
+        return view('components.admin.course-types');
     }
 }

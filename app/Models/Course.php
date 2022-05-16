@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Courses\CourseTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +11,12 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price'
+        'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type'
     ];
 
     protected $attributes = [
-        'price' => 0
+        'price' => 0,
+        'type' => CourseTypes::FREE
     ];
 
     public function category()

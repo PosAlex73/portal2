@@ -41,22 +41,11 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id']);
+        $fields = $request->validated();
         $course = Course::create($fields);
         session()->flash('status', __('vars.course_was_created'));
 
         return redirect()->to(route('courses.edit', ['course' => $course]));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Course $course)
-    {
-        //
     }
 
     /**
@@ -79,7 +68,7 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'category_id', 'price']);
+        $fields = $request->validated();
         $course->update($fields);
         session()->flash('status', __('vars.course_was_updated'));
 

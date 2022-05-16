@@ -76,7 +76,7 @@ class RoutesTest extends TestCase
         ];
 
         foreach ($user_routes as $route) {
-            $this->get(route($route, ['user' => $this->user_simple]))->assertStatus(200);
+            $this->actingAs($this->user_admin)->get(route($route, ['user' => $this->user_simple]))->assertStatus(200);
         }
     }
 

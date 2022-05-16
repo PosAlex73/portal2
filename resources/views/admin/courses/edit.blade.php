@@ -16,6 +16,7 @@
                     @include('fields.number', ['name' => 'price', 'value' => $course->price])
                     <x-common.categories :selected="$course->category_id" />
                     <x-admin.course-statuses :selected="$course->status" />
+                    <x-admin.course-types :selected="$course->type"/>
                     @include('fields.image', ['name' => 'image'])
                     @include('buttons.submit')
                 </form>

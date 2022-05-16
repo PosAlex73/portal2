@@ -42,4 +42,9 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function settings()
+    {
+        return view('front.profile.settings');
+    }
 }
