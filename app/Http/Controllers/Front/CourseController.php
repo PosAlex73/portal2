@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\Courses\CourseStatuses;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -11,7 +14,13 @@ class CourseController extends Controller
 {
     public function courses(Request $request)
     {
-        $courses = Course::all();
+        $courses = Course::with('category')
+            ->where(['status' => CourseStatuses::ACTIVE])
+            ->when($request->has('category_id'), function ($query) use ($request) {
+                $query->where(['category_id' => $request->input('category_id')]);
+            })
+            ->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+
         return view('front.courses.index', ['courses' => $courses]);
     }
 
