@@ -3,6 +3,7 @@
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\CourseController;
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
@@ -22,11 +23,15 @@ Route::get('/blog/{article}', [BlogController::class, 'article'])->name('front.b
 Route::get('/promotions', [PromotionController::class, 'promotions'])->name('front.promotions');
 Route::get('/promotions/{promotion}', [PromotionController::class, 'promotion'])->name('front.promotion');
 
+Route::get('/news', [NewsController::class, 'index'])->name('front.news');
+Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.show');
+
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/', [ProfileController::class, 'profile'])->name('front.user');
     Route::post('/profile/{user}', [ProfileController::class, 'updateUserData'])->name('front.user.update');
     Route::get('/profile/{profile}', [ProfileController::class, 'profileData'])->name('front.profile');
+    Route::get('/messages/', [ProfileController::class, 'messages'])->name('front.messages');
     Route::post('/profile/{profile}', [ProfileController::class, 'updateProfileData'])->name('front.profile.update');
     Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('front.settings');
     Route::get('/profile/courses', [CourseController::class, 'myCourses'])->name('front.user.courses');

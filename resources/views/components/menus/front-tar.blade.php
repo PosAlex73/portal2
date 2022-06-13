@@ -10,21 +10,10 @@
         </div>
         <ul class="metismenu mm-show" id="menu">
             @foreach($menu as $item)
-{{--                FIXME доделалать ссылки--}}
-                <li class=""><a class="has-arrow ai-icon" href="{{ $item->route }}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">{{ $item->name }}</span>
-                    </a>
-                    <ul aria-expanded="false" class="mm-collapse">
-                        <li class="mm-active"><a href="index.html" class="mm-active">Dashboard Light</a></li>
-                        <li><a href="index-2.html">Dashboard Dark</a></li>
-                        <li><a href="my-wallets.html">Wallet</a></li>
-                        <li><a href="tranasactions.html">Transactions</a></li>
-                        <li><a href="coin-details.html">Coin Details</a></li>
-                        <li><a href="portofolio.html">Portofolio</a></li>
-                        <li><a href="market-capital.html">Market Capital</a></li>
-                    </ul>
-                </li>
+                <a class="has-arrow ai-icon text-light" href="{{ $item->route }}" aria-expanded="false">
+                    <i class="flaticon-144-layout"></i>
+                    <span class="nav-text">{{ $item->name }}</span>
+                </a>
             @endforeach
         </ul>
     </div>

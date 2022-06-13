@@ -48,6 +48,11 @@ class MainToolbar implements IMenu
                 fn () => Promotion::where(['status' => CommonStatuses::ACTIVE])
                 ->limit(Set::get(SettingTypes::FRONT_PAGINATION))
                 ->get()
+            ),
+            new ToolbarItem(
+                'front.news',
+                'news',
+                'box'
             )
         ];
     }

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('app_news', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->string('status')->default(\App\Enums\CommonStatuses::ACTIVE);
+            $table->string('image', 1024);
             $table->timestamps();
         });
     }

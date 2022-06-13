@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\CommonStatuses;
 use App\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\Users\UpdateUserProfileRequest;
 use App\Http\Requests\Front\Users\UpdateUserRequest;
+use App\Models\AppNew;
 use App\Models\User;
 use App\Models\UserProfile;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -16,8 +17,13 @@ class ProfileController extends Controller
     public function profile()
     {
         $user = Auth::user();
+        $news = AppNew::where('status', CommonStatuses::ACTIVE)->take(3)->get();
+        $profile = $user->profile;
+        $courses = $user->courses;
 
-        return view('front.profile.index', ['user' => $user]);
+        return view('front.profile.index',
+            ['user' => $user, 'news' => $news, 'profile' => $profile, 'courses' => $courses, ]
+        );
     }
 
     public function profileData(UserProfile $profile)
@@ -46,5 +52,10 @@ class ProfileController extends Controller
     public function settings()
     {
         return view('front.profile.settings');
+    }
+
+    public function messages()
+    {
+
     }
 }

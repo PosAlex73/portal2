@@ -12,21 +12,12 @@ class UserTabs implements IMenu
             'front.profile' => [
                 'name' => 'front.profile',
             ],
-            'front.history' => [
-                'name' => 'front.history',
+            'front.courses' => [
+                'name' => 'front.courses'
             ],
-            'front.notifications' => [
-                'name' => 'front.notifications'
+            'front.settings' => [
+                'name' => 'front.settings',
             ],
-            'front.records' => [
-                'front.records'
-            ],
-            'front.thread' => [
-                'name' => 'front.thread'
-            ],
-            'front.documents' => [
-                'name' => 'front.documents'
-            ]
         ];
     }
 }

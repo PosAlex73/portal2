@@ -42,3 +42,8 @@ Breadcrumbs::for('front.plans.plan', function(BreadcrumbTrail $trail, $plan) {
     $trail->parent('front.plans');
     $trail->push('front.plans.plan', route('front.plans.plan', ['plan' => $plan]));
 });
+
+Breadcrumbs::for('front.user', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.index'), route('front.index'));
+    $trail->push(__('vars.profile'), route('front.user'));
+});
