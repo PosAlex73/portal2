@@ -12,4 +12,9 @@ class Promotion extends Model
     protected $fillable = [
         'title', 'description', 'status'
     ];
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->description, 0, 30);
+    }
 }

@@ -3,31 +3,32 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
-                <img class="img-fluid" src="{{ $plan->image }}" alt="">
+                <img class="img-fluid" src="{{ $course->image }}" alt="">
             </div>
             <div class="col-xl-9 col-lg-6 col-md-6 col-xxl-7 col-sm-12">
                 <div class="product-detail-content">
                     <div class="new-arrival-content pr">
-                        <h4>{{ $plan->title }}</h4>
+                        <h4>{{ $course->title }}</h4>
+                        <p class="card-text">{{ $course->category->title }}</p>
                         <div class="d-table mb-2">
-                            <x-common.currency :value="$plan->price" />
+                            <x-common.currency :value="$course->price" />
                         </div>
-                        <p class="card-text">{{ $plan->description }}</p>
+                        <p class="card-text">{{ $course->description }}</p>
 
                         @auth
                             <div class="shopping-cart mb-2 me-3">
-                                <form action="{{ route('front.order', ['id' => $plan->id, 'type' => 'plan']) }}" method="get">
+                                <form action="{{ route('front.order', ['id' => $course->id, 'type' => 'course']) }}" method="get">
                                     @include('buttons.submit')
                                 </form>
                             </div>
                         @else
                             @include('buttons.auth')
                         @endauth
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
 @endsection

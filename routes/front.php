@@ -31,7 +31,7 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('front.settings');
     Route::get('/profile/courses', [CourseController::class, 'myCourses'])->name('front.user.courses');
 
-    Route::get('/order/', [OrderController::class, 'order'])->name('front.order');
+    Route::get('/order/{type}/{id}', [OrderController::class, 'order'])->name('front.order');
     Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
 
     //blog
@@ -39,6 +39,6 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
 });
 
 Route::prefix('course/')->middleware(['auth'])->group(function (){
-    Route::get('/{course}', [CourseController::class, 'course'])->name('front.user.courses');
+    Route::get('/my/{course}', [CourseController::class, 'course'])->name('front.user.courses');
     Route::get('/task/{task}', [TaskController::class, 'task'])->name('front.task');
 });

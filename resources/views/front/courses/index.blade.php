@@ -10,7 +10,11 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $course->title }}</h5>
+                            <h3 class="card-title">
+                                <a href="{{ route('front.courses.course', ['course' => $course->id]) }}">
+                                    {{ $course->title }}
+                                </a>
+                            </h3>
                             <p class="card-text">{{ $course->short_description }}</p>
                             <a class="badge-primary p-2" href="{{ route('front.courses', ['category_id' => $course->category->id]) }}">
                                 {{ $course->category->title }}
