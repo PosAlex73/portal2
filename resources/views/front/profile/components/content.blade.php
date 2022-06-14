@@ -1,7 +1,11 @@
 <div class="tab-content">
     <div id="profile-settings" class="tab-pane fade">
         <div class="my-post-content pt-3">
-
+            @forelse($courses as $course)
+                <p>{{ $course->title }}</p>
+            @empty
+                <p class="card-text">{{ __('vars.no_courses') }}</p>
+            @endforelse
         </div>
     </div>
     <div id="about-me" class="tab-pane fade active show">
@@ -69,7 +73,11 @@
         <div class="pt-3">
             <form action="{{ route('front.user.settings') }}" method="post">
                 @csrf
-
+                @foreach($settings as $setting => $value)
+                    @include('fields.hidden', ['value' => 'D', 'name' => $setting])
+                    @include('fields.checkbox', ['value' => $value, 'name' => $setting])
+                @endforeach
+                @include('buttons.submit')
             </form>
         </div>
     </div>

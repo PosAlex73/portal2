@@ -103,7 +103,7 @@ class User extends Authenticatable
 
     public function progress()
     {
-        return $this->hasOne(UserProgress::class);
+        return $this->hasMany(UserProgress::class);
     }
 
     public function getFullNameAttribute()

@@ -21,8 +21,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         $news = AppNew::where('status', CommonStatuses::ACTIVE)->take(3)->get();
         $profile = $user->profile;
-        $courses = $user->courses;
-        $settings = $user->settings;
+        $courses = $user->progress;
+
+        $settings = $user->settings()->first(UserSettingTypes::getAll())->toArray();
 
         return view('front.profile.index',
             [

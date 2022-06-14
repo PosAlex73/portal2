@@ -190,8 +190,8 @@
                             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
                                 <img src="images/profile/pic1.jpg" width="20" alt=""/>
                                 <div class="header-info">
-                                    <span>Johndoe</span>
-                                    <small>Super Admin</small>
+                                    <span>{{ Auth()->user()->full_name }}</span>
+                                    <small>{{ Auth()->user()->first_name }}</small>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">

@@ -4,8 +4,8 @@
                class="form-check-input"
                name="{{ $name }}"
                id="{{ $name }}"
-               @if($value) checked @endif
-               value="{{ $value }}"
+               @if($value === 'A') checked @endif
+               value="A"
         >
         <label class="form-check-label" for="{{ $name }}">
             {{ __('vars.label.' . $name) }}
