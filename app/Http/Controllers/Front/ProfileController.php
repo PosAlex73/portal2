@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $news = AppNew::where('status', CommonStatuses::ACTIVE)->take(3)->get();
         $profile = $user->profile;
-        $courses = $user->progress;
+        $courses = $user->progress()->with('course')->get();
 
         $settings = $user->settings()->first(UserSettingTypes::getAll())->toArray();
 
