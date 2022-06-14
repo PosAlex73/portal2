@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Enums\CommonStatuses;
+use App\Enums\Settings\UserSettingTypes;
 use App\Facades\Alert;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Front\Users\SettingsRequest;
 use App\Http\Requests\Front\Users\UpdateUserProfileRequest;
 use App\Http\Requests\Front\Users\UpdateUserRequest;
 use App\Models\AppNew;
@@ -20,15 +22,17 @@ class ProfileController extends Controller
         $news = AppNew::where('status', CommonStatuses::ACTIVE)->take(3)->get();
         $profile = $user->profile;
         $courses = $user->courses;
+        $settings = $user->settings;
 
         return view('front.profile.index',
-            ['user' => $user, 'news' => $news, 'profile' => $profile, 'courses' => $courses, ]
+            [
+                'user' => $user,
+                'news' => $news,
+                'profile' => $profile,
+                'courses' => $courses,
+                'settings' => $settings
+            ]
         );
-    }
-
-    public function profileData(UserProfile $profile)
-    {
-        return view('front.profile.profile', ['profile' => $profile]);
     }
 
     public function updateProfileData(UpdateUserProfileRequest $request, UserProfile $profile)
@@ -49,9 +53,14 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function settings()
+    public function settings(SettingsRequest $request)
     {
-        return view('front.profile.settings');
+        $settings = $request->safe()->only(UserSettingTypes::getAll());
+        Auth::user()->settings->update($settings);
+
+        Alert::set('status', __('vars.settings_were_update'));
+
+        return back();
     }
 
     public function messages()

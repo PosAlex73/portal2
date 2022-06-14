@@ -30,11 +30,9 @@ Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.sho
 Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/', [ProfileController::class, 'profile'])->name('front.user');
     Route::post('/profile/{user}', [ProfileController::class, 'updateUserData'])->name('front.user.update');
-    Route::get('/profile/{profile}', [ProfileController::class, 'profileData'])->name('front.profile');
     Route::get('/messages/', [ProfileController::class, 'messages'])->name('front.messages');
     Route::post('/profile/{profile}', [ProfileController::class, 'updateProfileData'])->name('front.profile.update');
-    Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('front.settings');
-    Route::get('/profile/courses', [CourseController::class, 'myCourses'])->name('front.user.courses');
+    Route::post('/settings', [ProfileController::class, 'settings'])->name('front.user.settings');
 
     Route::get('/order/{type}/{id}', [OrderController::class, 'order'])->name('front.order');
     Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
