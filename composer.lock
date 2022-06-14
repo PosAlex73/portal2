@@ -2274,14 +2274,6 @@
                 "orchestra/testbench": "^7.0",
                 "phpunit/phpunit": "^9.0"
             },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Orchid\\Icons\\IconServiceProvider"
-                    ]
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Orchid\\Icons\\": "src/"
