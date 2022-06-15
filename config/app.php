@@ -193,9 +193,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
         'Set' => \App\Facades\Set::class,
-        'Alert' => \App\Facades\Alert::class
+        'Alert' => \App\Facades\Alert::class,
+        'Order' => \App\Facades\Order::class
     ])->toArray(),
 
 ];

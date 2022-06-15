@@ -34,7 +34,7 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::post('/profile/{profile}', [ProfileController::class, 'updateProfileData'])->name('front.profile.update');
     Route::post('/settings', [ProfileController::class, 'settings'])->name('front.user.settings');
 
-    Route::get('/order/{type}/{id}', [OrderController::class, 'order'])->name('front.order');
+    Route::get('/order/create/{type}/{id}', [OrderController::class, 'order'])->name('front.order');
     Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
 
     //blog

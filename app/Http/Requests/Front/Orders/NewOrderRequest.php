@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Front\Orders;
 
+use App\Enums\Orders\OrderTypes;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class NewOrderRequest extends FormRequest
 {
@@ -24,7 +26,8 @@ class NewOrderRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'type' => [Rule::in(OrderTypes::getAll()), 'required'],
+            'id' => 'required|integer'
         ];
     }
 }
