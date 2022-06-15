@@ -2,16 +2,9 @@
 
 namespace App\Orders\Payments;
 
-use App\Enums\Orders\Payments;
-
-class TestPayment implements IPayment
+class TestPayment extends APayment
 {
-    private $type = Payments::TEST_PAYMENT;
-
-    function getPaymentType(): string
-    {
-        return $this->type;
-    }
+    protected $template = 'payments.test';
 
     function handlePayment()
     {

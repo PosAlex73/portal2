@@ -21,7 +21,9 @@ class OrderFactory
         $product_data = new Collection();
 
         //TODO payments service
-        $product_data['payment'] = [TestPayment::class];
+        $product_data['product'] = $product;
+        $product_data['payments'] = [new TestPayment()];
+        return $product_data;
     }
 
     public static function getProduct(string $type, int $id)
