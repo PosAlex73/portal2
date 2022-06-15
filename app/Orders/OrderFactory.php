@@ -2,17 +2,15 @@
 
 namespace App\Orders;
 
-use App\Enums\Orders\OrderTypes;
-use App\Models\Course;
-use App\Models\Plan;
 use App\Orders\Payments\TestPayment;
+use App\Orders\Products\ProductFactory;
 use Illuminate\Support\Collection;
 
 class OrderFactory
 {
     public static function getOrderData(string $type, int $id)
     {
-        $product = static::getProduct($type, $id);
+        $product = ProductFactory::getProduct($type, $id);
 
         if (empty($product)) {
             return false;
@@ -24,14 +22,5 @@ class OrderFactory
         $product_data['product'] = $product;
         $product_data['payments'] = [new TestPayment()];
         return $product_data;
-    }
-
-    public static function getProduct(string $type, int $id)
-    {
-        return match ($type) {
-            OrderTypes::COURSE => Course::find($id),
-            OrderTypes::PLAN => Plan::find($id),
-            default => null,
-        };
     }
 }

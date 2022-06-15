@@ -6,6 +6,8 @@ use App\Enums\Orders\Payments;
 
 abstract class APayment
 {
+    public const NAME = 'payment';
+
     protected $template;
     protected $title;
     protected $type;
@@ -32,5 +34,5 @@ abstract class APayment
         return $this->type;
     }
 
-    abstract function handlePayment();
+    abstract function handlePayment($product);
 }

@@ -6,26 +6,14 @@
     <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
             <h6 class="my-0">{{ __('vars.your_products') }}</h6>
-            <small class="text-muted"></small>
+            <small class="text-muted">{{ $product->title }}</small>
         </div>
-        <span class="text-muted">$12</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between lh-condensed">
-        <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-        </div>
-        <span class="text-muted">$5</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between active">
-        <div class="text-white">
-            <h6 class="my-0 text-white">Promo code</h6>
-            <small>EXAMPLECODE</small>
-        </div>
-        <span class="text-white">-$5</span>
+        <span class="text-muted">
+            <x-common.currency :value="$product->price" />
+        </span>
     </li>
     <li class="list-group-item d-flex justify-content-between">
-        <span>Total (USD)</span>
-        <strong>$20</strong>
+        <span>{{ __('vars.total') }} </span>
+        <strong><x-common.currency :value="$product->price"/></strong>
     </li>
 </ul>

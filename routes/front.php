@@ -36,6 +36,7 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
 
     Route::get('/order/create/{type}/{id}', [OrderController::class, 'order'])->name('front.order');
     Route::post('/order/', [OrderController::class, 'createOrder'])->name('front.create_order');
+    Route::get('/order/complete', [OrderController::class, 'complete'])->name('front.checkout_complete');
 
     //blog
     Route::post('/blog/comment/{article}', [BlogController::class, 'publicComment'])->name('front.blog.comment');

@@ -47,3 +47,9 @@ Breadcrumbs::for('front.user', function (BreadcrumbTrail $trail) {
     $trail->push(__('vars.index'), route('front.index'));
     $trail->push(__('vars.profile'), route('front.user'));
 });
+
+Breadcrumbs::for('front.checkout_complete', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.index'), route('front.index'));
+    $trail->push(__('vars.checkout_complete'), route('front.checkout_complete'));
+});
+
