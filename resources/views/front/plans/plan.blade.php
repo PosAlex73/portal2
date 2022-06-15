@@ -17,6 +17,8 @@
                         @auth
                             <div class="shopping-cart mb-2 me-3">
                                 <form action="{{ route('front.order', ['id' => $plan->id, 'type' => 'plan']) }}" method="get">
+                                    @include('fields.hidden', ['name' => 'id', 'value' => $course->id])
+                                    @include('fields.hidden', ['name' => 'type', 'value' => 'P'])
                                     @include('buttons.submit')
                                 </form>
                             </div>

@@ -1,34 +1,29 @@
 @extends('layouts.front')
 @section('content')
     <div class="card-body">
-        <div class="row">
-            <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
-                <img class="img-fluid" src="{{ $course->image }}" alt="">
-            </div>
-            <div class="col-xl-9 col-lg-6 col-md-6 col-xxl-7 col-sm-12">
-                <div class="product-detail-content">
-                    <div class="new-arrival-content pr">
-                        <h4>{{ $course->title }}</h4>
-                        <p class="card-text">{{ $course->category->title }}</p>
-                        <div class="d-table mb-2">
-                            <x-common.currency :value="$course->price" />
-                        </div>
-                        <p class="card-text">{{ $course->description }}</p>
-
-                        @auth
-                            <div class="shopping-cart mb-2 me-3">
-                                <form action="{{ route('front.order', ['id' => $course->id, 'type' => 'course']) }}" method="get">
-                                    @include('buttons.submit')
-                                </form>
-                            </div>
-                        @else
-                            @include('buttons.auth')
-                        @endauth
-                        </div>
+        <div class="default-tab">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#home"><i class="la la-home me-2"></i>{{ __('vars.course') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#profile"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="home" role="tabpanel">
+                    <div class="pt-4">
+                        @include('front.courses.content')
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <div class="pt-4">
+                       @include('front.courses.tasks')
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
+
+

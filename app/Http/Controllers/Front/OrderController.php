@@ -8,6 +8,7 @@ use App\Http\Requests\Front\Orders\NewOrderRequest;
 use App\Models\Course;
 use App\Orders\OrderFactory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -21,8 +22,13 @@ class OrderController extends Controller
             return back();
         }
 
+        $user = Auth::user();
+        $profile = $user->profile;
+
         return view('front.orders.order', [
-            'order_data' => $order_data
+            'order_data' => $order_data,
+            'user' => $user,
+            'profile' => $profile
         ]);
     }
 

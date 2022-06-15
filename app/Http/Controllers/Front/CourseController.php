@@ -14,7 +14,7 @@ class CourseController extends Controller
 {
     public function courses(Request $request)
     {
-        $courses = Course::with('category')
+        $courses = Course::with(['category', 'tasks'])
             ->where(['status' => CourseStatuses::ACTIVE])
             ->when($request->has('category_id'), function ($query) use ($request) {
                 $query->where(['category_id' => $request->input('category_id')]);
