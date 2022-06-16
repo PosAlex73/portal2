@@ -6,6 +6,5 @@
             <p>{{ __('vars.checkout_complete') }}</p>
             <a href="{{ route('front.user') }}" class="btn btn-primary">{{ __('vars.go_to_profile') }}</a>
         </div>
-
     </div>
 @endsection

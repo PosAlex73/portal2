@@ -12,7 +12,7 @@
                         <x-common.currency :value="$course->price" />
                     </div>
                     <p class="card-text">{{ $course->description }}</p>
-
+                    @if(!$user_has_course)
                     @auth
                         <div class="shopping-cart mb-2 me-3">
                             <form action="{{ route('front.order', ['type' => 'course', 'id' => $course->id]) }}" method="get">
@@ -24,6 +24,9 @@
                     @else
                         @include('buttons.auth')
                     @endauth
+                    @else
+                        <p>{{ __('vars.you_has_course') }}</p>
+                    @endif
                 </div>
             </div>
         </div>

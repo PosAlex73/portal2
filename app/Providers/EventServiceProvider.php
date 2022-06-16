@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\Purchase;
+use App\Listeners\PurchaseListener;
 use App\Models\Article;
 use App\Models\Order;
 use App\Models\User;
@@ -24,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        Purchase::class => [
+            PurchaseListener::class
+        ]
     ];
 
     /**

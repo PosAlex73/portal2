@@ -15,12 +15,13 @@
                                     {{ $course->title }}
                                 </a>
                             </h3>
+                            <div class="card-footer"><x-common.currency :value="$course->price" /></div>
+
                             <p class="card-text">{{ $course->short_description }}</p>
                             <a class="badge-primary p-2" href="{{ route('front.courses', ['category_id' => $course->category->id]) }}">
                                 {{ $course->category->title }}
                             </a>
                         </div>
-                        <div class="card-footer">{{ $course->price }}</div>
                     </div>
                 </div>
             </div>

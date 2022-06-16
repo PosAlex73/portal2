@@ -7,6 +7,7 @@ use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\UserProgress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,15 @@ class CourseController extends Controller
 
     public function course(Course $course)
     {
-        return view('front.courses.course', ['course' => $course]);
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user_has_course = UserProgress::where('user_id', $user->id)->where('course_id', $course->id)->first();
+        }
+
+        return view('front.courses.course', [
+            'course' => $course,
+            'user_has_course' => $user_has_course ?? false
+        ]);
     }
 
     public function myCourses()

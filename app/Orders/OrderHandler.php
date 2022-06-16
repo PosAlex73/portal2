@@ -3,6 +3,7 @@
 namespace App\Orders;
 
 use App\Enums\Orders\OrderStatuses;
+use App\Events\Purchase;
 use App\Models\Order;
 use App\Orders\Payments\APayment;
 use App\Orders\Products\Product;
@@ -33,6 +34,8 @@ class OrderHandler
             'data' => '',
             'status' => OrderStatuses::OPEN
         ]);
+
+        event(new Purchase($product, $order));
 
         return $order;
     }
