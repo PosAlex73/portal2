@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\Users\UserTypes;
 use App\Models\TaskReview;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -18,7 +19,7 @@ class TaskReviewPolicy
      */
     public function viewAny(User $user)
     {
-        //
+
     }
 
     /**

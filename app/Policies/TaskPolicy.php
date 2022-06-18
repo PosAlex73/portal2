@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\Users\UserTypes;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -9,6 +10,11 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class TaskPolicy
 {
     use HandlesAuthorization;
+
+    public function before($user)
+    {
+        return UserTypes::isAdmin($user->type);
+    }
 
     /**
      * Determine whether the user can view any models.
@@ -18,7 +24,7 @@ class TaskPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return UserTypes::isAdmin($user->type);
     }
 
     /**
@@ -30,7 +36,7 @@ class TaskPolicy
      */
     public function view(User $user, Task $task)
     {
-        //
+        $courses = $user->course;
     }
 
     /**

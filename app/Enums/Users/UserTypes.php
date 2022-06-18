@@ -16,4 +16,9 @@ class UserTypes
     {
         return [self::ADMIN, self::MODERATOR];
     }
+
+    public static function isAdmin($type)
+    {
+        return in_array($type, static::getAdminTypes());
+    }
 }
