@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreTaskRequest;
 use App\Http\Requests\Admin\Courses\UpdateTaskRequest;
 use App\Models\Task;
+use App\Models\User;
 
 class TaskController extends Controller
 {
@@ -20,7 +21,9 @@ class TaskController extends Controller
     {
         $tasks = Task::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
-        return view('admin.tasks.index', ['tasks', $tasks]);
+        return view('admin.tasks.index', [
+            'tasks' => $tasks
+        ]);
     }
 
     /**
