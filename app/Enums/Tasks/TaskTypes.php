@@ -8,7 +8,7 @@ class TaskTypes
 {
     use Enumable;
 
-    public const TEST = 'T';
-    public const THEORY = 'A';
-    public const PRACTICE = 'P';
+    public const TEST = 'test';
+    public const THEORY = 'theory';
+    public const PRACTICE = 'practice';
 }

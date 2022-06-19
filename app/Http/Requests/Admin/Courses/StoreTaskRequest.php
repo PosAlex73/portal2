@@ -32,6 +32,7 @@ class StoreTaskRequest extends FormRequest
             'data' => 'required',
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
             'type' => ['required', Rule::in(TaskTypes::getAll())],
+            'points' => 'nullable|integer'
         ];
     }
 }

@@ -11,7 +11,11 @@ class Task extends Model
     use HasFactory, UseShortDesc, UseShortDesc;
 
     protected $fillable = [
-        'title', 'description', 'data', 'status', 'type', 'course_id'
+        'title', 'description', 'data', 'status', 'type', 'course_id', 'points'
+    ];
+
+    protected $attributes = [
+        'points' => 0
     ];
 
     public function course()

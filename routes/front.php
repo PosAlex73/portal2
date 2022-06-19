@@ -46,6 +46,7 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
 Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
     Route::get('/my/{course}', [CourseController::class, 'myCourse'])->name('front.user.courses');
     Route::get('/task/{task}', [TaskController::class, 'doTask'])->name('front.task');
+    Route::post('/check_task/{task}', [TaskController::class, 'checkTask'])->name('front.task.check');
 });
 
 Route::prefix('reports/')->middleware(['auth'])->group(function() {
