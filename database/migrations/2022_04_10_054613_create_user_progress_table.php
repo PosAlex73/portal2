@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->text('data');
-            $table->string('status', 1)->default(\App\Enums\Courses\CourseStatuses::ACTIVE);
+            $table->string('status', 1)->default(\App\Enums\Courses\UserProgressStatuses::NEW_COURSE);
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->unsignedBigInteger('course_id');

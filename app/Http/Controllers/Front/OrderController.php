@@ -12,6 +12,7 @@ use App\Orders\OrderHandler;
 use App\Orders\Payments\TestPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -57,6 +58,8 @@ class OrderController extends Controller
 
     public function complete()
     {
+        Alert::set('status', __('vars.course_was_purchased'));
+
         return view('front.orders.complete');
     }
 }

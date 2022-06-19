@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Front\Orders;
 
 use App\Enums\Orders\OrderTypes;
+use App\Rules\UserHasCourse;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -27,7 +28,7 @@ class NewOrderRequest extends FormRequest
     {
         return [
             'type' => [Rule::in(OrderTypes::getAll()), 'required'],
-            'id' => 'required|integer'
+            'id' => ['required', 'integer', new UserHasCourse()]
         ];
     }
 }

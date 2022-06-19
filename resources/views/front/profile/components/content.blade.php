@@ -1,11 +1,8 @@
 <div class="tab-content">
     <div id="profile-settings" class="tab-pane fade">
         <div class="my-post-content pt-3">
-            @forelse($courses as $course)
-                <h3 class="card-text"><a href="{{ route('front.courses.course', ['course' => $course->course->id]) }}">{{ $course->course->title }}</a></h3>
-                <!--TODO user course progress-->
-                <p>{{ $course->data }}</p>
-                <hr>
+            @forelse($progress as $user_course)
+                @include('front.profile.components.courses_list', ['user_progress' => $user_course])
             @empty
                 <p class="card-text">{{ __('vars.no_courses') }}</p>
             @endforelse
