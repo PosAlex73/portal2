@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory, UseShortDesc;
+    use HasFactory, UseShortDesc, UseShortDesc;
 
     protected $fillable = [
         'title', 'description', 'data', 'status', 'type', 'course_id'

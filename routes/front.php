@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\PromotionController;
+use App\Http\Controllers\Front\ReportController;
 use App\Http\Controllers\Front\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,11 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::post('/blog/comment/{article}', [BlogController::class, 'publicComment'])->name('front.blog.comment');
 });
 
-Route::prefix('course/')->middleware(['auth'])->group(function (){
-    Route::get('/my/{course}', [CourseController::class, 'course'])->name('front.user.courses');
-    Route::get('/task/{task}', [TaskController::class, 'task'])->name('front.task');
+Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
+    Route::get('/my/{course}', [CourseController::class, 'myCourse'])->name('front.user.courses');
+    Route::get('/task/{task}', [TaskController::class, 'doTask'])->name('front.task');
+});
+
+Route::prefix('reports/')->middleware(['auth'])->group(function() {
+    Route::post('{task}', [ReportController::class, 'report'])->name('front.report_task_mistake');
 });

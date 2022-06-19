@@ -19,4 +19,9 @@ class TaskController extends Controller
             'task' => $task
         ]);
     }
+
+    public function doTask(Task $task)
+    {
+
+    }
 }

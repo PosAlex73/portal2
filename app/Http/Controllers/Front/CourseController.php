@@ -38,14 +38,21 @@ class CourseController extends Controller
         ]);
     }
 
-    public function myCourses()
+    //TODO rename
+    public function myCourse(Course $course)
     {
         $user = Auth::user();
-        $courses = $user->courses;
+        $user_progress = UserProgress::where('course_id', $course->id)->where('user_id', $user->id)->first();
 
-        return view('front.courses.user_courses', [
-            'courses' => $courses,
-            'user' => $user
+        if (empty($user_progress)) {
+            abort(404);
+        }
+
+        return view('front.user_progress.course', [
+            'course' => $course,
+            'user' => $user,
+            'tasks' => $course->tasks,
+            'user_progress' => $user_progress
         ]);
     }
 }
