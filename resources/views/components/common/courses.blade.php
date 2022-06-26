@@ -5,4 +5,19 @@
             <option @if(!empty($selected) && $selected === $course->id) selected @endif value="{{ $course->id }}" >{{ $course->title }}</option>
         @endforeach
     </select>
+    <div class="mb-3">
+        <div class="fade" id="test_task"></div>
+        <div class="fade" id="practice_task"></div>
+    </div>
+
 </div>
+
+<script>
+    const test_task_container = document.getElementById('test_task')
+    const practice_task_container = document.getElementById('practice_task')
+    const type_task_selector = document.getElementById('categories')
+
+    type_task_selector.addEventListener('change', (event) => {
+        console.log(event.target)
+    })
+</script>
