@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Php\BasePhpCourse;
+namespace App\Tasks\Php\BasePhpCourse\Tasks;
 
 use App\Tasks\Task;
 

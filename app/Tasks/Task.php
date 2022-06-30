@@ -10,27 +10,27 @@ abstract class Task
     /**
      * @var string
      */
-    private string $title;
+    protected string $title;
     /**
      * @var string
      */
-    private string $description;
+    protected string $description;
     /**
      * @var string
      */
-    private string $status;
+    protected string $status;
     /**
      * @var string
      */
-    private string $type;
+    protected string $type;
     /**
      * @var string
      */
-    private string $points;
+    protected string $points;
     /**
      * @var int
      */
-    private int $course_id;
+    protected int $course_id;
 
     /**
      * @param string $title

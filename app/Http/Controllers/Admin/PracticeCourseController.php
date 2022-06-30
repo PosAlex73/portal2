@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePracticeCourseRequest;
 use App\Http\Requests\UpdatePracticeCourseRequest;
 use App\Models\PracticeCourse;
@@ -15,7 +16,7 @@ class PracticeCourseController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

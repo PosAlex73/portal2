@@ -12,11 +12,11 @@ abstract class Course
     /**
      * @var string
      */
-    private string $type = CourseTypes::FREE;
+    protected string $type = CourseTypes::FREE;
     /**
      * @var int
      */
-    private int $price = 0;
+    protected int $price = 0;
     /**
      * @var string
      */
@@ -24,21 +24,24 @@ abstract class Course
     /**
      * @var string
      */
-    private string $description;
+    protected string $description;
     /**
      * @var string
      */
-    private string $short_description;
+    protected string $short_description;
     /**
      * @var int
      */
-    private int $category_id;
+    protected int $category_id;
     /**
      * @var string
      */
-    private string $status;
+    protected string $status;
 
-    private string $course_category;
+    protected string $course_category;
+
+    protected iterable $tests;
+    protected iterable $tasks;
 
     /**
      * @param $title
@@ -49,7 +52,7 @@ abstract class Course
      * @param $status
      * @param $price
      */
-    public function __construct($title, $description, $short_description, $category_id, $type, $status, $price, $tasks)
+    public function __construct($title, $description, $short_description, $category_id, $type, $status, $price)
     {
         $this->title = $title;
         $this->description = $description;
@@ -58,7 +61,6 @@ abstract class Course
         $this->type = $type;
         $this->status = $status;
         $this->price = $price;
-        $this->tasks = $tasks;
     }
 
     /**
@@ -188,9 +190,4 @@ abstract class Course
     {
         $this->tasks = $tasks;
     }
-
-    /**
-     * @var iterable
-     */
-    private iterable $tasks;
 }
