@@ -19,10 +19,7 @@ abstract class Task
      * @var string
      */
     protected string $status;
-    /**
-     * @var string
-     */
-    protected string $type;
+
     /**
      * @var string
      */
@@ -40,12 +37,11 @@ abstract class Task
      * @param string $points
      * @param int $course_id
      */
-    public function __construct(string $title, string $description, string $status, string $type, string $points, int $course_id)
+    public function __construct(string $title, string $description, string $status, string $points, int $course_id)
     {
         $this->title = $title;
         $this->description = $description;
         $this->status = $status;
-        $this->type = $type;
         $this->points = $points;
         $this->course_id = $course_id;
     }

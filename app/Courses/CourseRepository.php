@@ -7,10 +7,12 @@ use App\Enums\Courses\CourseCategories;
 class CourseRepository
 {
     protected iterable $course_types = [];
+    protected iterable $courses;
 
-    public function __construct()
+    public function __construct(iterable $courses)
     {
         $this->course_types = CourseCategories::getAll();
+        $this->courses = $courses;
     }
 
     public function getCoursesByCategory(string $category)
