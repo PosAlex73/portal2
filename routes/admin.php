@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\PracticeCourseController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TaskController;
@@ -30,6 +31,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('articles', ArticleController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('courses', CourseController::class);
+    Route::resource('p_courses', PracticeCourseController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
     Route::resource('promotions', PromotionController::class);

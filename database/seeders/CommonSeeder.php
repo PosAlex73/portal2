@@ -111,5 +111,9 @@ class CommonSeeder extends Seeder
                 DB::table('settings')->insert($setting);
             }
         }
+
+        $this->call([
+            PracticeCourseSeeder::class
+        ]);
     }
 }

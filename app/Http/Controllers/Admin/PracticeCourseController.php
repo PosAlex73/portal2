@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Courses\CourseRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePracticeCourseRequest;
 use App\Http\Requests\UpdatePracticeCourseRequest;
@@ -14,9 +15,9 @@ class PracticeCourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CourseRepository $repo)
     {
-
+        $courses = $repo->getAllCourses();
     }
 
     /**

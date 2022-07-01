@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Courses\CoursePractice;
 use App\Enums\Courses\CourseStatuses;
 use App\Enums\Courses\CourseTypes;
 use Illuminate\Database\Migrations\Migration;
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('image', 1024)->nullable(true)->default('');
             $table->integer('price')->default(0);
             $table->string('type', 1)->default(CourseTypes::FREE);
+            $table->string('practice', 1)->default(CoursePractice::NO);
             $table->string('status', 1)->default(CourseStatuses::IN_PROGRESS);
             $table->timestamps();
         });

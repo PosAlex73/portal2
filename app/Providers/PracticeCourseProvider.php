@@ -5,11 +5,12 @@ namespace App\Providers;
 use App\Courses\CourseRepository;
 use App\Courses\Php\BasePhpCourse;
 use App\Courses\Php\TypesCourse;
+use App\Tasks\TasksRepository;
 use Illuminate\Support\ServiceProvider;
 
 class PracticeCourseProvider extends ServiceProvider
 {
-    protected $courses = [
+    protected static $courses = [
         'PHP' => [
             BasePhpCourse::class, TypesCourse::class
         ]
@@ -32,8 +33,12 @@ class PracticeCourseProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(TasksRepository::class, function () {
+            return TasksRepository::class;
+        });
+
         $this->app->bind(CourseRepository::class, function() {
-            return new CourseRepository($this->courses);
+            return new CourseRepository(self::$courses);
         });
     }
 }
