@@ -14,6 +14,11 @@ class PracticeCourseSeeder extends Seeder
 {
     use WithFaker;
 
+    public function __construct()
+    {
+        $this->faker = $this->makeFaker();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -22,12 +27,13 @@ class PracticeCourseSeeder extends Seeder
     public function run()
     {
         $f = $this->faker;
+
         PracticeCourse::factory()->create([
             'id' => 1,
             'title' => __('vars.php_base'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => CourseCategories::PHP,
+            'category_id' => 1,
             'class' => BasePhpCourse::class
         ]);
 
@@ -36,7 +42,7 @@ class PracticeCourseSeeder extends Seeder
             'title' => __('vars.php_types'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => CourseCategories::PHP,
+            'category_id' => 1,
             'class' => TypesCourse::class
         ]);
     }
