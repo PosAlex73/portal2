@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\UserProfileController;
 use App\Http\Controllers\Admin\UserProgressController;
 use App\Http\Controllers\Admin\UserSettingController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PracticeTaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/boss/login', [AuthenticatedSessionController::class, 'adminLogin'])->name('admin.login');
@@ -32,6 +33,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('pcourses', PracticeCourseController::class)->except(['create', 'delete', 'store']);
+    Route::resource('ptasks', PracticeTaskController::class)->except(['create', 'delete', 'store']);
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
     Route::resource('promotions', PromotionController::class);

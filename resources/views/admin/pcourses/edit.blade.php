@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
     @include('flash.errors')
     <div class="card">
@@ -6,8 +7,9 @@
             <h4 class="card-title">{{ __('vars.edit_course') }}</h4>
         </div>
         <div class="card-body">
+            <x-admin.course-tabs :course="$course" itemName="pcourses" />
             <div class="basic-form">
-                <form action="{{ route('courses.update', ['course' => $course]) }}" method="post">
+                <form action="{{ route('pcourses.update', ['pcourse' => $course]) }}" method="post">
                     @csrf
                     @method('PUT')
                     @include('fields.input', ['name' => 'title', 'value' => $course->title])

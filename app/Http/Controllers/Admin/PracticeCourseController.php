@@ -41,10 +41,10 @@ class PracticeCourseController extends Controller
      * @param  \App\Models\PracticeCourse  $practiceCourse
      * @return \Illuminate\Http\Response
      */
-    public function edit(PracticeCourse $practiceCourse)
+    public function edit(PracticeCourse $pcourse)
     {
         return view('admin.pcourses.edit', [
-            'course' => $practiceCourse
+            'course' => $pcourse
         ]);
     }
 
@@ -55,13 +55,13 @@ class PracticeCourseController extends Controller
      * @param  \App\Models\PracticeCourse  $practiceCourse
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePracticeCourseRequest $request, PracticeCourse $practiceCourse)
+    public function update(UpdatePracticeCourseRequest $request, PracticeCourse $pcourse)
     {
         $fields = $request->safe()->only([
             'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type',
         ]);
 
-        $practiceCourse->update($fields);
+        $pcourse->update($fields);
         session()->flash('status', __('vars.course_was_update'));
 
         return back();

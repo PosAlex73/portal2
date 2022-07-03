@@ -4,20 +4,22 @@ namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class UserTabs extends Component
+class CourseTabs extends Component
 {
+    public $course;
     public $tabs;
-    public $user;
+    public $item_name;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($course, string $itemName)
     {
-        $this->tabs = \App\Menus\Admin\UserTabs::getMenu();
-        $this->user = $user;
+        $this->item_name = $itemName;
+        $this->tabs = \App\Menus\Admin\CourseTabs::getMenu();
+        $this->course = $course;
     }
 
     /**
@@ -27,6 +29,6 @@ class UserTabs extends Component
      */
     public function render()
     {
-        return view('components.admin.menus.user-tabs');
+        return view('components.admin.menus.course-tabs');
     }
 }
