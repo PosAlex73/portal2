@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 
 class PracticeCourseProvider extends ServiceProvider
 {
-    protected static $courses = [
+    protected static array $courses = [
         'PHP' => [
             BasePhpCourse::class, TypesCourse::class
         ]
@@ -33,12 +33,8 @@ class PracticeCourseProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(TasksRepository::class, function () {
-            return TasksRepository::class;
-        });
-
         $this->app->bind(CourseRepository::class, function() {
-            return new CourseRepository(self::$courses);
+            return new CourseRepository(static::$courses);
         });
     }
 }

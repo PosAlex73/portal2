@@ -31,7 +31,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('articles', ArticleController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('courses', CourseController::class);
-    Route::resource('p_courses', PracticeCourseController::class);
+    Route::resource('pcourses', PracticeCourseController::class)->except(['create', 'delete', 'store']);
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
     Route::resource('promotions', PromotionController::class);
