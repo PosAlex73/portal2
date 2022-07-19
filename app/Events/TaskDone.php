@@ -2,8 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Order;
-use App\Orders\Products\Product;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -12,22 +10,24 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Purchase
+class TaskDone
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $product;
-    public $order;
+    public $user;
+    public $task;
+    public $course;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Product $product, Order $order)
+    public function __construct($user, $task, $course)
     {
-        $this->product = $product;
-        $this->order = $order;
+        $this->user = $user;
+        $this->task = $task;
+        $this->course = $course;
     }
 
     /**

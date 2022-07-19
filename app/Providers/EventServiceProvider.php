@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\Purchase;
+use App\Events\TaskDone;
 use App\Listeners\PurchaseListener;
+use App\Listeners\TaskDoneListener;
 use App\Models\Article;
 use App\Models\Order;
 use App\Models\User;
@@ -28,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         Purchase::class => [
             PurchaseListener::class
+        ],
+        TaskDone::class => [
+            TaskDoneListener::class
         ]
     ];
 

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Courses\UserProgressHandler;
+use App\Events\TaskDone;
 use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 
 class TaskController extends Controller
@@ -39,5 +41,11 @@ class TaskController extends Controller
         $user = Auth::user();
 
         $result = UserProgressHandler::handleResult($request, $course, $task);
+
+        if ($result) {
+            event(new TaskDone($user, $task, $course));
+        }
+
+
     }
 }
