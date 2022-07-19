@@ -28,10 +28,12 @@ class TaskController extends Controller
     public function doTask(Task $task)
     {
         $user = Auth::user();
+        $result = UserProgressHandler::checkDoneTask($task, $user);
 
         return view('front.user_progress.task', [
             'user' => $user,
-            'task' => $task
+            'task' => $task,
+            'task_done' => $result
         ]);
     }
 
@@ -46,6 +48,6 @@ class TaskController extends Controller
             event(new TaskDone($user, $task, $course));
         }
 
-
+        return redirect()->to(route('front.task', ['task' => $task]));
     }
 }

@@ -45,7 +45,7 @@ $course = $user_progress->course;
             <div class="col-6">
                 <div>{{ __('vars.total_tasks') }}:<span class="text-black ms-3 font-w600">{{ $course->tasks->count() }}</span></div>
                 <!--TODO tasks counter-->
-                <div>{{ __('vars.tasks_done') }}:<span class="text-black ms-3 font-w600">{{ $user_progress->data['tasks'] ?? 0 }}</span></div>
+                <div>{{ __('vars.tasks_done') }}:<span class="text-black ms-3 font-w600">{{ count($user_progress->data['tasks']) ?? 0 }}</span></div>
             </div>
             <!--TODO course progress-->
             <div class="col-6">

@@ -6,7 +6,11 @@
         </div>
         <div class="card-body">
             <p class="text-black">{{ $task->description }}</p>
-            @include('front.user_progress.task_template.' . $task->type)
+            @if(!$task_done)
+                @include('front.user_progress.task_template.' . $task->type)
+            @else
+                <p>{{ __('vars.task_already_done') }}</p>
+            @endif
         </div>
     </div>
 @endsection

@@ -41,8 +41,13 @@
                                                 <i class="fa fa-bolt" aria-hidden="true"></i>
                                             </div>
                                             <div class="ms-2">
-                                                <span>Deadline</span>
-                                                <h5 class="mb-0 pt-1 font-w500 text-black">Tuesday,Sep 29th 2020</h5>
+                                                <span>
+                                                    @if(array_key_exists($task->id, $tasks_data))
+                                                        {{ new DateTime($tasks_data[$task->id]) }}
+                                                    @else
+                                                    @endif
+                                                </span>
+                                                <h5 class="mb-0 pt-1 font-w500 text-black"></h5>
                                             </div>
                                         </div>
                                     </div>

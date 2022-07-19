@@ -13,6 +13,10 @@ class UserProgress extends Model
         'user_id', 'data', 'course_id', 'order_id', 'status'
     ];
 
+    protected $casts = [
+        'data' => 'array'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

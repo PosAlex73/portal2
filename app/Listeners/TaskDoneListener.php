@@ -27,8 +27,8 @@ class TaskDoneListener
     /**
      * Handle the event.
      *
-     * @param  object  $event
-     * @return void
+     * @param TaskDone $event
+     * @return false
      */
     public function handle(TaskDone $event)
     {
@@ -39,12 +39,21 @@ class TaskDoneListener
         $user_progress = UserProgress::where([
             'user_id' => $this->user->id,
             'course_id' => $this->course->id
-        ]);
+        ])->first();
 
         if (empty($user_progress)) {
             throw new Exception(__('Course not found'));
         }
 
+        if (array_key_exists($this->task->id, $user_progress->data['tasks'])) {
+            return false;
+        }
 
+        $data['tasks'][$this->task->id] = time();
+
+        $user_progress->data = $data;
+        $user_progress->update();
+
+        return true;
     }
 }
