@@ -43,7 +43,7 @@
                                             <div class="ms-2">
                                                 <span>
                                                     @if(array_key_exists($task->id, $tasks_data))
-                                                        {{ new DateTime($tasks_data[$task->id]) }}
+                                                        {{ (new DateTime())->setTimestamp($tasks_data[$task->id])->format('Y-m-d') }}
                                                     @else
                                                     @endif
                                                 </span>
@@ -53,7 +53,11 @@
                                     </div>
                                     <div class="col-xl-2 my-2 col-lg-6 col-sm-6">
                                         <div class="d-flex project-status align-items-center">
-                                            <span class="btn bgl-warning text-warning status-btn me-3">{{ $user_progress['data'][$task->id]['status'] ?? '' }}</span>
+                                                @if(array_key_exists($task->id, $tasks_data))
+                                                    @include('components.statuses.success', ['status' => __('vars.task_done')])
+                                                @else
+                                                    @include('components.statuses.danger', ['status' => __('vars.task_not_done')])
+                                                @endif
                                             <div class="dropdown">
                                                 <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false" class="">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

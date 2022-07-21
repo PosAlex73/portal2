@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Course;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,23 +11,19 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TaskDone
+class CourseCompleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
-    public $task;
-    public $course;
+    public Course $course;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user, $task, $course)
+    public function __construct(Course $course)
     {
-        $this->user = $user;
-        $this->task = $task;
         $this->course = $course;
     }
 

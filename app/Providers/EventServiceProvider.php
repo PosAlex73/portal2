@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\CourseCompleted;
 use App\Events\Purchase;
 use App\Events\TaskDone;
+use App\Listeners\CourseCompleteListener;
 use App\Listeners\PurchaseListener;
 use App\Listeners\TaskDoneListener;
 use App\Models\Article;
@@ -33,6 +35,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TaskDone::class => [
             TaskDoneListener::class
+        ],
+        CourseCompleted::class => [
+            CourseCompleteListener::class
         ]
     ];
 
