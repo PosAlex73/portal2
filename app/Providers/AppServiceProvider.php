@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Alerts\Alert;
+use App\Courses\CourseStats;
 use App\Models\Setting;
 use App\Settings\Set;
 use Illuminate\Support\Facades\App;
@@ -33,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
 
         App::singleton(Alert::class, function () {
             return new Alert();
+        });
+
+        App::bind(CourseStats::class, function ($app, $params) {
+            return new CourseStats($params['user_progress']);
         });
     }
 }

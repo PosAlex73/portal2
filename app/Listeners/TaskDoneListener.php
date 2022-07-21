@@ -47,8 +47,10 @@ class TaskDoneListener
 
         if (array_key_exists($this->task->id, $user_progress->data['tasks'])) {
             return false;
+        } else {
+            $data = $user_progress->data;
         }
-
+        
         $data['tasks'][$this->task->id] = time();
 
         $user_progress->data = $data;

@@ -47,6 +47,7 @@ Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
     Route::get('/my/{course}', [CourseController::class, 'myCourse'])->name('front.user.courses');
     Route::get('/task/{task}', [TaskController::class, 'doTask'])->name('front.task');
     Route::post('/check_task/{task}', [TaskController::class, 'checkTask'])->name('front.task.check');
+    Route::delete('/destroy_course/{course}', [CourseController::class, 'dropProgress'])->name('front.drop_course');
 });
 
 Route::prefix('reports/')->middleware(['auth'])->group(function() {

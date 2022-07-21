@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Courses\CourseStats;
 use App\Enums\Courses\CourseStatuses;
 use App\Enums\Settings\SettingTypes;
+use App\Facades\Alert;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\UserProgress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
@@ -48,12 +51,34 @@ class CourseController extends Controller
             abort(404);
         }
 
+        /** @var CourseStats $course_stats_service */
+        $course_stats_service = App::makeWith(
+            CourseStats::class,
+            ['user_progress' => $user_progress]
+        );
+
+        $course_stats = $course_stats_service->getCourseStats();
+
         return view('front.user_progress.course', [
             'course' => $course,
             'user' => $user,
             'tasks' => $course->tasks,
             'user_progress' => $user_progress,
-            'tasks_data' => $user_progress->data['tasks']
+            'tasks_data' => $user_progress->data['tasks'],
+            'course_stats' => $course_stats
         ]);
+    }
+
+    public function dropProgress(Course $course)
+    {
+        $user = Auth::user();
+        UserProgress::where([
+            'course_id' => $course->id,
+            'user_id' => $user->id
+        ])->destroy();
+
+        Alert::set('status', __('vars.course_was_reset'));
+
+        return redirect()->route('front.user');
     }
 }
