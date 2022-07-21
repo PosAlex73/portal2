@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Enums\Courses\UserProgressStatuses;
 use App\Events\TaskDone;
 use App\Models\UserProgress;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -50,10 +51,12 @@ class TaskDoneListener
         } else {
             $data = $user_progress->data;
         }
-        
+
         $data['tasks'][$this->task->id] = time();
 
         $user_progress->data = $data;
+        $user_progress->status = UserProgressStatuses::IN_PROGRESS;
+
         $user_progress->update();
 
         return true;

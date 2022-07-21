@@ -65,7 +65,7 @@ class CourseController extends Controller
             'tasks' => $course->tasks,
             'user_progress' => $user_progress,
             'tasks_data' => $user_progress->data['tasks'],
-            'course_stats' => $course_stats
+            'courseStats' => $course_stats
         ]);
     }
 

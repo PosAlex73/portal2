@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class AppNewFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(500),
+            'status' => CommonStatuses::ACTIVE,
+            'image' => $this->faker->imageUrl()
         ];
     }
 }

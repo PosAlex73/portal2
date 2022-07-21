@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AppNew;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class AppNewSeeder extends Seeder
      */
     public function run()
     {
-        //
+        AppNew::factory()->count(200)->create();
     }
 }

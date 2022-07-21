@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\CommonStatuses;
 use App\Enums\Users\UserTypes;
+use App\Models\AppNew;
 use App\Models\Article;
 use App\Models\ArticleComment;
 use App\Models\Category;
@@ -60,6 +61,7 @@ class CommonSeeder extends Seeder
         User::factory()->count(100)->create();
         Promotion::factory()->count(20)->create();
         Plan::factory()->count(5)->create();
+        AppNew::factory()->count(200)->create();
 
         $users = User::all();
 
@@ -115,5 +117,7 @@ class CommonSeeder extends Seeder
         $this->call([
             PracticeCourseSeeder::class
         ]);
+
+
     }
 }

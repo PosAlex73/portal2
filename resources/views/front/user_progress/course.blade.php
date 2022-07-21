@@ -7,24 +7,7 @@
         <div class="card-body">
             <a class="d-block" href="{{ route('front.courses.course', ['course' => $course]) }}">{{ __('vars.view_course') }}</a>
                 <!--TODO add progress bar or some like thing-->
-                <div class="project-nav">
-                    <div class="card-action card-tabs  me-auto">
-                        <ul class="nav nav-tabs style-2">
-                            <li class="nav-item">
-                                <a href="#navpills-1" class="nav-link active" data-bs-toggle="tab" aria-expanded="false">All Projects <span class="badge badge-pill shadow-primary badge-primary">154</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#navpills-2" class="nav-link" data-bs-toggle="tab" aria-expanded="false">On Progress <span class="badge badge-pill badge-info shadow-info">2</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#navpills-3" class="nav-link" data-bs-toggle="tab" aria-expanded="true">Pending <span class="badge badge-pill badge-warning shadow-warning">4</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#navpills-4" class="nav-link" data-bs-toggle="tab" aria-expanded="true">Closed <span class="badge badge-pill badge-danger shadow-danger">1</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <x-front.course-stats :courseStats="$courseStats" />
             <!--TODO tasks tabs-->
                 <div class="tab-content project-list-group" id="myTabContent">
                     @foreach($tasks as $task)

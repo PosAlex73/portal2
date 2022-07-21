@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Enums\CommonStatuses;
+use App\Models\Traits\UseShortDesc;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class AppNew extends Model
 {
-    use HasFactory;
+    use HasFactory, UseShortDesc;
 
     protected $fillable = [
         'title',
@@ -22,9 +23,4 @@ class AppNew extends Model
         'status' => CommonStatuses::ACTIVE,
         'image' => ''
     ];
-
-    public function getShortDescriptionAttribute()
-    {
-        return Str::substr($this->description, 0, 30) . '...';
-    }
 }
