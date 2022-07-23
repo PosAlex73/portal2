@@ -17,6 +17,7 @@ Route::get('/', [IndexController::class, 'index'])->name('front.index');
 Route::get('/plans/', [PlanController::class, 'plans'])->name('front.plans');
 Route::get('/plans/{plan}', [PlanController::class, 'plan'])->name('front.plans.plan');
 Route::get('/courses/', [CourseController::class, 'courses'])->name('front.courses');
+Route::get('/pcourses/', [CourseController::class, 'pcourses'])->name('front.pcourses');
 Route::get('/course/{course}', [CourseController::class, 'course'])->name('front.courses.course');
 Route::get('/page/{page}/', [PageController::class, 'page'])->name('front.page');
 Route::get('/blog/', [BlogController::class, 'blog'])->name('front.blog');

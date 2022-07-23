@@ -10,10 +10,21 @@
         </div>
         <ul class="metismenu mm-show" id="menu">
             @foreach($menu as $item)
-                <a class="has-arrow ai-icon text-light" href="{{ $item->route }}" aria-expanded="false">
-                    <i class="flaticon-144-layout"></i>
-                    <span class="nav-text">{{ $item->name }}</span>
-                </a>
+                <li>
+                    <a class="has-arrow ai-icon text-light" href="{{ $item->route }}" aria-expanded="false">
+                        <i class="flaticon-144-layout"></i>
+                        <span class="nav-text">{{ $item->name }}</span>
+                    </a>
+                    @if($item->isDropdown)
+                        <ul aria-expanded="false" class="mm-collapse">
+                            @foreach($item->items as $menu_name => $menu_route)
+                                <li>
+                                    <a href="{{ route($menu_route) }}">{{ $menu_name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
             @endforeach
         </ul>
     </div>

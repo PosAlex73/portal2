@@ -22,8 +22,8 @@ class NewsController extends Controller
         ]);
     }
 
-    public function show(AppNew $appNew)
+    public function show(AppNew $new)
     {
-        return view('front.news.show', ['new' => $appNew]);
+        return view('front.news.show', ['new' => $new]);
     }
 }

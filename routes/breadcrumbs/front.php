@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AppNew;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
@@ -53,3 +54,12 @@ Breadcrumbs::for('front.checkout_complete', function (BreadcrumbTrail $trail) {
     $trail->push(__('vars.checkout_complete'), route('front.checkout_complete'));
 });
 
+Breadcrumbs::for('front.news', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.index'), route('front.index'));
+    $trail->push(__('vars.news'), route('front.news'));
+});
+
+Breadcrumbs::for('front.news.show', function(BreadcrumbTrail $trail, AppNew $new) {
+    $trail->parent('front.news');
+    $trail->push('front.news.show', route('front.news.show', ['new' => $new]));
+});

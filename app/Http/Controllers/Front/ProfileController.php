@@ -66,6 +66,13 @@ class ProfileController extends Controller
 
     public function messages()
     {
+        /** @var User $user */
+        $user = Auth::user();
+        $thread = $user->thread;
 
+        return view('front.chat.messages', [
+            'user' => $user,
+            'thread' => $thread
+        ]);
     }
 }

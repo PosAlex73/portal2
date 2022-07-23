@@ -21,33 +21,29 @@ class MainToolbar implements IMenu
                 'front.plans',
                 'plans',
                 'box',
-                fn () => Plan::where(['status' => CommonStatuses::ACTIVE])
-                    ->limit(Set::get(SettingTypes::FRONT_PAGINATION))
-                    ->get()
             ),
 
             new ToolbarItem(
                 'front.courses',
                 'courses',
                 'box',
-                fn () => Course::where(['status' => CourseStatuses::ACTIVE])
-                    ->limit(Set::get(SettingTypes::FRONT_PAGINATION))
-                    ->get()
+                [
+                    __('vars.courses') => 'front.courses',
+                    __('vars.pcourses') => 'front.pcourses'
+                ],
+                true
             ),
 
             new ToolbarItem(
                 'front.blog',
                 'blog',
-                'box'
+                'box',
             ),
 
             new ToolbarItem(
                 'front.promotions',
                 'promotions',
                 'box',
-                fn () => Promotion::where(['status' => CommonStatuses::ACTIVE])
-                ->limit(Set::get(SettingTypes::FRONT_PAGINATION))
-                ->get()
             ),
             new ToolbarItem(
                 'front.news',

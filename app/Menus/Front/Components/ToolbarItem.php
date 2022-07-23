@@ -8,7 +8,8 @@ class ToolbarItem
         public $route,
         public $name = 'default',
         public $icon = '',
-        public $items = []
+        public $items = [],
+        public $isDropdown = false
     )
     {
         $this->route = route($route);

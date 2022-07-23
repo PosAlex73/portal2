@@ -9,6 +9,7 @@ use App\Facades\Alert;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\PracticeCourse;
 use App\Models\UserProgress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -26,6 +27,15 @@ class CourseController extends Controller
             ->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
         return view('front.courses.index', ['courses' => $courses]);
+    }
+
+    public function pcourses()
+    {
+        $pcourses = PracticeCourse::where([
+            'status' => CourseStatuses::ACTIVE,
+        ])->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+
+        return view('front.courses.index', ['courses' => $pcourses]);
     }
 
     public function course(Course $course)
