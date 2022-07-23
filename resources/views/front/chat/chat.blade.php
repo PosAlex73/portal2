@@ -1,6 +1,5 @@
-@extends('layouts.admin')
+@extends('layouts.front')
 @section('content')
-    <x-admin.user-tabs :user="$user" />
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
@@ -40,11 +39,10 @@
                                     @endforeach
                                 </div>
                                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
-                            <form action="{{ route('send_message', ['thread' => $thread]) }}" method="post">
+                            <form action="{{ route('front.send_message') }}" method="post">
                                 @csrf
                                 <div class="card-footer border-0 type-massage">
                                     <div class="input-group">
-                                        <input type="hidden" name="user" value="{{ $user->id }}">
                                         <input class="form-control" name="message" placeholder="{{ __('vars.type_message') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="send-btn btn-primary btn">{{ __('vars.send') }}</button>

@@ -33,6 +33,7 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/', [ProfileController::class, 'profile'])->name('front.user');
     Route::post('/profile/{user}', [ProfileController::class, 'updateUserData'])->name('front.user.update');
     Route::get('/messages/', [ProfileController::class, 'messages'])->name('front.messages');
+    Route::post('/messages/', [ProfileController::class, 'sendMessage'])->name('front.send_message');
     Route::post('/profile/{profile}', [ProfileController::class, 'updateProfileData'])->name('front.profile.update');
     Route::post('/settings', [ProfileController::class, 'settings'])->name('front.user.settings');
 

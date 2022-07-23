@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
+use App\Enums\Thread\MessageStatuses;
+use App\Events\NewMessage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\StoreThreadMessageRequest;
 use App\Http\Requests\Admin\Users\StoreThreadRequest;
 use App\Http\Requests\Admin\Users\UpdateThreadRequest;
 use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
@@ -52,5 +56,22 @@ class ThreadController extends Controller
         session()->flash('status', __('vars.thread_was_updated'));
 
         return redirect()->back();
+    }
+
+    public function sendMessage(StoreThreadMessageRequest $request, Thread $thread)
+    {
+        $fields = $request->safe()->only(['message']);
+        $user = $thread->user;
+
+        $message = $thread->messages()->create([
+            'message' => $fields['message'],
+            'owner_id' => Auth::id(),
+            'user_id' => $user->id,
+            'status' => MessageStatuses::UNREAD
+        ]);
+
+        event(new NewMessage($message, $thread, $user));
+
+        return back();
     }
 }

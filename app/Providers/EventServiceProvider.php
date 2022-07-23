@@ -3,21 +3,22 @@
 namespace App\Providers;
 
 use App\Events\CourseCompleted;
+use App\Events\NewMessage;
 use App\Events\Purchase;
 use App\Events\TaskDone;
 use App\Listeners\CourseCompleteListener;
+use App\Listeners\NewMessageListener;
 use App\Listeners\PurchaseListener;
 use App\Listeners\TaskDoneListener;
 use App\Models\Article;
-use App\Models\Order;
+use App\Models\ThreadMessage;
 use App\Models\User;
 use App\Observers\ArticleObserver;
-use App\Observers\OrderObserver;
+use App\Observers\MessageObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -38,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CourseCompleted::class => [
             CourseCompleteListener::class
+        ],
+        NewMessage::class => [
+            NewMessageListener::class
         ]
     ];
 
@@ -50,7 +54,6 @@ class EventServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Article::observe(ArticleObserver::class);
-        Order::observe(OrderObserver::class);
     }
 
     /**

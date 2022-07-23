@@ -53,6 +53,8 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('users/progress/{user}', [UserProgressController::class, 'list'])->name('users.progress');
     Route::get('users/thread/{user}', [ThreadController::class, 'thread'])->name('thread.edit');
 
+    Route::post('users/{thread}', [ThreadController::class, 'sendMessage'])->name('send_message');
+
     Route::get('progress/list', [UserProgressController::class, 'index'])->name('users.progress.index');
     Route::post('progress/', [UserProgressController::class, 'create'])->name('users.progress.create');
     Route::put('progress', [UserProgressController::class, 'store'])->name('users.progress.store');
