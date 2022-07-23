@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\ThreadMessage;
+use App\Notifications\ToolBar\UserNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -55,9 +56,11 @@ class NewMessageFromAdmin extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            'message_id' => $this->message->id,
-            'message' => $this->message->message
-        ];
+        $notification = new UserNotification(
+            __('vars.new_admin_message'),
+            $this->message->message,
+        );
+
+        return $notification->getNotificcation();
     }
 }
