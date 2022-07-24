@@ -11,14 +11,14 @@
                     <div class="d-table mb-2">
                         <x-common.currency :value="$course->price" />
                     </div>
-                    <p class="card-text">{{ $course->description }}</p>
+                    <p class="card-text">{!! $course->description !!}</p>
                     @if(!$user_has_course)
                     @auth
                         <div class="shopping-cart mb-2 me-3">
                             <form action="{{ route('front.order', ['type' => 'course', 'id' => $course->id]) }}" method="get">
                                 @include('fields.hidden', ['name' => 'id', 'value' => $course->id])
                                 @include('fields.hidden', ['name' => 'type', 'value' => 'C'])
-                                @include('buttons.submit')
+                                @include('buttons.submit', ['text' => __('vars.get_course')])
                             </form>
                         </div>
                     @else

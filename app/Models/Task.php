@@ -15,7 +15,8 @@ class Task extends Model
     ];
 
     protected $attributes = [
-        'points' => 0
+        'points' => 0,
+        'data' => ''
     ];
 
     public function course()

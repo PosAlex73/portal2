@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\StoreCourseRequest;
 use App\Http\Requests\Admin\Courses\UpdateCourseRequest;
 use App\Models\Course;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -42,7 +43,14 @@ class CourseController extends Controller
     public function store(StoreCourseRequest $request)
     {
         $fields = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images/courses', 'public');
+            $fields['image'] = $image;
+        }
+
         $course = Course::create($fields);
+
         session()->flash('status', __('vars.course_was_created'));
 
         return redirect()->to(route('courses.edit', ['course' => $course]));
@@ -64,11 +72,19 @@ class CourseController extends Controller
      *
      * @param  \App\Http\Requests\Admin\Courses\UpdateCourseRequest  $request
      * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
         $fields = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images/courses', 'public');
+            $fields['image'] = $image;
+            $old_file = $course->image;
+            Storage::disk('public')->delete($old_file);
+        }
+
         $course->update($fields);
         session()->flash('status', __('vars.course_was_updated'));
 

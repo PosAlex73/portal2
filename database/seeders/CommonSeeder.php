@@ -117,7 +117,5 @@ class CommonSeeder extends Seeder
         $this->call([
             PracticeCourseSeeder::class
         ]);
-
-
     }
 }

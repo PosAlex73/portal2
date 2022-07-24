@@ -44,7 +44,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description', 'data', 'status', 'type', 'course_id', 'points']);
+        $fields = $request->safe()->only(['title', 'description', 'status', 'type', 'course_id', 'points']);
         $task = Task::create($fields);
         session()->flash('status', __('vars.task_was_created'));
 

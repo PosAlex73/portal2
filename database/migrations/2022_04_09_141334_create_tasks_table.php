@@ -38,7 +38,7 @@ return new class extends Migration
             $table->text('data');
             $table->string('status', 1)->default(\App\Enums\CommonStatuses::DISABLED);
             $table->string('type', 32)->default(\App\Enums\Tasks\TaskTypes::THEORY);
-            $table->integer('points')->default(0);
+            $table->integer('points')->default(0)->nullable(true);
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
             $table->timestamps();

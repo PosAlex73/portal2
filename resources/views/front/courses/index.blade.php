@@ -5,10 +5,10 @@
         @forelse($courses as $course)
             <div class="card mb-3">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="{{ $course->image }}" class="img-fluid rounded-start" alt="...">
+                    <div class="col-md-2">
+                        <img src="@if($course->image){{ asset('c' . $course->image) }} @else {{ asset('images/no_image.jpg') }} @endif" class="img-fluid rounded-start m-2" alt="..." width="250" height="250">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="card-body">
                             <h3 class="card-title">
                                 <a href="{{ route('front.courses.course', ['course' => $course->id]) }}">
