@@ -4,6 +4,7 @@ use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\CourseController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\NewsController;
+use App\Http\Controllers\Front\NotificationsController;
 use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
@@ -43,6 +44,10 @@ Route::prefix('profile/')->middleware(['auth'])->group(function () {
 
     //blog
     Route::post('/blog/comment/{article}', [BlogController::class, 'publicComment'])->name('front.blog.comment');
+
+    //notifications
+    Route::get('notifications/', [NotificationsController::class, 'index'])->name('front.notifications');
+    Route::delete('notifications/', [NotificationsController::class, 'destroy'])->name('front.notifications.delete');
 });
 
 Route::prefix('user_courses/')->middleware(['auth'])->group(function (){

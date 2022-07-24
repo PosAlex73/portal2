@@ -10,7 +10,9 @@ class UserNotification
         public string $title,
         public string $text,
         public string $url = '',
-        public string $icon = ''
+        public string $icon = '',
+        public string $date = '',
+        public string $id = ''
     ){}
 
     public function getNotificcation()
@@ -31,7 +33,9 @@ class UserNotification
                 $notification->data['title'],
                 $notification->data['text'],
                 $notification->data['url'] ?? null,
-                $notification->data['icon'] ?? null
+                $notification->data['icon'] ?? null,
+                $notification->created_at,
+                $notification->id
             ));
         }
 

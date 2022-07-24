@@ -8,27 +8,30 @@
                 <div class="pulse-css"></div>
             @endif
         </a>
+        {{ $notifications->count() }}
         <div class="dropdown-menu dropdown-menu-end">
             <div id="dlab_W_Notification1" class="widget-media dz-scroll p-3 height380">
                 @if($notifications->count())
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-panel">
-                            <div class="media me-2">
-                                <img alt="image" width="50" src="images/avatar/1.jpg">
+                    @foreach($notifications as $notification)
+                        <li>
+                            <div class="timeline-panel">
+                                <div class="media me-2">
+                                    <img alt="image" width="50" src="images/avatar/1.jpg">
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="mb-1">{{ $notification->text }}</h6>
+                                    <small class="d-block">{{ $notification->url }}</small>
+                                </div>
                             </div>
-                            <div class="media-body">
-                                <h6 class="mb-1">Dr sultads Send you Photo</h6>
-                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endforeach
                 </ul>
                 @else
                     <p>{{ __('vars.no_notifications_found') }}</p>
                 @endif
             </div>
-            <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>
+            <a class="all-notification" href="{{ route('front.notifications') }}">{{ __('vars.notifications') }} <i class="ti-arrow-right"></i></a>
         </div>
     </li>
 @endif
