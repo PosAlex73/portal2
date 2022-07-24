@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Alerts\Alert;
+use App\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Notifications\ToolBar\UserNotification;
 use Illuminate\Http\Request;
@@ -33,7 +33,7 @@ class NotificationsController extends Controller
         $user = Auth::user();
         $user->notifications()->delete($notification_ids);
 
-        Alert::set('status', __('vars.notifications_were_delete'));
+        Alert::flash('status', __('vars.notifications_were_delete'));
 
         return back();
     }

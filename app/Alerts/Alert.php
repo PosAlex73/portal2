@@ -8,4 +8,9 @@ class Alert
     {
         session()->flash($alert, $message);
     }
+
+    public static function flash($alert, $message)
+    {
+        session()->flash('flash.' . $alert, $message);
+    }
 }
