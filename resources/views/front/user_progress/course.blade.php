@@ -16,7 +16,7 @@
                                 <div class="project-info">
                                     <div class="col-xl-3 my-2 col-lg-4 col-sm-6">
                                         <h5 class="title font-w600 mb-2"><a href="{{ route('front.task', ['task' => $task]) }}" class="text-black">{{ $task->title }}</a></h5>
-                                        <div class="text-dark"><i class="far me-3" aria-hidden="true"></i>{{ $task->short_description }}</div>
+                                        <div class="text-dark"><i class="far me-3" aria-hidden="true"></i>{!! $task->short_description !!}</div>
                                     </div>
                                     <div class="col-xl-3 my-2 col-lg-6 col-sm-6">
                                         <div class="d-flex align-items-center">

@@ -28,6 +28,6 @@ class UserProgressHandler
             throw new Exception(__('vars.course_not_found'));
         }
 
-        return (array_key_exists($task->id, $user_progress->data['tasks']));
+        return (array_key_exists($task->id, $user_progress->data['tasks'] ?? []));
     }
 }

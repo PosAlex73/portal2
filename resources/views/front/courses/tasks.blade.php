@@ -13,7 +13,7 @@
             @endif
         </div>
         <div class="card-body">
-            <p class="card-text">{{ $task->short_description }}</p>
+            <p class="card-text">{!! $task->short_description !!}</p>
         </div>
     </div>
 @empty
