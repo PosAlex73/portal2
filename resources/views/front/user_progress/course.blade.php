@@ -6,9 +6,7 @@
         </div>
         <div class="card-body">
             <a class="d-block" href="{{ route('front.courses.course', ['course' => $course]) }}">{{ __('vars.view_course') }}</a>
-                <!--TODO add progress bar or some like thing-->
                 <x-front.course-stats :courseStats="$courseStats" />
-            <!--TODO tasks tabs-->
                 <div class="tab-content project-list-group" id="myTabContent">
                     @foreach($tasks as $task)
                         <div class="tab-pane fade active show" id="navpills-1">

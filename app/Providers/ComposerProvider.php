@@ -32,6 +32,6 @@ class ComposerProvider extends ServiceProvider
         View::composer(['admin.users.edit', 'admin.users.create'], UserTypes::class);
         View::composer(['admin.users.profile'], Countries::class);
 
-        View::composer(['admin.tasks.create'], TaskData::class);
+        View::composer(['admin.tasks.*'], TaskData::class);
     }
 }

@@ -82,3 +82,17 @@ Breadcrumbs::for('categories.edit', function (BreadcrumbTrail $trail, $category)
     $trail->parent('categories.index');
     $trail->push(__('vars.categories_edit'), route('categories.edit', $category));
 });
+
+Breadcrumbs::for('tasks.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.tasks'), route('tasks.index'));
+});
+
+Breadcrumbs::for('tasks.edit', function (BreadcrumbTrail $trail, $task) {
+    $trail->parent('tasks.index');
+    $trail->push(__('vars.tasks'), route('tasks.edit', $task->id));
+});
+
+Breadcrumbs::for('tasks.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('tasks.index');
+    $trail->push(__('vars.tasks_create'), route('tasks.create'));
+});
