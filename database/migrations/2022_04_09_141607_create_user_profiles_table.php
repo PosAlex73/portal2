@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('about')->nullable(true);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('image', 512)->nullable(true);
             $table->timestamps();
         });
     }

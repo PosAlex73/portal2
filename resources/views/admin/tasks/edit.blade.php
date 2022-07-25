@@ -4,11 +4,15 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">{{ __('vars.edit_task') }}</h4>
+            @if($task->course)
+                <a class="btn btn-primary" href="{{ route('courses.edit', ['course' => $task->course]) }}">{{ __('vars.view_course') }}</a>
+            @endif
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('tasks.store') }}" method="post">
+                <form action="{{ route('tasks.update', ['task' => $task]) }}" method="post">
                     @csrf
+                    @method('PUT')
                     @include('fields.input', ['name' => 'title', 'value' => $task->title])
                     @include('fields.rich_text', ['name' => 'description', 'value' => $task->description])
                     @include('fields.input', ['name' => 'short_description', 'value' => $task->short_description])

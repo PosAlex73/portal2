@@ -11,7 +11,7 @@
     <meta property="og:description" content="Zenix - Crypto Admin Dashboard" />
     <meta property="og:image" content="https://zenix.dexignzone.com/xhtml/social-image.png" />
     <meta name="format-detection" content="telephone=no">
-    <title>Zenix - Crypto Admin Dashboard </title>
+    <title>{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}</title>
     <!-- Favicon icon -->
 
     <link rel="stylesheet" href="{{ asset('./vendor/toastr/css/toastr.min.css') }}">

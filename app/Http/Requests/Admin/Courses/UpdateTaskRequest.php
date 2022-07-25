@@ -29,7 +29,6 @@ class UpdateTaskRequest extends FormRequest
         return [
             'title' => 'required|min:2|max:255',
             'description' => 'required',
-            'data' => 'required',
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
             'type' => ['required', Rule::in(TaskTypes::getAll())],
         ];

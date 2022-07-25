@@ -1,12 +1,23 @@
+@php
+$user = Auth::user();
+
+if (!empty($user->profile->image)) {
+    $user_image = $user->profile->image;
+} else {
+    $user_image = 'images/no_image.jpg';
+}
+
+@endphp
+
 <div class="deznav">
     <div class="deznav-scroll">
         <div class="main-profile">
             <div class="image-bx">
-                <img src="images/Untitled-1.jpg" alt="">
-                <a href="javascript:void(0);"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                <img src="{{ asset($user_image) }}" alt="">
+                <a href="{{ route('users.edit', ['user' => $user]) }}"><i class="fa fa-cog" aria-hidden="true"></i></a>
             </div>
-            <h5 class="name"><span class="font-w400">Hello,</span> Marquez</h5>
-            <p class="email">marquezzzz@mail.com</p>
+            <h5 class="name"><span class="font-w400">{{ __('vars.hello') }},</span> {{ $user->first_name }}</h5>
+            <p class="email">{{ $user->email }}</p>
         </div>
         <ul class="metismenu" id="menu">
             @foreach($sidebar as $item)

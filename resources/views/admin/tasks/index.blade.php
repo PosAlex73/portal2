@@ -16,6 +16,7 @@
                             <th style="width:80px;"><strong>#</strong></th>
                             <th><strong>{{ __('vars.title') }}</strong></th>
                             <th><strong>{{ __('vars.status') }}</strong></th>
+                            <th><strong>{{ __('vars.type') }}</strong></th>
                             <th><strong>{{ __('vars.course') }}</strong></th>
                             <th><strong>{{ __('vars.created') }}</strong></th>
                             <th></th>
@@ -27,6 +28,7 @@
                                 <td><strong>{{ $task->id }}</strong></td>
                                 <td>{{ $task->title }}</td>
                                 <td>@include('components.common.common-statuses', ['status' => $task->status])</td>
+                                <td>{{ __('vars.task_type_' . $task->type) }}</td>
                                 <td><a href="{{ route('courses.edit', ['course' => $task->course]) }}">{{ $task->course->title }}</a></td>
                                 <td>{{ $task->created_at }}</td>
                                 <td>

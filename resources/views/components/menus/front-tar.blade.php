@@ -11,7 +11,7 @@
         <ul class="metismenu mm-show" id="menu">
             @foreach($menu as $item)
                 <li>
-                    <a class="has-arrow ai-icon text-light" href="{{ $item->route }}" aria-expanded="false">
+                    <a class="@if($item->isDropdown) has-arrow @endif ai-icon text-light" href="{{ $item->route }}" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
                         <span class="nav-text">{{ $item->name }}</span>
                     </a>

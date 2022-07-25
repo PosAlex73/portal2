@@ -15,6 +15,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#profile"><i class="la la-user me-2"></i>{{ __('vars.course_description') }}</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tasks"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#settings"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="home" role="tabpanel">
@@ -34,6 +40,32 @@
                         <div class="pt-4">
                             @include('fields.rich_text', ['name' => 'description', 'value' => $course->description])
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="tasks">
+                        <div class="pt-4">
+                            @if($course->tasks->count())
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <tbody>
+                                            @foreach($course->tasks as $task)
+                                                <tr>
+                                                    <td><strong>{{ $task->id }}</strong></td>
+                                                    <td><a href="{{ route('tasks.edit', ['task' => $task]) }}">{{ $task->title }}</a></td>
+                                                    <td>{{ __('vars.task_type_' . $task->type) }}</td>
+                                                    <td>{{ __('vars.task_status_' . $task->status) }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <p>{{ __('vars.no_tasks_found') }}</p>
+                                <p class="btn btn-primary"><a href="{{ route('tasks.index') }}">{{ __('vars.assign_tasks') }}</a></p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="settings">
+                        {{ __('vars.todo_add_course_settings') }}
                     </div>
                 </div>
                     @include('buttons.submit')
