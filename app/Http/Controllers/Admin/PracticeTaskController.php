@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Alerts\Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePracticeTaskRequest;
 use App\Http\Requests\UpdatePracticeTaskRequest;
@@ -15,9 +16,9 @@ class PracticeTaskController extends Controller
      * @param  \App\Models\PracticeTask  $practiceTask
      * @return \Illuminate\Http\Response
      */
-    public function edit(PracticeTask $practiceTask)
+    public function edit(PracticeTask $ptask)
     {
-        return view('admin.ptasks.edit', ['task', $practiceTask]);
+        return view('admin.ptasks.edit', ['task' => $ptask]);
     }
 
     /**
@@ -27,8 +28,13 @@ class PracticeTaskController extends Controller
      * @param  \App\Models\PracticeTask  $practiceTask
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePracticeTaskRequest $request, PracticeTask $practiceTask)
+    public function update(UpdatePracticeTaskRequest $request, PracticeTask $ptask)
     {
-        //
+        $fields = $request->validated();
+        $ptask->update($fields);
+
+        Alert::flash('status', __('updated'));
+
+        return back();
     }
 }

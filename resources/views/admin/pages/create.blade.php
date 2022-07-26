@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    @include('flash.errors')
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">{{ __('vars.create_new_page') }}</h4>

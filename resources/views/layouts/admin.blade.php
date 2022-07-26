@@ -15,6 +15,8 @@
     <div class="content-body">
         <div class="container-fluid">
             <x-bread-crumbs />
+            @include('flash.errors')
+            @include('flash.flashs')
             @yield('content')
         </div>
     </div>
