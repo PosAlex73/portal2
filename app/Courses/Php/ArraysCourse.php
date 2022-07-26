@@ -14,6 +14,7 @@ class ArraysCourse extends Course
             'task1' => [
                 'type' => TaskTypes::THEORY,
                 'points' => 1,
+                'task' => null
             ],
             'task2' => [
                 'type' => TaskTypes::TEST,
