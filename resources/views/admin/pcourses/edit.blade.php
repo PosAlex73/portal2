@@ -7,7 +7,6 @@
             <h4 class="card-title">{{ __('vars.edit_course') }}</h4>
         </div>
         <div class="card-body">
-            <x-admin.course-tabs :course="$course" itemName="pcourse" />
             <div class="basic-form">
                 <form action="{{ route('pcourses.update', ['pcourse' => $course]) }}" method="post">
                     <ul class="nav nav-tabs" role="tablist">
@@ -21,7 +20,7 @@
                             <a class="nav-link" data-bs-toggle="tab" href="#tasks"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#settings"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#settings"><i class="la la-user me-2"></i>{{ __('vars.settings') }}</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -52,7 +51,7 @@
                                             @foreach($course->tasks as $task)
                                                 <tr>
                                                     <td><strong>{{ $task->id }}</strong></td>
-                                                    <td><a href="{{ route('tasks.edit', ['task' => $task]) }}">{{ $task->title }}</a></td>
+                                                    <td><a href="{{ route('ptasks.edit', ['ptask' => $task]) }}">{{ $task->title }}</a></td>
                                                     <td>{{ __('vars.task_type_' . $task->type) }}</td>
                                                     <td>{{ __('vars.task_status_' . $task->status) }}</td>
                                                 </tr>
@@ -62,7 +61,6 @@
                                     </div>
                                 @else
                                     <p>{{ __('vars.no_tasks_found') }}</p>
-                                    <p class="btn btn-primary"><a href="{{ route('tasks.index') }}">{{ __('vars.assign_tasks') }}</a></p>
                                 @endif
                             </div>
                         </div>
