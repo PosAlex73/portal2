@@ -52,5 +52,9 @@ class ProdSeeder extends Seeder
                 DB::table('settings')->insert($setting);
             }
         }
+
+        $this->call([
+            PracticeCourseSeeder::class
+        ]);
     }
 }

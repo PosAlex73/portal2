@@ -8,7 +8,7 @@ class CourseTabs extends Component
 {
     public $course;
     public $tabs;
-    public $item_name;
+    public $item;
 
     /**
      * Create a new component instance.
@@ -17,7 +17,7 @@ class CourseTabs extends Component
      */
     public function __construct($course, string $itemName)
     {
-        $this->item_name = $itemName;
+        $this->item = $itemName;
         $this->tabs = \App\Menus\Admin\CourseTabs::getMenu();
         $this->course = $course;
     }

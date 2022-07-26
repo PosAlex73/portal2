@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Courses\Php\BasePhpCourse;
 use App\Courses\Php\TypesCourse;
 use App\Enums\Courses\CourseCategories;
+use App\Models\Category;
 use App\Models\PracticeCourse;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,12 +29,14 @@ class PracticeCourseSeeder extends Seeder
     {
         $f = $this->faker;
 
+        $category = Category::factory()->create();
+
         PracticeCourse::factory()->create([
             'id' => 1,
             'title' => __('vars.php_base'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => 1,
+            'category_id' => $category->id,
             'class' => BasePhpCourse::class
         ]);
 
@@ -42,7 +45,7 @@ class PracticeCourseSeeder extends Seeder
             'title' => __('vars.php_types'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => 1,
+            'category_id' => $category->id,
             'class' => TypesCourse::class
         ]);
     }

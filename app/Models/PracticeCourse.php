@@ -27,6 +27,11 @@ class PracticeCourse extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(PracticeTask::class);
+    }
+
     public function getPracticeTasks(string $course_name, TasksRepository $repo)
     {
 

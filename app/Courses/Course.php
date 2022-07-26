@@ -3,6 +3,7 @@
 namespace App\Courses;
 
 use App\Enums\Courses\CourseTypes;
+use Illuminate\Support\Collection;
 
 /**
  *
@@ -190,4 +191,6 @@ abstract class Course
     {
         $this->tasks = $tasks;
     }
+
+    public abstract static function assignTasks(): Collection;
 }
