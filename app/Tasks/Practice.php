@@ -2,7 +2,7 @@
 
 namespace App\Tasks;
 
-class Practice
+abstract class Practice
 {
     public function checkResult(string $data)
     {
