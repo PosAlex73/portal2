@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Alerts\Alert;
+use App\Courses\Course;
+use App\Enums\Tasks\TaskTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePracticeTaskRequest;
 use App\Http\Requests\UpdatePracticeTaskRequest;
@@ -18,7 +20,16 @@ class PracticeTaskController extends Controller
      */
     public function edit(PracticeTask $ptask)
     {
-        return view('admin.ptasks.edit', ['task' => $ptask]);
+        if ($ptask->type === TaskTypes::TEST) {
+            /** @var Course $course */
+            $course = $ptask->pcourse->class;
+            $data = $course::getTaskOptions($ptask->array_index);
+        }
+
+        return view('admin.ptasks.edit', [
+            'task' => $ptask,
+            'data' => $data ?? []
+        ]);
     }
 
     /**

@@ -31,7 +31,7 @@
                             </div>
                             <div class="tab-pane fade" id="profile">
                                 <div class="pt-4">
-                                    @include('admin.ptasks.components.' . $task->type, ['data' => $task->data])
+                                    @include('admin.ptasks.components.' . $task->type, ['data' => $data])
                                 </div>
                             </div>
                         </div>

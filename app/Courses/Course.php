@@ -18,4 +18,9 @@ abstract class Course
     }
 
     public abstract static function assignTasks(): Collection;
+
+    public static function getTaskOptions($index)
+    {
+        return static::assignTasks()[$index];
+    }
 }
