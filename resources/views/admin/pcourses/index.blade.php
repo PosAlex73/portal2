@@ -38,7 +38,6 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{ route('pcourses.edit', ['pcourse' => $course]) }}">{{ __('vars.edit') }}</a>
-                                        <a class="dropdown-item" href="{{ route('pcourses.destroy', ['pcourse' => $course]) }}">{{ __('vars.delete') }}</a>
                                     </div>
                                 </div>
                             </td>

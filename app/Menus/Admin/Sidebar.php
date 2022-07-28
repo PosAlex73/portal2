@@ -13,15 +13,15 @@ class Sidebar implements IMenu
     public static function getMenu(): iterable
     {
         return new Collection( [
-            new Title('dashboard', 'box'),
+            new Title(__('dashboard'), 'box'),
             new Link(__('vars.dashboard'), 'dashboard', 'box'),
-            new Title('var.users'),
-            new Group(__('var.users'), new Collection(['users.index', 'users.progress.index']), 'box'),
-            new Title(__('courses')),
-            new Group(__('courses'), new Collection(['courses.index', 'pcourses.index', 'tasks.index',]), 'user'),
-            new Title('commerce', 'box'),
-            new Group(__('commerce'), new Collection(['plans.index', 'orders.index', 'promotions.index']), 'activity'),
-            new Title('other', 'box'),
+            new Title(__('vars.users')),
+            new Group(__('vars.users'), new Collection(['users.index', 'users.progress.index']), 'box'),
+            new Title(__('vars.courses')),
+            new Group(__('vars.courses'), new Collection(['courses.index', 'pcourses.index', 'tasks.index',]), 'user'),
+            new Title(__('vars.commerce'), 'box'),
+            new Group(__('vars.commerce'), new Collection(['plans.index', 'orders.index', 'promotions.index']), 'activity'),
+            new Title(__('other'), 'box'),
             new Link(__('vars.categories'), 'categories.index'),
             new Link(__('vars.blog'), 'articles.index', 'box'),
             new Link(__('vars.pages'), 'pages.index', 'box'),

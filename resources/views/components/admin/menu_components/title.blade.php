@@ -1,1 +1,1 @@
-<li class="nav-label first">{{ __('vars.' . $item->title) }}</li>
+<li class="nav-label first">{{ $item->title }}</li>

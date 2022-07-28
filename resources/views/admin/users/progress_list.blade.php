@@ -41,7 +41,7 @@
                     </tbody>
                 </table>
                 @else
-                    <p>{{ __('var.no_progress_found') }}</p>
+                    <p>{{ __('vars.no_progress_found') }}</p>
                 @endif
             </div>
         </div>

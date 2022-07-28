@@ -81,7 +81,7 @@ class PromotionController extends Controller
     {
         $fields = $request->safe()->only(['title', 'description', 'status']);
         $promotion->update($fields);
-        session()->flash('status', __('vars.promotions_was_updated'));
+        session()->flash('status', __('vars.promotion_was_updated'));
 
         return redirect()->back();
     }

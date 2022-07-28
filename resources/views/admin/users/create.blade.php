@@ -11,8 +11,8 @@
                     @csrf
                     @include('fields.input', ['name' => 'first_name'])
                     @include('fields.input', ['name' => 'last_name'])
-                    @include('fields.select', ['name' => 'status', 'variants' => $user_statuses])
-                    @include('fields.select', ['name' => 'type', 'variants' => $user_types])
+                    @include('fields.select', ['name' => 'status', 'ai' => 'user_status', 'variants' => $user_statuses])
+                    @include('fields.select', ['name' => 'type', 'ai' => 'user_type_', 'variants' => $user_types])
                     @include('fields.email', ['name' => 'email'])
                     @include('fields.password', ['name' => 'password'])
                     @include('fields.password', ['name' => 'password_confirmation'])
