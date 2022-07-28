@@ -13,7 +13,7 @@ $course = $user_progress->course;
                 <h5 class="title font-w600 mb-2"><a href="{{ route('front.user.courses', ['course' => $course]) }}" class="text-black">{{ $course->title }}</a></h5>
                 <span><a class="text-black" href="{{ route('front.courses.course', ['course' => $course->id]) }}">{{ __('vars.view.course') }}</a></span>
             </div>
-            <span class="badge badge-success d-sm-inline-block d-none">{{ __('vars.course_status_' . $user_progress->status) }}</span>
+            <span class="badge badge-success d-sm-inline-block d-none">{{ __('vars.course_statuses_' . $user_progress->status) }}</span>
         </div>
         <p class="mb-4">{{ $course->short_description }}</p>
         <div class="row mb-4">

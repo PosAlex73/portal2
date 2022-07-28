@@ -37,7 +37,7 @@
             </div>
         @endforeach
     </div>
-    <div class="my-2">
+    <div class="m-2">
         @include('buttons.submit')
     </div>
 </form>

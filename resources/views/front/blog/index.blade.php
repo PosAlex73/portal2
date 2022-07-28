@@ -10,7 +10,7 @@
             @endforeach
             <x-common.pagination route="front.blog" :items="$articles" />
         <div class="col-lg-4 d-md-none d-lg-block">
-            <div class="card">sdffsd
+            <div class="card">
 {{--                FIXME add sidebar--}}
             </div>
         </div>

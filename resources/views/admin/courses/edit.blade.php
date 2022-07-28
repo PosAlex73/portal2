@@ -18,7 +18,7 @@
                         <a class="nav-link" data-bs-toggle="tab" href="#tasks"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings"><i class="la la-user me-2"></i>{{ __('vars.tasks') }}</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#settings"><i class="la la-user me-2"></i>{{ __('vars.settings') }}</a>
                     </li>
                 </ul>
                 <div class="tab-content">

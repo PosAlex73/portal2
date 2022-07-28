@@ -1,4 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <x-admin.settings />
+    <div class="card">
+        <x-admin.settings />
+    </div>
 @endsection

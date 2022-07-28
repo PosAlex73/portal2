@@ -4,6 +4,7 @@
         class="form-control"
         id="{{ $name }}"
         name="{{ $name }}"
-        rows="5"
+        rows="{{ $row ?? 50 }}"
+        cols="{{ $cols ?? 50 }}"
     >{{ $value ?? '' }}</textarea>
 </div>

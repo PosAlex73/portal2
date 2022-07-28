@@ -15,7 +15,7 @@
                         <div class="profile-details">
                             <div class="profile-name px-3 pt-2">
                                 <h4 class="text-primary mb-0">{{ $user->full_name }}</h4>
-                                <p>{{ __('vas.student') }}</p>
+                                <p>{{ __('vars.student') }}</p>
                             </div>
                             <div class="profile-email px-2 pt-2">
                                 <h4 class="text-muted mb-0">{{ __( $user->user_profile->contacted_email ?? __('vars.email_no_provided')) }}</h4>

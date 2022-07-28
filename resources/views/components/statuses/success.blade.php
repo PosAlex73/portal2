@@ -1,1 +1,1 @@
-<span class="badge badge-success">{{ __('vars.status_' . $status) }}</span>
+<span class="badge badge-success">{{ $status }}</span>
