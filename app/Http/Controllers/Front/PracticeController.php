@@ -40,8 +40,8 @@ class PracticeController extends Controller
     public function myCourse(PracticeCourse $pcourse)
     {
         $user = Auth::user();
-        $user_progress = $pcourse->progress;
 
+        $user_progress = $pcourse->progress()->where('user_id', $user->id)->first();
         if (empty($user_progress)) {
             abort(404);
         }
@@ -55,9 +55,9 @@ class PracticeController extends Controller
         $course_stats = $course_stats_service->getCourseStats();
 
         return view('front.user_progress.course', [
-            'course' => $course,
+            'course' => $pcourse,
             'user' => $user,
-            'tasks' => $course->tasks,
+            'tasks' => $pcourse->tasks,
             'user_progress' => $user_progress,
             'tasks_data' => $user_progress->data['tasks'] ?? [],
             'courseStats' => $course_stats

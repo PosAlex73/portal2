@@ -35,7 +35,7 @@ class Course extends Model implements Progressive
 
     public function progress()
     {
-        return $this->morphTo(UserProgress::class, 'course');
+        return $this->morphMany(UserProgress::class, 'course');
     }
 
     public function scopeSearchText(Builder $builder, string $text)

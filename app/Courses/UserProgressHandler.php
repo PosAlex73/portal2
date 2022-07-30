@@ -3,7 +3,6 @@
 namespace App\Courses;
 
 use App\Models\Course;
-use App\Models\Task;
 use App\Models\User;
 use App\Models\UserProgress;
 use Illuminate\Http\Request;
@@ -11,18 +10,23 @@ use Mockery\Exception;
 
 class UserProgressHandler
 {
-    public static function handleResult(Request $request, Course $course, Task $task)
+    public static function handleResult(Request $request, Course $course, Executable $task)
     {
         return true;
     }
 
-    public static function checkDoneTask(Task $task, User $user)
+    public static function checkDoneTask(Executable $task, User $user)
     {
+        /** @var Progressive $course */
         $course = $task->course;
-        $user_progress = UserProgress::where([
-            'user_id' => $user->id,
-            'course_id' => $course->id
-        ])->first();
+        $user_progress = $course->progress()
+            ->where('user_id', $user->id)
+            ->first();
+
+//            UserProgress::where([
+//            'user_id' => $user->id,
+//            'course_id' => $course->id
+//        ])->first();
 
         if (empty($user_progress)) {
             throw new Exception(__('vars.course_not_found'));

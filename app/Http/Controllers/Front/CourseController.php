@@ -43,7 +43,7 @@ class CourseController extends Controller
     }
 
     //TODO rename
-    public function myCourse(Course $course, string $type)
+    public function myCourse(Course $course)
     {
         $user = Auth::user();
         $user_progress = UserProgress::where('course_id', $course->id)->where('user_id', $user->id)->first();

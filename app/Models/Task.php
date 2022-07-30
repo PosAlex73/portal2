@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Courses\Executable;
 use App\Models\Traits\UseShortDesc;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Task extends Model implements Executable
 {
     use HasFactory, UseShortDesc, UseShortDesc;
 

@@ -19,7 +19,7 @@
                     </div>
                     <div class="tab-pane fade" id="profile">
                         <div class="pt-4">
-                            @include('front.courses.tasks')
+                            @include('front.pcourses.tasks')
                         </div>
                     </div>
                 </div>

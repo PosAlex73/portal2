@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
 use App\Http\Controllers\Front\PracticeController;
+use App\Http\Controllers\Front\PracticeTaskController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\PromotionController;
 use App\Http\Controllers\Front\ReportController;
@@ -60,6 +61,9 @@ Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
     Route::get('/my/pcourse/{pcourse}', [PracticeController::class, 'myCourse'])->name('front.user.pcourses');
 
     Route::get('/task/{task}', [TaskController::class, 'doTask'])->name('front.task');
+    Route::get('/practice_task/{task}', [PracticeTaskController::class, 'doTask'])->name('front.practice_task');
+
+
     Route::post('/check_task/{task}', [TaskController::class, 'checkTask'])->name('front.task.check');
     Route::delete('/destroy_course/{course}', [CourseController::class, 'dropProgress'])->name('front.drop_course');
 });

@@ -48,8 +48,14 @@
                                                     </svg>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end" style="">
-                                                    <a class="dropdown-item" href="{{ route('front.task', ['task' => $task]) }}">{{ __('vars.do_task') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('front.report_task_mistake', ['task' => $task]) }}">{{ __('vars.report_mistake') }}</a>
+{{--                                                    FIXME add tasks component--}}
+                                                    @if(get_class($task) === \App\Models\Task::class)
+                                                        <a class="dropdown-item" href="{{ route('front.task', ['task' => $task]) }}">{{ __('vars.do_task') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('front.report_task_mistake', ['task' => $task]) }}">{{ __('vars.report_mistake') }}</a>
+                                                    @else
+                                                        <a class="dropdown-item" href="{{ route('front.practice_task', ['task' => $task]) }}">{{ __('vars.do_task') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('front.report_task_mistake', ['task' => $task]) }}">{{ __('vars.report_mistake') }}</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
