@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
+            $table->string('type', 1);
             $table->timestamps();
         });
     }

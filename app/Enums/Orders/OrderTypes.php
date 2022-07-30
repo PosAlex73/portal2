@@ -10,4 +10,5 @@ class OrderTypes
 
     public const COURSE = 'C';
     public const PLAN = 'P';
+    public const PCOURSE = 'A';
 }

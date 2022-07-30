@@ -40,5 +40,15 @@ class PurchaseListener
                 'course_id' => $product->id
             ]);
         }
+
+        if ($product->type === OrderTypes::PCOURSE) {
+            UserProgress::create([
+                'data' => '',
+                'user_id' => $order->user_id,
+                'status' => CommonStatuses::ACTIVE,
+                'order_id' => $order->id,
+                'course_id' => $product->id
+            ]);
+        }
     }
 }

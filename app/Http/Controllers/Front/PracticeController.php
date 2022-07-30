@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Enums\Courses\CourseStatuses;
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
