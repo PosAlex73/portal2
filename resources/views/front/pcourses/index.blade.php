@@ -11,14 +11,14 @@
                     <div class="col-md-10">
                         <div class="card-body">
                             <h3 class="card-title">
-                                <a href="{{ route('front.courses.course', ['course' => $course->id]) }}">
+                                <a href="{{ route('front.pcourse', ['pcourse' => $course->id]) }}">
                                     {{ $course->title }}
                                 </a>
                             </h3>
                             <div class="card-footer"><x-common.currency :value="$course->price" /></div>
 
                             <p class="card-text">{{ $course->short_description }}</p>
-                            <a class="badge-primary p-2" href="{{ route('front.courses', ['category_id' => $course->category->id]) }}">
+                            <a class="badge-primary p-2" href="{{ route('front.pcourses', ['category_id' => $course->category->id]) }}">
                                 {{ $course->category->title }}
                             </a>
                         </div>

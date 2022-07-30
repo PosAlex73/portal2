@@ -29,15 +29,6 @@ class CourseController extends Controller
         return view('front.courses.index', ['courses' => $courses]);
     }
 
-    public function pcourses()
-    {
-        $pcourses = PracticeCourse::where([
-            'status' => CourseStatuses::ACTIVE,
-        ])->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
-
-        return view('front.courses.index', ['courses' => $pcourses]);
-    }
-
     public function course(Course $course)
     {
         if (Auth::check()) {

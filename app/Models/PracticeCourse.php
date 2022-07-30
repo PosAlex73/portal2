@@ -3,14 +3,17 @@
 namespace App\Models;
 
 use App\Enums\Courses\CoursePractice;
+use App\Enums\Courses\CourseStatuses;
 use App\Enums\Courses\CourseTypes;
-use App\Tasks\TasksRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class PracticeCourse extends Model
 {
     use HasFactory;
+
+    protected $table = 'practice_courses';
 
     protected $fillable = [
         'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type',
@@ -32,8 +35,8 @@ class PracticeCourse extends Model
         return $this->hasMany(PracticeTask::class);
     }
 
-    public function getPracticeTasks(string $course_name, TasksRepository $repo)
+    public function scopeActive(Builder $builder)
     {
-
+        return $builder->where('status', CourseStatuses::ACTIVE);
     }
 }

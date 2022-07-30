@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\NotificationsController;
 use App\Http\Controllers\Front\OrderController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PlanController;
+use App\Http\Controllers\Front\PracticeController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\PromotionController;
 use App\Http\Controllers\Front\ReportController;
@@ -19,13 +20,15 @@ Route::get('/', [IndexController::class, 'index'])->name('front.index');
 Route::get('/plans/', [PlanController::class, 'plans'])->name('front.plans');
 Route::get('/plans/{plan}', [PlanController::class, 'plan'])->name('front.plans.plan');
 Route::get('/courses/', [CourseController::class, 'courses'])->name('front.courses');
-Route::get('/pcourses/', [CourseController::class, 'pcourses'])->name('front.pcourses');
 Route::get('/course/{course}', [CourseController::class, 'course'])->name('front.courses.course');
 Route::get('/page/{page}/', [PageController::class, 'page'])->name('front.page');
 Route::get('/blog/', [BlogController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{article}', [BlogController::class, 'article'])->name('front.blog.article');
 Route::get('/promotions', [PromotionController::class, 'promotions'])->name('front.promotions');
 Route::get('/promotions/{promotion}', [PromotionController::class, 'promotion'])->name('front.promotion');
+
+Route::get('/pcourses/', [PracticeController::class, 'index'])->name('front.pcourses');
+Route::get('/pcourses/{pcourse}', [PracticeController::class, 'pcourse'])->name('front.pcourse');
 
 Route::get('/news', [NewsController::class, 'index'])->name('front.news');
 Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.show');
