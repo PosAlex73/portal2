@@ -32,6 +32,11 @@ class Course extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function progress()
+    {
+        return $this->morphTo(UserProgress::class, 'course');
+    }
+
     public function scopeSearchText(Builder $builder, string $text)
     {
         return $builder

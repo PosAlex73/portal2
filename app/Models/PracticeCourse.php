@@ -35,6 +35,11 @@ class PracticeCourse extends Model
         return $this->hasMany(PracticeTask::class);
     }
 
+    public function progress()
+    {
+        return $this->morphTo(UserProgress::class, 'course');
+    }
+
     public function scopeActive(Builder $builder)
     {
         return $builder->where('status', CourseStatuses::ACTIVE);

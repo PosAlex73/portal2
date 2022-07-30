@@ -99,7 +99,8 @@ class CommonSeeder extends Seeder
             $order = Order::factory()->for($user)->create();
             UserProgress::factory()->for($user)->create([
                 'course_id' => $course->id,
-                'order_id' => $order->id
+                'order_id' => $order->id,
+                'course_type' => Course::class
             ]);
 
         }

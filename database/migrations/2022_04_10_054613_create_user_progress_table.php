@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Courses\UserProgressStatuses;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,12 +19,11 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->text('data');
-            $table->string('status', 1)->default(\App\Enums\Courses\UserProgressStatuses::NEW_COURSE);
+            $table->string('status', 1)->default(UserProgressStatuses::NEW_COURSE);
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
-            $table->string('type', 1);
+            $table->string('course_type', 128);
             $table->timestamps();
         });
     }

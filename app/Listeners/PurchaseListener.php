@@ -4,6 +4,8 @@ namespace App\Listeners;
 
 use App\Enums\CommonStatuses;
 use App\Enums\Orders\OrderTypes;
+use App\Models\Course;
+use App\Models\PracticeCourse;
 use App\Models\UserProgress;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -37,7 +39,8 @@ class PurchaseListener
                 'user_id' => $order->user_id,
                 'status' => CommonStatuses::ACTIVE,
                 'order_id' => $order->id,
-                'course_id' => $product->id
+                'course_id' => $product->id,
+                'course_type' => Course::class
             ]);
         }
 
@@ -47,7 +50,8 @@ class PurchaseListener
                 'user_id' => $order->user_id,
                 'status' => CommonStatuses::ACTIVE,
                 'order_id' => $order->id,
-                'course_id' => $product->id
+                'course_id' => $product->id,
+                'course_type' => PracticeCourse::class
             ]);
         }
     }

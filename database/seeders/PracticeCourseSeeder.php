@@ -40,7 +40,7 @@ class PracticeCourseSeeder extends Seeder
             'description' => $f->text(500),
             'short_description' => $f->text(150),
             'category_id' => $category->id,
-            'class' => BasePhpCourse::class
+            'class' => BasePhpCourse::class,
         ]);
 
         PracticeCourse::factory()->create([

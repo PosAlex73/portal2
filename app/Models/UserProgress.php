@@ -10,7 +10,7 @@ class UserProgress extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'data', 'course_id', 'order_id', 'status'
+        'user_id', 'data', 'course_id', 'order_id', 'status', 'course_type'
     ];
 
     protected $casts = [
@@ -24,7 +24,7 @@ class UserProgress extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class);
+        return $this->morphTo();
     }
 
     public function order()
