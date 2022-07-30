@@ -10,8 +10,14 @@ $course = $user_progress->course;
             </div>
             <div class="me-auto">
                 <p class="text-primary mb-1">#P-000441425</p>
-                <h5 class="title font-w600 mb-2"><a href="{{ route('front.user.courses', ['course' => $course]) }}" class="text-black">{{ $course->title }}</a></h5>
-                <span><a class="text-black" href="{{ route('front.courses.course', ['course' => $course->id]) }}">{{ __('vars.view.course') }}</a></span>
+{{--                FIXME fix this shit--}}
+                @if($user_progress->course_type === \App\Models\PracticeCourse::class)
+                    <h5 class="title font-w600 mb-2"><a href="{{ route('front.user.pcourses', ['pcourse' => $course]) }}" class="text-black">{{ $course->title }}</a></h5>
+                    <span><a class="text-black" href="{{ route('front.pcourse', ['pcourse' => $course->id]) }}">{{ __('vars.view.course') }}</a></span>
+                @else
+                    <h5 class="title font-w600 mb-2"><a href="{{ route('front.user.courses', ['course' => $course]) }}" class="text-black">{{ $course->title }}</a></h5>
+                    <span><a class="text-black" href="{{ route('front.courses.course', ['course' => $course->id]) }}">{{ __('vars.view.course') }}</a></span>
+                @endif
             </div>
             <span class="badge badge-success d-sm-inline-block d-none">{{ __('vars.course_statuses_' . $user_progress->status) }}</span>
         </div>

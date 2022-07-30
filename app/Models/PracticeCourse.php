@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Courses\Progressive;
 use App\Enums\Courses\CoursePractice;
 use App\Enums\Courses\CourseStatuses;
 use App\Enums\Courses\CourseTypes;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class PracticeCourse extends Model
+class PracticeCourse extends Model implements Progressive
 {
     use HasFactory;
 

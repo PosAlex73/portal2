@@ -3,12 +3,11 @@
 namespace App\Courses;
 
 use App\Models\User;
-use \App\Models\Course;
 use App\Models\UserProgress;
 
 class CourseStats
 {
-    protected Course $course;
+    protected Progressive $course;
     protected User $user;
     protected UserProgress $user_progress;
 
