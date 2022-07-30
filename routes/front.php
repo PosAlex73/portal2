@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\PlanController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\PromotionController;
 use App\Http\Controllers\Front\ReportController;
+use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Front\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/promotions/{promotion}', [PromotionController::class, 'promotion'])
 
 Route::get('/news', [NewsController::class, 'index'])->name('front.news');
 Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.show');
+Route::get('/search', [SearchController::class, 'search'])->name('front.search');
 
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {

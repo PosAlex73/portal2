@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Article extends Model
 {
@@ -31,5 +32,10 @@ class Article extends Model
     public function getCommentsCountAttribute()
     {
         return $this->comments()->count();
+    }
+
+    public function scopeSearchText(Builder $builder, string $text)
+    {
+        return $builder->where('title', 'LIKE', "%{$text}%")->orWhere('text', 'LIKE', "%{$text}%");
     }
 }

@@ -6,7 +6,7 @@ use App\Enums\CommonStatuses;
 use App\Models\Traits\UseShortDesc;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
 
 class AppNew extends Model
 {
@@ -23,4 +23,9 @@ class AppNew extends Model
         'status' => CommonStatuses::ACTIVE,
         'image' => ''
     ];
+
+    public function scopeSearchText(Builder $builder, string $text)
+    {
+        return $builder->where('title', 'LIKE', "%{$text}%")->orWhere('description', 'LIKE', "{$text}");
+    }
 }

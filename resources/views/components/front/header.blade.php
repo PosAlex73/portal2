@@ -16,8 +16,9 @@
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
                     <div class="input-group search-area right d-lg-inline-flex d-none">
-                        <input type="text" class="form-control" placeholder="Search here...">
-                        <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
+                        <form action="{{ route('front.search') }}" method="get">
+                            <input type="text" class="form-control" name="search" placeholder="{{ __('var.search_here') }}">
+                        </form>
                     </div>
                 </div>
                 <ul class="navbar-nav header-right main-notification">
@@ -92,7 +93,6 @@
                     </li>
                         <li class="nav-item dropdown header-profile">
                             @auth
-
                             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
                                 <img src="images/profile/pic1.jpg" width="20" alt=""/>
                                 <div class="header-info">
@@ -107,7 +107,7 @@
                                 </a>
                                 <a href="{{ route('front.messages') }}" class="dropdown-item ai-icon">
                                     <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <span class="ms-2">{{ __('vars.messages') }}</span>
+                                    <span class="ms-2">{{ __('vars.messages') }}  <x-front.messages /></span>
                                 </a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
