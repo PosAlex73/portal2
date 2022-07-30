@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PathController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\PracticeCourseController;
 use App\Http\Controllers\Admin\PracticeTaskController;
@@ -62,4 +63,8 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
 
     Route::put('users/profile/{profile}', [UserProfileController::class, 'update'])->name('users.profiles.update');
     Route::put('users/settings/{user_settings}', [UserSettingController::class, 'update'])->name('users.settings.update');
+
+    Route::get('paths/', [PathController::class, 'index'])->name('paths.index');
+    Route::post('paths/', [PathController::class, 'store'])->name('paths.store');
+    Route::delete('paths/', [PathController::class, 'destroy'])->name('paths.delete');
 });
