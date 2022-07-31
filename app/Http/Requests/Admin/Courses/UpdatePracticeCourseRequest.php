@@ -32,7 +32,7 @@ class UpdatePracticeCourseRequest extends FormRequest
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
             'status' => ['required', Rule::in(CourseStatuses::getAll())],
-            'price' => 'nullable|numeric',
+            'price' => 'numeric',
             'type' => ['required', Rule::in(CourseTypes::getAll())]
         ];
     }

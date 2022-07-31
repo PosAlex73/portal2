@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Courses\Other\DockerBasic;
 use App\Courses\Php\ArraysCourse;
 use App\Courses\Php\BasePhpCourse;
 use App\Courses\Php\TypesCourse;
@@ -52,6 +53,7 @@ class PracticeCourseSeeder extends Seeder
             'class' => TypesCourse::class
         ]);
 
+        //FIXME add course loader config
         PracticeCourse::factory()->create([
             'id' => 3,
             'title' => __('vars.base_arrays'),
@@ -68,6 +70,28 @@ class PracticeCourseSeeder extends Seeder
                 'status' => CommonStatuses::ACTIVE,
                 'points' => $task['points'],
                 'practice_course_id' => 3,
+                'array_index' => $array_index,
+                'type' => $task['type'],
+                'data' => ''
+            ]);
+        }
+
+        PracticeCourse::factory()->create([
+            'id' => 4,
+            'title' => __('vars.' . DockerBasic::$course_id),
+            'description' => $f->text(500),
+            'short_description' => $f->text(150),
+            'category_id' => $category->id,
+            'class' => DockerBasic::class
+        ]);
+
+        foreach (DockerBasic::assignTasks() as $array_index => $task) {
+            PracticeTask::create([
+                'title' => $f->text(10),
+                'description' => $f->text(200),
+                'status' => CommonStatuses::ACTIVE,
+                'points' => $task['points'],
+                'practice_course_id' => 4,
                 'array_index' => $array_index,
                 'type' => $task['type'],
                 'data' => ''

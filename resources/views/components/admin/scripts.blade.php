@@ -19,3 +19,4 @@
 <script src="{{ asset('./vendor/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('./js/custom.js') }}"></script>
 <script src="{{ asset('./js/deznav-init.js') }}"></script>
+

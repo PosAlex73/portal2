@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('pcourses.update', ['pcourse' => $course]) }}" method="post">
+                <form action="{{ route('pcourses.update', ['pcourse' => $course]) }}" method="post" enctype="multipart/form-data">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#home"><i class="la la-home me-2"></i>{{ __('vars.common_settings') }}</a>

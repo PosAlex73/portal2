@@ -57,9 +57,12 @@ class PracticeCourseController extends Controller
      */
     public function update(UpdatePracticeCourseRequest $request, PracticeCourse $pcourse)
     {
-        $fields = $request->safe()->only([
-            'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type',
-        ]);
+        $fields = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images/courses', 'public');
+            $fields['image'] = $image;
+        }
 
         $pcourse->update($fields);
         session()->flash('status', __('vars.course_was_update'));

@@ -6,6 +6,8 @@ use App\Events\CourseCompleted;
 use App\Events\NewMessage;
 use App\Events\Purchase;
 use App\Events\TaskDone;
+use App\Events\UserAchivement;
+use App\Listeners\AchivementListener;
 use App\Listeners\CourseCompleteListener;
 use App\Listeners\NewMessageListener;
 use App\Listeners\PurchaseListener;
@@ -42,6 +44,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewMessage::class => [
             NewMessageListener::class
+        ],
+        UserAchivement::class => [
+            AchivementListener::class
         ]
     ];
 

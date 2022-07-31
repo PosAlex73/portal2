@@ -6,7 +6,7 @@ use App\Courses\Course;
 use App\Enums\Tasks\TaskTypes;
 use Illuminate\Support\Collection;
 
-class zArraysCourse extends Course
+class ArraysCourse extends Course
 {
     public static $course_id = 'array_basic';
 

@@ -6,7 +6,7 @@
         id="{{ $name }}"
         autocomplete="off"
         placeholder="{{ __('vars.label_' . $name) }}"
-        name="{{ __('vars.' . $name) }}"
+        name="{{ $name }}"
         value="{{ $value  ?? ''}}"
     >
 </div>
