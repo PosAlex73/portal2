@@ -28,8 +28,10 @@ class PracticeController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $user_has_course = UserProgress::where('user_id', $user->id)->where('course_id', $pcourse->id)->first();
+            $user_has_course = UserProgress::UserCourse($user)->first();
         }
+
+//        dd($pcourse->tasks()->first());
 
         return view('front.pcourses.pcourse', [
             'course' => $pcourse,

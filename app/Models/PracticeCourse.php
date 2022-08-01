@@ -6,6 +6,7 @@ use App\Courses\Progressive;
 use App\Enums\Courses\CoursePractice;
 use App\Enums\Courses\CourseStatuses;
 use App\Enums\Courses\CourseTypes;
+use App\Models\Traits\UseShortDesc;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -17,7 +18,7 @@ class PracticeCourse extends Model implements Progressive
     protected $table = 'practice_courses';
 
     protected $fillable = [
-        'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type',
+        'title', 'description', 'image', 'status', 'category_id', 'price', 'type',
     ];
 
     protected $attributes = [

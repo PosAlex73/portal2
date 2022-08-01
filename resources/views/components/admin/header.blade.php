@@ -15,16 +15,6 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <!-- <div class="input-group search-area right d-lg-inline-flex d-none">
-                        <input type="text" class="form-control" placeholder="Find something here...">
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <a href="javascript:void(0)">
-                                    <i class="flaticon-381-search-2"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </div> -->
                     <div class="input-group search-area right d-lg-inline-flex d-none">
                         <input type="text" class="form-control" placeholder="Search here...">
                         <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
@@ -39,79 +29,6 @@
                     </li>
                     <li class="nav-item dropdown notification_dropdown">
                         <x-front.notifications />
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <div id="dlab_W_Notification1" class="widget-media dz-scroll p-3 height380">
-                                <ul class="timeline">
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2">
-                                                <img alt="image" width="50" src="images/avatar/1.jpg">
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Dr sultads Send you Photo</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2 media-info">
-                                                KG
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Resport created successfully</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2 media-success">
-                                                <i class="fa fa-home"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Reminder : Treatment Time!</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2">
-                                                <img alt="image" width="50" src="images/avatar/1.jpg">
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Dr sultads Send you Photo</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2 media-danger">
-                                                KG
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Resport created successfully</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2 media-primary">
-                                                <i class="fa fa-home"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">Reminder : Treatment Time!</h6>
-                                                <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>
-                        </div>
                     </li>
                     <li class="nav-item dropdown notification_dropdown">
                         <a class="nav-link bell bell-link" href="javascript:void(0)">
@@ -215,12 +132,7 @@
         {{-- FIXME add subheader --}}
         <div class="sub-header">
             <div class="d-flex align-items-center flex-wrap me-auto">
-                <h5 class="dashboard_bar">Dashboard</h5>
-            </div>
-            <div class="d-flex align-items-center">
-                <a href="javascript:void(0);" class="btn btn-xs btn-primary light me-1">Today</a>
-                <a href="javascript:void(0);" class="btn btn-xs btn-primary light me-1">Month</a>
-                <a href="javascript:void(0);" class="btn btn-xs btn-primary light">Year</a>
+                <h5 class="dashboard_bar">{{ __('vars.dashboard') }}</h5>
             </div>
         </div>
     </div>

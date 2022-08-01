@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,5 +31,13 @@ class UserProgress extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function scopeUserCourse(Builder $builder, User $user)
+    {
+        return $builder->where([
+            'course_id' => $this->id,
+            'user_id' => $user->id
+        ]);
     }
 }

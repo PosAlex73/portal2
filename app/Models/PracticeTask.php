@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Courses\Executable;
+use App\Models\Traits\UseShortDesc;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PracticeTask extends Model implements Executable
 {
-    use HasFactory;
+    use HasFactory, useShortDesc;
 
     protected $fillable = [
         'title', 'description', 'status', 'points'
