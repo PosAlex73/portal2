@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\PracticeCourse;
+use App\Models\PracticeTask;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
@@ -95,4 +97,18 @@ Breadcrumbs::for('tasks.edit', function (BreadcrumbTrail $trail, $task) {
 Breadcrumbs::for('tasks.create', function (BreadcrumbTrail $trail) {
     $trail->parent('tasks.index');
     $trail->push(__('vars.tasks_create'), route('tasks.create'));
+});
+
+Breadcrumbs::for('pcourses.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('vars.pcourses'), route('pcourses.index'));
+});
+
+Breadcrumbs::for('pcourses.edit', function (BreadcrumbTrail $trail, PracticeCourse $course) {
+    $trail->parent('pcourses.index');
+    $trail->push(__('pcourses.tasks'), route('pcourses.edit', $course->id));
+});
+
+Breadcrumbs::for('ptasks.index', function (BreadcrumbTrail $trail, PracticeTask $task) {
+    $trail->parent('pcourses.index');
+    $trail->push(__('vars.ptask'), route('ptasks.edit', ['ptask' => $task]));
 });
