@@ -3,6 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">{{ __('vars.edit_practice_task') }}</h4>
+            <a href="{{ route('pcourses.edit', ['pcourse' => $task->course]) }}" class="btn btn-primary">{{ __('vars.view_course') }}</a>
         </div>
         <div class="card-body">
             <div class="basic-form">

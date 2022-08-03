@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('practice_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
-            $table->text('description');
+            $table->text('description')->nullable(true);
             $table->text('data');
             $table->string('status', 1)->default(\App\Enums\CommonStatuses::DISABLED);
             $table->integer('points')->default(0)->nullable(true);

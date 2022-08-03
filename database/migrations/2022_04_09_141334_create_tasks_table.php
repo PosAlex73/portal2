@@ -19,8 +19,8 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
-            $table->text('description');
-            $table->string('short_description', 512);
+            $table->text('description')->nullable(true);
+            $table->string('short_description', 512)->nullable(true);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('image', 1024)->nullable(true)->default('');
@@ -35,7 +35,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
-            $table->text('description');
+            $table->text('description')->nullable(true);
             $table->text('data');
             $table->string('status', 1)->default(\App\Enums\CommonStatuses::DISABLED);
             $table->string('type', 32)->default(\App\Enums\Tasks\TaskTypes::THEORY);

@@ -27,7 +27,7 @@ class UpdatePracticeTaskRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:255',
-            'description' => 'required',
+            'description' => 'nullable|string',
             'status' => ['required', Rule::in(CommonStatuses::getAll())],
             'points' => 'integer',
         ];

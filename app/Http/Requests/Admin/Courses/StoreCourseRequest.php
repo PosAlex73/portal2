@@ -28,8 +28,8 @@ class StoreCourseRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:255',
-            'description' => 'required',
-            'short_description' => 'required',
+            'description' => 'string',
+            'short_description' => 'string',
             'category_id' => 'required|exists:categories,id',
             'status' => ['required', Rule::in(CourseStatuses::getAll())],
             'type' => ['required', Rule::in(CourseTypes::getAll())]

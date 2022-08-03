@@ -19,7 +19,7 @@ return new class extends Migration
         Schema::create('practice_courses', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
-            $table->text('description');
+            $table->text('description')->nullable(true);
             $table->string('short_description', 512);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
