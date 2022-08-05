@@ -2,7 +2,7 @@
 
 namespace App\Achievements;
 
-class AchiveChecker
+class AchieveChecker
 {
 
 }

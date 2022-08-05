@@ -16,8 +16,9 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $schema) {
             $schema->id();
-            $schema->string(255);
+            $schema->string('title',255);
             $schema->text('description');
+            $schema->string('achievement', 255);
             $schema->unsignedBigInteger('user_id');
             $schema->string('type', 1)->default(AchievementTypes::COMMON);
             $schema->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

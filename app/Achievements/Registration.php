@@ -4,7 +4,7 @@ namespace App\Achievements;
 
 use Illuminate\Support\Collection;
 
-class FirstCourse extends Achievement
+class Registration extends Achievement
 {
 
     public function checkCondition(Collection $data): bool
