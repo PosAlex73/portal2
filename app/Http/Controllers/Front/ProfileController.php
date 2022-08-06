@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Achievements\AchieveRepository;
 use App\Enums\CommonStatuses;
 use App\Enums\Settings\UserSettingTypes;
 use App\Enums\Thread\MessageStatuses;
@@ -25,6 +26,7 @@ class ProfileController extends Controller
         $news = AppNew::where('status', CommonStatuses::ACTIVE)->take(3)->get();
         $profile = $user->profile;
         $progress = $user->progress()->with('course')->get();
+        $achieves = AchieveRepository::getAllAchievements();
 
         $settings = $user->settings()->first(UserSettingTypes::getAll())->toArray();
 
@@ -34,14 +36,15 @@ class ProfileController extends Controller
                 'news' => $news,
                 'profile' => $profile,
                 'progress' => $progress,
-                'settings' => $settings
+                'settings' => $settings,
+                'achieves' => $achieves
             ]
         );
     }
 
     public function updateProfileData(UpdateUserProfileRequest $request, UserProfile $profile)
     {
-        $fields = $request->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
+        $fields = $request->safe()->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
         $profile->update($fields);
         Alert::set('status', __('vars.profile_was_updated'));
 

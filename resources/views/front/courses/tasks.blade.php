@@ -7,13 +7,12 @@
     <div class="card">
         <div class="card-header">
             @if($user_has_course)
-                <a href="{{ route('front.task', ['task' => $task]) }}">{{ $task->title }}</a>
+                <h5 class="title font-w600 mb-2">
+                    <a href="{{ route('front.practice_task', ['task' => $task]) }}" class="text-black">{{ $task->title }}</a>
+                </h5>
             @else
-                <p>{{ $task->title }}</p>
+                <h5 class="title font-w600 mb-2">{{ $task->title }}</h5>
             @endif
-        </div>
-        <div class="card-body">
-            <p class="card-text">{!! $task->short_description !!}</p>
         </div>
     </div>
 @empty

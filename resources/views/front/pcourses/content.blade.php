@@ -9,7 +9,11 @@
                 <h4>{{ $course->title }}</h4>
                 <p class="card-text">{{ $course->category->title }}</p>
                 <div class="d-table mb-2">
-                    <x-common.currency :value="$course->price" />
+                    @if($course->price > 0)
+                        <x-common.currency :value="$course->price" />
+                    @else
+                        <p>{{ __('vars.free_course') }}</p>
+                    @endif
                 </div>
                 <p class="card-text">{!! $course->description !!}</p>
                 @if(!$user_has_course)
