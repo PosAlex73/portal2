@@ -45,7 +45,7 @@ class PromotionController extends Controller
         $promotion = Promotion::create($fields);
         session()->flash('status', __('vars.promotion_was_created'));
 
-        return redirect(route('promotions.edit', ['promotions' => $promotion]));
+        return redirect(route('promotions.edit', ['promotion' => $promotion]));
     }
 
     /**

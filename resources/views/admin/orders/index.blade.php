@@ -26,7 +26,7 @@
                         <tr>
                             <td><strong>{{ $order->id }}</strong></td>
                             <td>{{ $order->user->full_name }}</td>
-                            <td>{{ __('vars.payments_' . $order->payment) }}</td>
+                            <td>{{ __('vars.payments_' . $order->payment::NAME) }}</td>
                             <td><x-common.currency :value="$order->total" /></td>
                             <td>{{ $order->created_at }}</td>
                             <td>
