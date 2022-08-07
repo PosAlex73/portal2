@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('plans.store') }}" method="post">
+                <form action="{{ route('plans.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @include('fields.input', ['name' => 'title'])
                     @include('fields.textarea', ['name' => 'description'])

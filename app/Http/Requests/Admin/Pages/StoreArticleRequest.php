@@ -30,7 +30,7 @@ class StoreArticleRequest extends FormRequest
             'title' => 'required|min:2|max:255',
             'text' => 'required',
             'status' => ['required', Rule::in(ArticleStatuses::getAll())],
-            'category_id' => 'required'
+            'category_id' => 'required',
         ];
     }
 }

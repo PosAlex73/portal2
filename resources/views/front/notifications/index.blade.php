@@ -28,7 +28,7 @@
                                             <tr>
                                                 <td><strong></strong></td>
                                                 <td>{{ $notification->title }}</td>
-                                                <td>{{ $notification->text }}</td>
+                                                <td>{!! $notification->text !!}</td>
                                                 @if($notification->url)
                                                     <td><a href="{{ $notification->url }}">{{ __('vars.check_notification') }}</a></td>
                                                 @else

@@ -6,7 +6,7 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img src="@if($course->image){{ asset('c' . $course->image) }} @else {{ asset('images/no_image.jpg') }} @endif" class="img-fluid rounded-start m-2" alt="..." width="250" height="250">
+                        <x-common.image :image="$course->image"/>
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">

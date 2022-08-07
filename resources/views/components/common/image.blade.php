@@ -1,3 +1,6 @@
-<div class="col-md-4">
-    <img src="{{ $course->image }}" class="img-fluid rounded-start" alt="...">
-</div>
+<img src="@if($image && !filter_var($image, FILTER_VALIDATE_URL)){{ asset('c' . $image) }}@elseif($image){{ $image }}@else{{ asset('images/no_image.jpg') }}@endif"
+     class="img-fluid rounded-start m-2"
+     alt="{{ $alt ?? '' }}"
+     width="{{ $w ?? 250 }}"
+     height="{{ $h ?? 250 }}"
+>

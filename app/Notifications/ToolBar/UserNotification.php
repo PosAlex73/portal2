@@ -32,8 +32,8 @@ class UserNotification
             $result->add(new static(
                 $notification->data['title'],
                 $notification->data['text'],
-                $notification->data['url'] ?? null,
-                $notification->data['icon'] ?? null,
+                $notification->data['url'] ?? '',
+                $notification->data['icon'] ?? '',
                 $notification->created_at,
                 $notification->id
             ));

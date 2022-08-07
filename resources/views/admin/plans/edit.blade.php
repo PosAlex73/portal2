@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('plans.update', ['plan' => $plan]) }}" method="post">
+                <form action="{{ route('plans.update', ['plan' => $plan]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     @include('fields.input', ['name' => 'title', 'value' => $plan->title])

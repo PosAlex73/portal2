@@ -42,10 +42,15 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $fields = $request->validated();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images/articles', 'public');
+            $fields['image'] = $image;
+        }
+
         $article = Article::create($fields);
         $request->session()->flash('status', __('vars.article_was_created'));
 
-        return redirect()->to(route('articles.edit', ['article' => $article]));
+        return redirect()->route('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -69,6 +74,11 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $fields = $request->validated();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('images/articles', 'public');
+            $fields['image'] = $image;
+        }
+
         $article->update($fields);
         $request->session()->flash('status', __('vars.article_was_updated'));
 

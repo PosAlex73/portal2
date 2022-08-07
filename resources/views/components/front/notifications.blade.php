@@ -20,7 +20,7 @@
                                     <img alt="image" width="50" src="images/avatar/1.jpg">
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="mb-1">{{ $notification->text }}</h6>
+                                    <h6 class="mb-1">{!! $notification->text !!}</h6>
                                     <small class="d-block">{{ $notification->url }}</small>
                                 </div>
                             </div>

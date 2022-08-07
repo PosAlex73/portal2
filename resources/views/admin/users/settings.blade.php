@@ -5,7 +5,7 @@
         <x-admin.user-tabs :user="$user" />
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('users.settings.update', ['user_settings' => $settings]) }}" method="post">
+                <form action="{{ route('users.settings.update', ['user_settings' => $settings]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

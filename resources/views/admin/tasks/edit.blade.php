@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="{{ route('tasks.update', ['task' => $task]) }}" method="post">
+                <form action="{{ route('tasks.update', ['task' => $task]) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     @include('fields.input', ['name' => 'title', 'value' => $task->title])

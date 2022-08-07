@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Pages;
 
+use App\Enums\Blog\ArticleStatuses;
 use App\Enums\Thread\MessageStatuses;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -28,7 +29,7 @@ class UpdateArticleRequest extends FormRequest
         return [
             'title' => 'required|min:2|max:255',
             'text' => 'required',
-            'status' => ['required', Rule::in(MessageStatuses::getAll())],
+            'status' => ['required', Rule::in(ArticleStatuses::getAll())],
         ];
     }
 }

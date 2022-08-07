@@ -1,7 +1,7 @@
 
 <div class="row">
     <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
-        <img class="img-fluid" src="{{ $course->image }}" alt="">
+        <x-common.image :image="$course->image" />
     </div>
     <div class="col-xl-9 col-lg-6 col-md-6 col-xxl-7 col-sm-12">
         <div class="product-detail-content">
