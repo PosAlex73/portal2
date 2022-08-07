@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Composers\Courses\TaskData;
+use App\Composers\Courses\Tests;
 use App\Composers\Users\UserStatuses;
 use App\Composers\Users\UserTypes;
 use App\Composers\Utils\Countries;
@@ -33,5 +34,6 @@ class ComposerProvider extends ServiceProvider
         View::composer(['admin.users.profile'], Countries::class);
 
         View::composer(['admin.tasks.*'], TaskData::class);
+        View::composer(['admin.questions.edit', 'admin.questions.create'], Tests::class);
     }
 }

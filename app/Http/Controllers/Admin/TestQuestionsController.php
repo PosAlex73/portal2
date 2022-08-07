@@ -20,7 +20,7 @@ class TestQuestionsController extends Controller
      */
     public function index()
     {
-        $questions = TestQuestion::paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+        $questions = TestQuestion::with(['task'])->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
         return view('admin.questions.index', [
             'questions' => $questions
@@ -70,10 +70,10 @@ class TestQuestionsController extends Controller
      * @param  \App\Models\TestQuestion  $testQuestion
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestQuestion $testQuestion)
+    public function edit(TestQuestion $question)
     {
         return view('admin.questions.edit', [
-            'question' => $testQuestion
+            'question' => $question
         ]);
     }
 
@@ -84,10 +84,10 @@ class TestQuestionsController extends Controller
      * @param  \App\Models\TestQuestion  $testQuestion
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreTestQuestionRequest $request, TestQuestion $testQuestion)
+    public function update(StoreTestQuestionRequest $request, TestQuestion $question)
     {
         $fields = $request->validated();
-        $testQuestion->update($fields);
+        $question->update($fields);
 
         Alert::flash('status', __('vars.test_updated'));
 

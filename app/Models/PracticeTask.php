@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Courses\Executable;
 use App\Enums\Tasks\TaskTypes;
 use App\Models\Traits\UseShortDesc;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,10 @@ class PracticeTask extends Model implements Executable
         }
 
         return $this->hasMany(TestQuestion::class);
+    }
+
+    public function scopeGetTests(Builder $builder)
+    {
+        return $builder->where('type', TaskTypes::TEST);
     }
 }

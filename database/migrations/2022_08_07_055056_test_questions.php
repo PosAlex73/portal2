@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('test_questions', function (Blueprint $schema) {
             $schema->id();
+            $schema->string('title');
             $schema->text('questions');
             $schema->integer('right_answer');
             $schema->string('status', 1);

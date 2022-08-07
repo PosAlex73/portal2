@@ -1,4 +1,5 @@
 @php
+    //additional_info
     if (empty($ai)) {
         $ai = '';
     }

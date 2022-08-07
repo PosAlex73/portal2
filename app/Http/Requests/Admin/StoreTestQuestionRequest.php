@@ -26,10 +26,11 @@ class StoreTestQuestionRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => 'string',
             'questions' => 'string',
             'right_answer' => 'integer',
             'status' => [Rule::in(CommonStatuses::getAll())],
-            'practice_task' => 'exists:practice_tasks,id'
+            'practice_task_id' => 'exists:practice_tasks,id'
         ];
     }
 }
