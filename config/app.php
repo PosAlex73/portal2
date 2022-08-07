@@ -1,5 +1,8 @@
 <?php
 
+use App\Facades\Alert;
+use App\Facades\Order;
+use App\Facades\Set;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -196,9 +199,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Set' => \App\Facades\Set::class,
-        'Alert' => \App\Facades\Alert::class,
-        'Order' => \App\Facades\Order::class,
+        'Set' => Set::class,
+        'Alert' => Alert::class,
+        'Order' => Order::class,
+        'Redis' => Illuminate\Support\Facades\Redis::class,
     ])->toArray(),
 
 ];

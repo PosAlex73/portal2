@@ -4,6 +4,7 @@ namespace App\Courses\Other;
 
 use App\Courses\Course;
 use App\Enums\Tasks\TaskTypes;
+use App\Tasks\Theory;
 use Illuminate\Support\Collection;
 
 class DockerBasic extends Course
@@ -14,54 +15,18 @@ class DockerBasic extends Course
     public static function assignTasks(): Collection
     {
         return collect([
-            'task1' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task2' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task3' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task4' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task5' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task6' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task7' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task8' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task9' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task10' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task11' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
-            'task12' => [
-                'type' => TaskTypes::THEORY,
-                'points' => 1
-            ],
+            'task1' => fn () => new Theory(),
+            'task2' => fn () => new Theory(),
+            'task3' => fn () => new Theory(),
+            'task4' => fn () => new Theory(),
+            'task5' => fn () => new Theory(),
+            'task6' => fn () => new Theory(),
+            'task7' => fn () => new Theory(),
+            'task8' => fn () => new Theory(),
+            'task9' => fn () => new Theory(),
+            'task10' => fn() => new Theory(),
+            'task11' => fn () => new Theory(),
+            'task12' => fn () => new Theory(),
         ]);
     }
 }

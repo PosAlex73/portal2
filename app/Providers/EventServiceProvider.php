@@ -5,12 +5,14 @@ namespace App\Providers;
 use App\Events\CourseCompleted;
 use App\Events\NewMessage;
 use App\Events\Purchase;
+use App\Events\Redis\ViewCourse;
 use App\Events\TaskDone;
 use App\Events\UserAchivement;
 use App\Listeners\AchivementListener;
 use App\Listeners\CourseCompleteListener;
 use App\Listeners\NewMessageListener;
 use App\Listeners\PurchaseListener;
+use App\Listeners\Redis\ViewCourseRedis;
 use App\Listeners\TaskDoneListener;
 use App\Models\Article;
 use App\Models\ThreadMessage;
@@ -47,6 +49,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserAchivement::class => [
             AchivementListener::class
+        ],
+        ViewCourse::class => [
+            ViewCourseRedis::class
         ]
     ];
 

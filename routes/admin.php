@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PracticeTaskController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\TestQuestionsController;
 use App\Http\Controllers\Admin\ThreadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserProfileController;
@@ -41,6 +42,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('plans', PlanController::class);
     Route::resource('users', UserController::class);
     Route::resource('tasks', TaskController::class);
+    Route::resource('questions', TestQuestionsController::class);
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');

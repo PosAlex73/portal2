@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Courses\CourseStats;
 use App\Enums\Settings\SettingTypes;
+use App\Events\Redis\ViewCourse;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\PracticeCourse;
 use App\Models\UserProgress;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class PracticeController extends Controller
 {
@@ -31,7 +33,7 @@ class PracticeController extends Controller
             $user_has_course = UserProgress::UserCourse($user)->first();
         }
 
-//        dd($pcourse->tasks()->first());
+        Event::dispatch(new ViewCourse($pcourse));
 
         return view('front.pcourses.pcourse', [
             'course' => $pcourse,

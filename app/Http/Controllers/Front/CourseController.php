@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Courses\CourseStats;
 use App\Enums\Courses\CourseStatuses;
 use App\Enums\Settings\SettingTypes;
+use App\Events\Redis\ViewCourse;
 use App\Facades\Alert;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,7 @@ use App\Models\UserProgress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class CourseController extends Controller
 {
@@ -35,6 +37,8 @@ class CourseController extends Controller
             $user = Auth::user();
             $user_has_course = UserProgress::where('user_id', $user->id)->where('course_id', $course->id)->first();
         }
+
+        Event::dispatch(new ViewCourse($course));
 
         return view('front.courses.course', [
             'course' => $course,

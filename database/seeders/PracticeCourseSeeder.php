@@ -32,15 +32,22 @@ class PracticeCourseSeeder extends Seeder
     public function run()
     {
         $f = $this->faker;
+        $pcourse_categories = CourseCategories::getAll();
 
-        $category = Category::factory()->create();
+        $categories = collect();
+        foreach ($pcourse_categories as $category) {
+            $categories[] = Category::create([
+                'title' => $category,
+                'status' => CommonStatuses::ACTIVE
+            ]);
+        }
 
         PracticeCourse::factory()->create([
             'id' => 1,
             'title' => __('vars.php_base'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => $category->id,
+            'category_id' => $categories->random()->id,
             'class' => BasePhpCourse::class,
         ]);
 
@@ -49,7 +56,7 @@ class PracticeCourseSeeder extends Seeder
             'title' => __('vars.php_types'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => $category->id,
+            'category_id' => $categories->random()->id,
             'class' => TypesCourse::class
         ]);
 
@@ -59,19 +66,21 @@ class PracticeCourseSeeder extends Seeder
             'title' => __('vars.base_arrays'),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => $category->id,
+            'category_id' => $categories->random()->id,
             'class' => ArraysCourse::class
         ]);
 
         foreach (ArraysCourse::assignTasks() as $array_index => $task) {
+            $task = $task();
+
             PracticeTask::create([
                 'title' => $f->text(10),
                 'description' => $f->text(200),
                 'status' => CommonStatuses::ACTIVE,
-                'points' => $task['points'],
+                'points' => $task->points,
                 'practice_course_id' => 3,
                 'array_index' => $array_index,
-                'type' => $task['type'],
+                'type' => $task->type,
                 'data' => ''
             ]);
         }
@@ -81,19 +90,20 @@ class PracticeCourseSeeder extends Seeder
             'title' => __('vars.' . DockerBasic::$course_id),
             'description' => $f->text(500),
             'short_description' => $f->text(150),
-            'category_id' => $category->id,
+            'category_id' => $categories->random()->id,
             'class' => DockerBasic::class
         ]);
 
         foreach (DockerBasic::assignTasks() as $array_index => $task) {
+            $task = $task();
             PracticeTask::create([
                 'title' => $f->text(10),
                 'description' => $f->text(200),
                 'status' => CommonStatuses::ACTIVE,
-                'points' => $task['points'],
+                'points' => $task->points,
                 'practice_course_id' => 4,
                 'array_index' => $array_index,
-                'type' => $task['type'],
+                'type' => $task->type,
                 'data' => ''
             ]);
         }
