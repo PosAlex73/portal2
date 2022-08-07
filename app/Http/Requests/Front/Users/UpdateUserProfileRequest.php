@@ -26,7 +26,7 @@ class UpdateUserProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'nullable|integer|max:32',
+            'phone' => 'nullable|integer',
             'contacted_email' => 'nullable|email',
             'age' => 'nullable|integer|min:15|max:75',
             'country' => [Rule::in(array_keys(Countries::getCountiesList()))],

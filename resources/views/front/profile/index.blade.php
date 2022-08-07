@@ -18,7 +18,7 @@
                                 <p>{{ __('vars.student') }}</p>
                             </div>
                             <div class="profile-email px-2 pt-2">
-                                <h4 class="text-muted mb-0">{{ __( $user->user_profile->contacted_email ?? __('vars.email_no_provided')) }}</h4>
+                                <h4 class="text-muted mb-0">{{ __( $user->profile->contacted_email ?? __('vars.email_no_provided')) }}</h4>
                                 <p>{{ __('vars.email') }}</p>
                             </div>
                             <div class="dropdown ms-auto">
@@ -45,10 +45,11 @@
                             <div class="profile-interest">
                                 <h5 class="text-primary d-inline">{{ __('vars.achivements') }}</h5>
                                 <div class="row mt-4 sp4" id="lightgallery">
-                                    {{-- TODO add achives}}
-{{--                                    <a href="images/profile/2.jpg" data-exthumbimage="images/profile/2.jpg" data-src="images/profile/2.jpg" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">--}}
-{{--                                        <img src="images/profile/2.jpg" alt="" class="img-fluid">--}}
-{{--                                    </a>--}}
+                                    @forelse($achieves as $achieve)
+
+                                    @empty
+                                        <p>{{ __('vars.you_still_not_have_achieves') }}</p>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

@@ -44,18 +44,9 @@ class ProfileController extends Controller
 
     public function updateProfileData(UpdateUserProfileRequest $request, UserProfile $profile)
     {
-        $fields = $request->safe()->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
+        $fields = $request->validated();
         $profile->update($fields);
         Alert::set('status', __('vars.profile_was_updated'));
-
-        return redirect()->back();
-    }
-
-    public function updateUserData(UpdateUserRequest $request, User $user)
-    {
-        $fields = $request->safe()->only(['first_name', 'last_name', 'email']);
-        $user->update($fields);
-        Alert::set('status', __('vars.user_was_updated'));
 
         return redirect()->back();
     }

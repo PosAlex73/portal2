@@ -38,7 +38,6 @@ Route::get('/search', [SearchController::class, 'search'])->name('front.search')
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {
     Route::get('/', [ProfileController::class, 'profile'])->name('front.user');
-    Route::post('/profile/{user}', [ProfileController::class, 'updateUserData'])->name('front.user.update');
     Route::get('/messages/', [ProfileController::class, 'messages'])->name('front.messages');
     Route::post('/messages/', [ProfileController::class, 'sendMessage'])->name('front.send_message');
     Route::post('/profile/{profile}', [ProfileController::class, 'updateProfileData'])->name('front.profile.update');
@@ -65,6 +64,7 @@ Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
 
 
     Route::post('/check_task/{task}', [TaskController::class, 'checkTask'])->name('front.task.check');
+    Route::post('/check_task/{task}', [PracticeTaskController::class, 'checkTask'])->name('front.ptask.check');
     Route::delete('/destroy_course/{course}', [CourseController::class, 'dropProgress'])->name('front.drop_course');
 });
 

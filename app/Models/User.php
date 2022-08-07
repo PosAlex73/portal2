@@ -84,4 +84,9 @@ class User extends Authenticatable
     {
         return trim($this->first_name . ' ' . $this->lastname);
     }
+
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
 }

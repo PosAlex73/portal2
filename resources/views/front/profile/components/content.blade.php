@@ -10,13 +10,13 @@
     </div>
     <div id="about-me" class="tab-pane fade active show">
         <div class="profile-personal-info">
-            <form action="{{ route('front.user.update', ['user' => $user]) }}" method="post">
+            <form action="{{ route('front.profile.update', ['profile' => $profile]) }}" method="post">
                 @csrf
                 <div class="mb-2"></div>
                 @include('fields.input', ['name' => 'first_name', 'value' => $user->first_name])
                 @include('fields.input', ['name' => 'last_name', 'value' => $user->last_name])
                 @include('fields.input', ['name' => 'phone', 'value' => $profile->phone])
-                @include('fields.email', ['name' => 'email', 'value' => $profile->contacted_email])
+                @include('fields.email', ['name' => 'contacted_email', 'value' => $profile->contacted_email])
                 @include('fields.number', ['name' => 'age', 'value' => $profile->age])
                 @include('fields.number', ['name' => 'experience', 'value' => $profile->experience])
                 @include('fields.textarea', ['name' => 'about', 'value' => $profile->about])
