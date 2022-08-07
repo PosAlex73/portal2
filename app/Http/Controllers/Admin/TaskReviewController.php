@@ -41,7 +41,7 @@ class TaskReviewController extends Controller
      */
     public function store(StoreTaskReviewRequest $request)
     {
-        $fields = $request->safe()->only(['task_id', 'user_id', 'text']);
+        $fields = $request->validated();
         $task_review = TaskReview::create($fields);
         session()->flash('status', __('vars.review_was_created'));
 
@@ -79,7 +79,7 @@ class TaskReviewController extends Controller
      */
     public function update(UpdateTaskReviewRequest $request, TaskReview $taskReview)
     {
-        $fields = $request->safe()->only(['task_id', 'user_id', 'text']);
+        $fields = $request->validated();
         $taskReview->update($fields);
         session()->flash('status', __('vars.review_was_updated'));
 

@@ -32,7 +32,7 @@ class ArticleCommentController extends Controller
      */
     public function store(StoreArticleCommentRequest $request, Article $article)
     {
-        $fields = $request->safe()->only(['user_id', 'status', 'text']);
+        $fields = $request->validated();
         $article->comments()->create($fields);
 
         $request->session()->flash('status', __('vars.comment_was_created'));
@@ -49,7 +49,7 @@ class ArticleCommentController extends Controller
      */
     public function update(UpdateArticleCommentRequest $request, ArticleComment $articleComment)
     {
-        $fields = $request->safe()->only(['user_id', 'status', 'text']);
+        $fields = $request->validated();
         $articleComment->update($fields);
 
         $request->session()->flash('status', __('vars.comment_was_updated'));

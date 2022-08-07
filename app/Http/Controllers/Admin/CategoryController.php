@@ -41,7 +41,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'status']);
+        $fields = $request->validated();
         $category = Category::create($fields);
         session()->flash('status', __('vats.category_was_created'));
 
@@ -68,7 +68,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $fields = $request->safe()->only(['title', 'status']);
+        $fields = $request->validated();
         $category->update($fields);
         session()->flash('status', __('vars.category_was_updated'));
 

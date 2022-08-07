@@ -14,6 +14,7 @@
                     <tr>
                         <th style="width:80px;"><strong>#</strong></th>
                         <th><strong>{{ __('vars.title') }}</strong></th>
+                        <th><strong>{{ __('vars.position') }}</strong></th>
                         <th><strong>{{ __('vars.status') }}</strong></th>
                         <th></th>
                     </tr>
@@ -23,6 +24,7 @@
                         <tr>
                             <td><strong>{{ $category->id }}</strong></td>
                             <td>{{ $category->title }}</td>
+                            <td>{{ $category->position }}</td>
                             <td>
                                 <x-common.common-statuses-view :status="$category->status" />
                             </td>

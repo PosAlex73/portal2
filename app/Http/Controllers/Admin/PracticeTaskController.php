@@ -21,7 +21,11 @@ class PracticeTaskController extends Controller
     public function edit(PracticeTask $ptask)
     {
         $course = $ptask->pcourse->class;
-        $data = $course::getTaskOptions($ptask->array_index);
+        $data = [];
+
+        if ($ptask->type === TaskTypes::TEST) {
+            $data['tests'] = $ptask->questions;
+        }
 
         return view('admin.ptasks.edit', [
             'task' => $ptask,

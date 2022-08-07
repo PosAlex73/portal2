@@ -41,7 +41,7 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'text', 'status', 'url', 'category_id', 'image']);
+        $fields = $request->validated();
         $page = Page::create($fields);
         session()->flash('status', __('vars.page_was_created'));
 
@@ -79,7 +79,7 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
-        $fields = $request->safe()->only(['title', 'text', 'status', 'url', 'category_id', 'image']);
+        $fields = $request->validated();
         $page->update($fields);
         session()->flash('status', __('vars.page_was_updated'));
 

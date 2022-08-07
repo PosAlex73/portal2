@@ -41,7 +41,7 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        $fields = $request->validated();
         $article = Article::create($fields);
         $request->session()->flash('status', __('vars.article_was_created'));
 
@@ -68,7 +68,7 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        $fields = $request->validated();
         $article->update($fields);
         $request->session()->flash('status', __('vars.article_was_updated'));
 

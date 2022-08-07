@@ -41,7 +41,7 @@ class PromotionController extends Controller
      */
     public function store(StorePromotionRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $fields = $request->validated();
         $promotion = Promotion::create($fields);
         session()->flash('status', __('vars.promotion_was_created'));
 
@@ -79,7 +79,7 @@ class PromotionController extends Controller
      */
     public function update(UpdatePromotionRequest $request, Promotion $promotion)
     {
-        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $fields = $request->validated();
         $promotion->update($fields);
         session()->flash('status', __('vars.promotion_was_updated'));
 

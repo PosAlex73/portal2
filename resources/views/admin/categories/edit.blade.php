@@ -10,6 +10,7 @@
                     @csrf
                     @method('PUT')
                     @include('fields.input', ['name' => 'title', 'value' => $category->title])
+                    @include('fields.number', ['name' => 'position', 'value' => $category->position])
                     <x-common.common-statuses-select :selected="$category->status"/>
                     @include('buttons.submit')
                 </form>

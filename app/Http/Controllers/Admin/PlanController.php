@@ -41,7 +41,7 @@ class PlanController extends Controller
      */
     public function store(StorePlanRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'price']);
+        $fields = $request->validated();
         $plan = Plan::create($fields);
         session()->flash('status', __('vars.plan_was_created'));
 
@@ -79,7 +79,7 @@ class PlanController extends Controller
      */
     public function update(UpdatePlanRequest $request, Plan $plan)
     {
-        $fields = $request->safe()->only(['title', 'description', 'short_description', 'image', 'status', 'price']);
+        $fields = $request->validated();
         $plan->update($fields);
         session()->flash('status', __('vars.plan_was_updated'));
 

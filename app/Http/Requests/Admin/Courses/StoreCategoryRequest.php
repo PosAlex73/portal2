@@ -27,7 +27,8 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:255',
-            'status' => ['required', Rule::in(CommonStatuses::getAll())]
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'position' => 'integer'
         ];
     }
 }

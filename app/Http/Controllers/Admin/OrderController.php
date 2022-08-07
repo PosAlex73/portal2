@@ -41,7 +41,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $fields = $request->safe()->only(['user_id', 'payment', 'total', 'data', 'status']);
+        $fields = $request->validated();
         $order = Order::create($fields);
         session()->flash('status', __('vars.order_was_created'));
 
@@ -68,7 +68,7 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        $fields = $request->safe()->only(['user_id', 'payment', 'total', 'data', 'status']);
+        $fields = $request->validated();
         $order->update($fields);
         session()->flash('status', __('vars.order_was_updated'));
 

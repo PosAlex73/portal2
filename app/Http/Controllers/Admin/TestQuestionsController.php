@@ -91,7 +91,7 @@ class TestQuestionsController extends Controller
 
         Alert::flash('status', __('vars.test_updated'));
 
-        return redirect()->route('questions.index');
+        return back();
     }
 
     /**

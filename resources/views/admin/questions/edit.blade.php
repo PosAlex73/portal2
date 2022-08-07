@@ -3,6 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">{{ __('vars.edit_test') }}</h4>
+            <a class="btn btn-secondary" href="{{ route('ptasks.edit', ['ptask' => $question->practice_task_id]) }}">{{ __('vars.view_task') }}</a>
         </div>
         <div class="card-body">
             <div class="basic-form">

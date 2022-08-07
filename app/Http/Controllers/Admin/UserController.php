@@ -42,13 +42,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $fields = $request->safe()->only([
-            'first_name',
-            'last_name',
-            'type',
-            'status',
-            'email',
-            'password']);
+        $fields = $request->validated();
 
         $fields['password'] = Hash::make($fields['password']);
         $user = User::create($fields);
@@ -88,12 +82,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $fields = $request->safe()->only([
-            'first_name',
-            'last_name',
-            'type',
-            'status',
-            'email']);
+        $fields = $request->validated();
 
         $user->update($fields);
         session()->flash('status', __('vars.user_was_updated'));

@@ -9,6 +9,7 @@
                 <form action="{{ route('categories.store') }}" method="post">
                     @csrf
                     @include('fields.input', ['name' => 'title'])
+                    @include('fields.number', ['name' => 'position', 'value' => $category->position])
                     <x-common.common-statuses-select />
                     @include('buttons.submit')
                 </form>

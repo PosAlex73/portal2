@@ -60,7 +60,7 @@ class ThreadController extends Controller
 
     public function sendMessage(StoreThreadMessageRequest $request, Thread $thread)
     {
-        $fields = $request->safe()->only(['message']);
+        $fields = $request->validated();
         $user = $thread->user;
 
         $message = $thread->messages()->create([

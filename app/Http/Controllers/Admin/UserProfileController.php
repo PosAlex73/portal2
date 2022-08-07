@@ -31,7 +31,7 @@ class UserProfileController extends Controller
      */
     public function update(UpdateUserProfileRequest $request, UserProfile $profile)
     {
-        $fields = $request->safe()->only(['phone', 'contacted_email', 'age', 'country', 'experience', 'about']);
+        $fields = $request->validated();
         $profile->update($fields);
         session()->flash('status', __('vars.profile_was_updated'));
 
