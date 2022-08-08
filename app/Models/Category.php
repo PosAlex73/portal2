@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\CommonStatuses;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +28,10 @@ class Category extends Model
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    public function scopeActive(Builder $builder)
+    {
+        return $builder->where('status', CommonStatuses::ACTIVE);
     }
 }
