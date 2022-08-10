@@ -46,20 +46,11 @@ class PracticeTaskController extends Controller
 
         $result = UserProgressHandler::handleResult($request, $course, $task);
 
-        //FIXME refactor to another service
-        if ($task->type === TaskTypes::TEST && is_array($result)) {
-            $check_test = UserProgressHandler::checkTestResults($result);
-
-            if (!empty($check_test)) {
-
-            }
-        }
-
-        if ($result) {
+        if ($result->isResult()) {
             Alert::flash('status', __('vars.task_was_done'));
             event(new TaskDone($user, $task, $course));
         }
 
-        return redirect()->to(route('front.task', ['task' => $task]));
+        return redirect()->to(route('front.practice_task', ['task' => $task]));
     }
 }

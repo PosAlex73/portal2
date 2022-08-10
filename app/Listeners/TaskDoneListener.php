@@ -39,8 +39,12 @@ class TaskDoneListener
 
         $user_progress = UserProgress::where([
             'user_id' => $this->user->id,
-            'course_id' => $this->course->id
+            'course_id' => $this->course->id,
         ])->first();
+
+        if (empty($user_progress->data)) {
+            $user_progress->data = ['tasks' => []];
+        }
 
         if (empty($user_progress)) {
             throw new Exception(__('Course not found'));

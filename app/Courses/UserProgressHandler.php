@@ -11,15 +11,20 @@ use Mockery\Exception;
 
 class UserProgressHandler
 {
-    public static function handleResult(Request $request, Progressive $course, Executable $task)
+    public static function handleResult(Request $request, Progressive $course, Executable $task): UserResult
     {
         if ($task->type === TaskTypes::THEORY) {
-            return true;
+            return new UserResult(
+                UserResult::TASK_DONE,
+                []
+            );
         } elseif ($task->type === TaskTypes::TEST) {
             return static::checkTest($request, $task);
         } elseif ($task->type === TaskTypes::PRACTICE) {
             return static::checkPractice($request, $task);
         }
+
+        return new UserResult(UserResult::TASK_FAILED);
     }
 
     public static function checkDoneTask(Executable $task, User $user)
@@ -30,10 +35,6 @@ class UserProgressHandler
             ->where('user_id', $user->id)
             ->first();
 
-//            UserProgress::where([
-//            'user_id' => $user->id,
-//            'course_id' => $course->id
-//        ])->first();
 
         if (empty($user_progress)) {
             throw new Exception(__('vars.course_not_found'));
@@ -42,33 +43,35 @@ class UserProgressHandler
         return (array_key_exists($task->id, $user_progress->data['tasks'] ?? []));
     }
 
-    protected static function checkTest(Request $request, PracticeTask $task): bool|array
+    protected static function checkTest(Request $request, PracticeTask $task): UserResult
     {
         /** @var Collection $questions */
         $questions = $task->questions;
         $user_answers = $request->get('result');
 
         if (empty($user_answers)) {
-            return false;
+            return new UserResult(UserResult::TASK_FAILED);
         }
 
+        $result = [];
         foreach ($user_answers as $test_id => $answer) {
             $current_test = $questions->where('id', $test_id)->first();
             $result[$test_id] = (int) $answer === $current_test->right_answer;
         }
 
-        return $result;
+        $result = array_filter($result, fn ($item) => $item);
+
+        if (!empty($result)) {
+            $user_result = new UserResult(UserResult::TASK_FAILED, ['failed_answers' => $result]);
+        } else {
+            $user_result = new UserResult(UserResult::TASK_DONE);
+        }
+
+        return $user_result;
     }
 
-    protected static function checkPractice(Request $request, Executable $task): bool
+    protected static function checkPractice(Request $request, Executable $task): UserResult
     {
-
-    }
-
-    public static function checkTestResults(array $result): array
-    {
-        $wrong_answers = array_filter($result, fn ($answer) => $answer);
-
-        return $wrong_answers;
+        return new UserResult(UserResult::TASK_DONE);
     }
 }
