@@ -5,6 +5,7 @@ namespace App\Courses;
 use App\Enums\Tasks\TaskTypes;
 use App\Models\PracticeTask;
 use App\Models\User;
+use App\Utils\HttpService\PracticeChecker;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Mockery\Exception;
@@ -59,7 +60,7 @@ class UserProgressHandler
             $result[$test_id] = (int) $answer === $current_test->right_answer;
         }
 
-        $result = array_filter($result, fn ($item) => $item);
+        $result = array_filter($result, fn ($item) => !$item);
 
         if (!empty($result)) {
             $user_result = new UserResult(UserResult::TASK_FAILED, ['failed_answers' => $result]);
@@ -72,6 +73,9 @@ class UserProgressHandler
 
     protected static function checkPractice(Request $request, Executable $task): UserResult
     {
+        $practice_checker = new PracticeChecker();
+
+
         return new UserResult(UserResult::TASK_DONE);
     }
 }

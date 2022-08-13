@@ -49,6 +49,8 @@ class PracticeTaskController extends Controller
         if ($result->isResult()) {
             Alert::flash('status', __('vars.task_was_done'));
             event(new TaskDone($user, $task, $course));
+        } else {
+            Alert::error('status', __('vars.some_q_are_wrong'));
         }
 
         return redirect()->to(route('front.practice_task', ['task' => $task]));

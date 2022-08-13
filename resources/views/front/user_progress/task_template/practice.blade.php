@@ -8,17 +8,28 @@
     }
 </style>
 
+<form action="{{ route('front.ptask.check', ['task' => $task]) }}" method="post">
+    @csrf
+    <div id="monaco-editor" class=" mb-2"></div>
+    <textarea name="result" style="display: none" id="result" cols="30" rows="10"></textarea>
+    @include('buttons.submit')
+</form>
 
-<div id="monaco-editor"></div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         const editor = ace.edit("monaco-editor");
+        const textarea = document.getElementById('result')
+
         editor.setTheme("ace/theme/dracula");
         editor.session.setMode("ace/mode/php");
         editor.setOptions({
             maxLines: 75,
             minLines: 25,
+        })
+
+        editor.getSession().on('change', function (){
+            textarea.innerText = editor.getSession().getValue()
         })
     });
 </script>
