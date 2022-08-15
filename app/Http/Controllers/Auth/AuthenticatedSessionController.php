@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,6 +34,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        Log::info('User logged: ' . Auth::user()->full_name);
+
         if (in_array(Auth::user()->type, UserTypes::getAdminTypes())) {
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
         } else {
@@ -48,6 +51,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        Log::info('User logout:' . Auth::user()->full_name);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
