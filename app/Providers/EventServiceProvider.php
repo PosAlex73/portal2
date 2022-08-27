@@ -15,11 +15,13 @@ use App\Listeners\PurchaseListener;
 use App\Listeners\Redis\ViewCourseRedis;
 use App\Listeners\RegisterWelcome;
 use App\Listeners\TaskDoneListener;
+use App\Models\AppNew;
 use App\Models\Article;
 use App\Models\ThreadMessage;
 use App\Models\User;
 use App\Observers\ArticleObserver;
 use App\Observers\MessageObserver;
+use App\Observers\NewsObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -66,6 +68,7 @@ class EventServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Article::observe(ArticleObserver::class);
+        AppNew::observe(NewsObserver::class);
     }
 
     /**

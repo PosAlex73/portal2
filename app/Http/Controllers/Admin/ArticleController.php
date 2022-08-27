@@ -50,6 +50,8 @@ class ArticleController extends Controller
         $article = Article::create($fields);
         $request->session()->flash('status', __('vars.article_was_created'));
 
+
+
         return redirect()->route('articles.edit', ['article' => $article]);
     }
 

@@ -22,6 +22,7 @@ class Sidebar implements IMenu
             new Title(__('vars.commerce'), 'box'),
             new Group(__('vars.commerce'), new Collection(['plans.index', 'orders.index', 'promotions.index']), 'activity'),
             new Title(__('other'), 'box'),
+            new Link(__('vars.news'), 'appnews.index', 'box'),
             new Link(__('vars.categories'), 'categories.index'),
             new Link(__('vars.blog'), 'articles.index', 'box'),
             new Link(__('vars.pages'), 'pages.index', 'box'),

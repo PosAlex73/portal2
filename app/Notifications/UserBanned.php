@@ -7,20 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewPlaced extends Notification
+class UserBanned extends Notification
 {
     use Queueable;
-
-    public $new;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($new)
+    public function __construct()
     {
-        $this->new = $new;
+        //
     }
 
     /**
@@ -31,7 +29,7 @@ class NewPlaced extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -42,12 +40,9 @@ class NewPlaced extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = route('front.news.show', ['new' => $this->new]);
-
         return (new MailMessage)
-            ->greeting(__('vars.hello_user', ['user' => $notifiable->first_name]))
-            ->line(__('vars.new_was_published'))
-            ->action(__('vars.show_new'), $url);
+                    ->greeting(__('vars.hello_user', ['user' => $notifiable->name]))
+                    ->line(__('vars.your_account_was_banned'));
     }
 
     /**
@@ -59,7 +54,7 @@ class NewPlaced extends Notification
     public function toArray($notifiable)
     {
         return [
-
+            //
         ];
     }
 }

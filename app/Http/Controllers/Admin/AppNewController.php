@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Alerts\Alert;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAppNewRequest;
 use App\Http\Requests\UpdateAppNewRequest;
@@ -16,7 +19,11 @@ class AppNewController extends Controller
      */
     public function index()
     {
-        //
+        $news = AppNew::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.news.index', [
+            'news' => $news
+        ]);
     }
 
     /**
@@ -26,7 +33,7 @@ class AppNewController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.news.create');
     }
 
     /**
@@ -37,7 +44,12 @@ class AppNewController extends Controller
      */
     public function store(StoreAppNewRequest $request)
     {
-        //
+        $fields = $request->validated();
+        AppNew::create($fields);
+
+        Alert::flash('status', __('vars.new_was_created'));
+
+        return redirect()->route('appnews.index');
     }
 
     /**
@@ -59,7 +71,7 @@ class AppNewController extends Controller
      */
     public function edit(AppNew $appNew)
     {
-        //
+        return view('admin.news.edit', ['new' => $appNew]);
     }
 
     /**
@@ -71,7 +83,12 @@ class AppNewController extends Controller
      */
     public function update(UpdateAppNewRequest $request, AppNew $appNew)
     {
-        //
+        $fields = $request->validated();
+        $appNew->update($fields);
+
+        Alert::flash('status', __('vars.new_was_update'));
+
+        return redirect()->route('appnews.index');
     }
 
     /**
@@ -82,6 +99,10 @@ class AppNewController extends Controller
      */
     public function destroy(AppNew $appNew)
     {
-        //
+        $appNew->delete();
+
+        Alert::flash('status', __('news_was_deleted'));
+
+        return back();
     }
 }

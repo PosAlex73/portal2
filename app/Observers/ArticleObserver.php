@@ -21,7 +21,9 @@ class ArticleObserver
      */
     public function created(Article $article)
     {
-        $this->notifyUsers($article);
+        if ($article->status === ArticleStatuses::ACTIVE) {
+            $this->notifyUsers($article);
+        }
     }
 
     /**
@@ -32,7 +34,9 @@ class ArticleObserver
      */
     public function updated(Article $article)
     {
-        $this->notifyUsers($article);
+        if ($article->status === ArticleStatuses::ACTIVE) {
+            $this->notifyUsers($article);
+        }
     }
 
     /**

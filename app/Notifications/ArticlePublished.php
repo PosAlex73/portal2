@@ -42,10 +42,12 @@ class ArticlePublished extends Notification
      */
     public function toMail($notifiable)
     {
+        $article_url = route('front.blog.article', ['article' => $this->article]);
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting(__('vars.hello', ['user' => $notifiable->first_name]))
+                    ->line(__('vars.new_article_published'))
+                    ->action(__('vars.new_article'), $article_url);
     }
 
     /**

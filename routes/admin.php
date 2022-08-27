@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppNewController;
 use App\Http\Controllers\Admin\ArticleCommentController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -43,6 +44,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('questions', TestQuestionsController::class);
+    Route::resource('appnews', AppNewController::class);
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');

@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Enums\Users\UserStatuses;
 use App\Models\User;
+use App\Notifications\UserBanned;
 
 class UserObserver
 {
@@ -27,7 +29,9 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        //
+        if ($user->status === UserStatuses::BANNED) {
+            $user->notify(new UserBanned());
+        }
     }
 
     /**
