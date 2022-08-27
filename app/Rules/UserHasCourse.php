@@ -18,12 +18,8 @@ class UserHasCourse implements Rule
     public function passes($attribute, $value)
     {
         $user_id = Auth::user()->id;
-        $course = UserProgress::where([
-            'course_id' => $value,
-            'user_id' => $user_id
-        ])->first();
 
-        return empty($course);
+        return \App\Utils\Checkers\UserHasCourse::UserHasCourse($user_id, $value);
     }
 
     /**

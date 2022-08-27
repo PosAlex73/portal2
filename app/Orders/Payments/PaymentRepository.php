@@ -6,8 +6,9 @@ use Illuminate\Support\Collection;
 
 class PaymentRepository
 {
-    public function __construct(protected Collection $payments)
-    {}
+    public function __construct(
+        protected Collection $payments
+    ){}
 
     public function getPayments(): Collection
     {

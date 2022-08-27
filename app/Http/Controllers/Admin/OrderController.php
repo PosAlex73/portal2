@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Orders\OrderTypes;
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Commercial\StoreOrderRequest;
 use App\Http\Requests\Admin\Commercial\UpdateOrderRequest;
 use App\Models\Order;
+use App\Models\PracticeCourse;
+use App\Models\User;
+use App\Utils\Checkers\UserHasCourse;
 
 class OrderController extends Controller
 {
@@ -37,13 +41,32 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Admin\Commercial\StoreOrderRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreOrderRequest $request)
     {
         $fields = $request->validated();
-        $order = Order::create($fields);
-        session()->flash('status', __('vars.order_was_created'));
+
+        if (!UserHasCourse::UserHasCourse($fields['user_id'], $fields['course'])) {
+            return back()->withErrors([
+                __('vars.user_already_has_course')
+            ]);
+        }
+
+        $order_data['user'] = User::find($fields['user_id']);
+        $order_data['id'] = PracticeCourse::find($fields['course'])->id;
+        $order_data['payment'] = $fields['payment'];
+        $order_data['type'] = OrderTypes::PCOURSE;
+
+        $order = \App\Facades\Order::handleOrder($order_data);
+
+        if (empty($order)) {
+            return back()->withErrors([
+                __('vars.entity_not_provided')
+            ]);
+        } else {
+            session()->flash('status', __('vars.order_was_created'));
+        }
 
         return redirect()->to(route('orders.edit', ['order' => $order]));
     }

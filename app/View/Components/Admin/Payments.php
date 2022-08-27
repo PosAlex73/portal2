@@ -10,17 +10,19 @@ use Illuminate\View\Component;
 class Payments extends Component
 {
     public Collection $payments;
+    public $selected;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($selected = '')
     {
         /** @var PaymentRepository $payment_repo */
         $payment_repo = App::make(PaymentRepository::class);
         $this->payments = $payment_repo->getPayments();
+        $this->selected = $selected;
     }
 
     /**

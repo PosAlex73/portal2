@@ -10,6 +10,7 @@
                     @csrf
                     <x-common.users />
                     <x-admin.payments />
+                    <x-admin.products />
                     @include('buttons.submit')
                 </form>
             </div>
