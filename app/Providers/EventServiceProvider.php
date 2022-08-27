@@ -13,6 +13,7 @@ use App\Listeners\CourseCompleteListener;
 use App\Listeners\NewMessageListener;
 use App\Listeners\PurchaseListener;
 use App\Listeners\Redis\ViewCourseRedis;
+use App\Listeners\RegisterWelcome;
 use App\Listeners\TaskDoneListener;
 use App\Models\Article;
 use App\Models\ThreadMessage;
@@ -34,6 +35,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            RegisterWelcome::class
         ],
         Purchase::class => [
             PurchaseListener::class
