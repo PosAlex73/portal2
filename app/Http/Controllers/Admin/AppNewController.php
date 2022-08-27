@@ -69,9 +69,9 @@ class AppNewController extends Controller
      * @param  \App\Models\AppNew  $appNew
      * @return \Illuminate\Http\Response
      */
-    public function edit(AppNew $appNew)
+    public function edit(AppNew $appnews)
     {
-        return view('admin.news.edit', ['new' => $appNew]);
+        return view('admin.news.edit', ['new' => $appnews]);
     }
 
     /**
@@ -81,10 +81,10 @@ class AppNewController extends Controller
      * @param  \App\Models\AppNew  $appNew
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAppNewRequest $request, AppNew $appNew)
+    public function update(UpdateAppNewRequest $request, AppNew $appnews)
     {
         $fields = $request->validated();
-        $appNew->update($fields);
+        $appnews->update($fields);
 
         Alert::flash('status', __('vars.new_was_update'));
 
@@ -97,9 +97,9 @@ class AppNewController extends Controller
      * @param  \App\Models\AppNew  $appNew
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AppNew $appNew)
+    public function destroy(AppNew $appnews)
     {
-        $appNew->delete();
+        $appnews->delete();
 
         Alert::flash('status', __('news_was_deleted'));
 

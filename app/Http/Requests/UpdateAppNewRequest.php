@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateAppNewRequest extends FormRequest
 {
@@ -24,7 +26,9 @@ class UpdateAppNewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:2|max:255',
+            'description' => 'required',
+            'status' => [Rule::in(CommonStatuses::getAll())]
         ];
     }
 }

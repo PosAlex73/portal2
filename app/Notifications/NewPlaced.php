@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Notifications\ToolBar\UserNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -58,8 +59,12 @@ class NewPlaced extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
+        $notification = new UserNotification(
+            $this->new->title,
+            $this->new->description,
+            route('front.news.show', ['new' => $this->new])
+        );
 
-        ];
+        return $notification->getNotificcation();
     }
 }
