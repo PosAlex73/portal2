@@ -15,7 +15,7 @@
                         <h4><a href="{{ route('front.news.show', ['new' => $new]) }}">{{ $new->title }}</a></h4>
                         <p>{{ __('vars.date_published') }}: <span class="item">{{ $new->updated_at }}</span> </p>
                         <p>Brand: <span class="item">Lee</span></p>
-                        <p class="text-content">{{ $new->short_description }}</p>
+                        <p class="text-content">{!! $new->short_description !!}</p>
                     </div>
                 </div>
             </div>

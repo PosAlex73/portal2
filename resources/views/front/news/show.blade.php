@@ -5,7 +5,7 @@
             <h3 class="text-black">{{ $new->title }}</h3>
         </div>
         <div class="card-body">
-            <p class="text-black">{{ $new->description }}</p>
+            <p class="text-black">{!! $new->description !!}</p>
         </div>
     </div>
 @endsection

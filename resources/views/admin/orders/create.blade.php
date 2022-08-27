@@ -8,7 +8,8 @@
             <div class="basic-form">
                 <form action="{{ route('orders.store') }}" method="post">
                     @csrf
-
+                    <x-common.users />
+                    <x-admin.payments />
                     @include('buttons.submit')
                 </form>
             </div>

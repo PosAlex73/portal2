@@ -184,6 +184,7 @@ return [
         \App\Providers\ComposerProvider::class,
         \App\Providers\PracticeCourseProvider::class,
         \App\Providers\TaskProvider::class,
+        \App\Providers\PaymentProvider::class
 
     ],
 
