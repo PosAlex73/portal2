@@ -16,13 +16,15 @@ class PracticeChecker
         $this->port = env('COURSE_PORT');
     }
 
-    public function checkPractice()
+    public function checkPractice(int $course_id, int $task_id, string $code)
     {
+        $practice_request = new PracticeRequest($course_id, $task_id, $code);
+
         $result = Http::withBasicAuth($this->login, $this->password)
             ->post(
             $this->login . ':' . $this->port,
             [
-                'result' => $this->result_text
+
             ]
         );
 
