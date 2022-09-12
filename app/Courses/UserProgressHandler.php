@@ -3,6 +3,7 @@
 namespace App\Courses;
 
 use App\Enums\Tasks\TaskTypes;
+use App\Models\PracticeCourse;
 use App\Models\PracticeTask;
 use App\Models\User;
 use App\Utils\HttpService\PracticeChecker;
@@ -22,7 +23,7 @@ class UserProgressHandler
         } elseif ($task->type === TaskTypes::TEST) {
             return static::checkTest($request, $task);
         } elseif ($task->type === TaskTypes::PRACTICE) {
-            return static::checkPractice($request, $task);
+            return static::checkPractice($request, $course, $task);
         }
 
         return new UserResult(UserResult::TASK_FAILED);
@@ -71,9 +72,10 @@ class UserProgressHandler
         return $user_result;
     }
 
-    protected static function checkPractice(Request $request, Executable $task): UserResult
+    protected static function checkPractice(Request $request, PracticeCourse $course, Executable $task): UserResult
     {
         $practice_checker = new PracticeChecker();
+        $practice_checker->checkPractice($course->id, $task->id, $request->get('result'));
 
 
         return new UserResult(UserResult::TASK_DONE);

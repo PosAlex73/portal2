@@ -18,15 +18,12 @@ class PracticeChecker
 
     public function checkPractice(int $course_id, int $task_id, string $code)
     {
-        $practice_request = new PracticeRequest($course_id, $task_id, $code);
+        $practice_request = new PracticeRequest($course_id, $task_id, $code, $type = 'php'); //fixme
 
         $result = Http::withBasicAuth($this->login, $this->password)
-            ->post(
-            $this->login . ':' . $this->port,
-            [
-
-            ]
-        );
+            ->accept('application/json')
+            ->acceptJson()
+            ->post($this->url . ':' . $this->port, $practice_request->toArray());
 
         dd($result);
     }
