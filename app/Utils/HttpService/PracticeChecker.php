@@ -13,7 +13,6 @@ class PracticeChecker
         $this->login = env('COURSE_LOGIN');
         $this->password = env('COURSE_PASS');
         $this->url = env('COURSE_URL');
-        $this->port = env('COURSE_PORT');
     }
 
     public function checkPractice(int $course_id, int $task_id, string $code)
@@ -24,13 +23,11 @@ class PracticeChecker
             $result = Http::withBasicAuth($this->login, $this->password)
                 ->accept('application/json')
                 ->acceptJson()
-//            ->post($this->url . ':' . $this->port, $practice_request->toArray());
-                ->post('127.0.0.1:33387/test', $practice_request->toArray());
+                ->post($this->url, $practice_request->toArray());
         } catch (\Throwable $e) {
-            dd($e);
+            return false;
         }
 
-
-        dd($result);
+        return json_decode($result->body(), JSON_OBJECT_AS_ARRAY);
     }
 }

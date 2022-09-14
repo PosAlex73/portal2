@@ -12,6 +12,9 @@
     @csrf
     <div id="monaco-editor" class=" mb-2"></div>
     <textarea name="result" style="display: none" id="result" cols="30" rows="10"></textarea>
+    @if($failed_task_result)
+        <p class="alert-danger p-2">{!! $failed_task_result['result'] !!}</p>
+    @endif
     @include('buttons.submit')
 </form>
 

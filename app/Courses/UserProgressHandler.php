@@ -2,6 +2,7 @@
 
 namespace App\Courses;
 
+use App\Enums\Courses\CourseResponseStatuses;
 use App\Enums\Tasks\TaskTypes;
 use App\Models\PracticeCourse;
 use App\Models\PracticeTask;
@@ -75,9 +76,12 @@ class UserProgressHandler
     protected static function checkPractice(Request $request, PracticeCourse $course, Executable $task): UserResult
     {
         $practice_checker = new PracticeChecker();
-        $practice_checker->checkPractice($course->id, $task->id, $request->get('result'));
+        $result = $practice_checker->checkPractice($course->id, $task->id, $request->get('result'));
 
-
-        return new UserResult(UserResult::TASK_DONE);
+        if ($result['code'] === CourseResponseStatuses::PRACTICE_DONE) {
+            return new UserResult(UserResult::TASK_DONE, $result, TaskTypes::PRACTICE);
+        } else {
+            return new UserResult(UserResult::TASK_FAILED, $result, TaskTypes::PRACTICE);
+        }
     }
 }
