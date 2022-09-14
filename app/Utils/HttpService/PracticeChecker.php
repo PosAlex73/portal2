@@ -20,10 +20,16 @@ class PracticeChecker
     {
         $practice_request = new PracticeRequest($course_id, $task_id, $code, $type = 'php'); //fixme
 
-        $result = Http::withBasicAuth($this->login, $this->password)
-            ->accept('application/json')
-            ->acceptJson()
-            ->post($this->url . ':' . $this->port, $practice_request->toArray());
+        try {
+            $result = Http::withBasicAuth($this->login, $this->password)
+                ->accept('application/json')
+                ->acceptJson()
+//            ->post($this->url . ':' . $this->port, $practice_request->toArray());
+                ->post('127.0.0.1:33387/test', $practice_request->toArray());
+        } catch (\Throwable $e) {
+            dd($e);
+        }
+
 
         dd($result);
     }
