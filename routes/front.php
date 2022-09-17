@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\PracticeController;
 use App\Http\Controllers\Front\PracticeTaskController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\PromotionController;
+use App\Http\Controllers\Front\RatingController;
 use App\Http\Controllers\Front\ReportController;
 use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Front\TaskController;
@@ -27,6 +28,7 @@ Route::get('/blog/', [BlogController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{article}', [BlogController::class, 'article'])->name('front.blog.article');
 Route::get('/promotions', [PromotionController::class, 'promotions'])->name('front.promotions');
 Route::get('/promotions/{promotion}', [PromotionController::class, 'promotion'])->name('front.promotion');
+Route::get('/rating', [RatingController::class, 'getUsersRating'])->name('front.rating');
 
 Route::get('/pcourses/', [PracticeController::class, 'index'])->name('front.pcourses');
 Route::get('/pcourses/{pcourse}', [PracticeController::class, 'pcourse'])->name('front.pcourse');

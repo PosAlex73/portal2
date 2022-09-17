@@ -49,6 +49,11 @@ class MainToolbar implements IMenu
                 'front.news',
                 'news',
                 'box'
+            ),
+            new ToolbarItem(
+                'front.rating',
+                'rating',
+                'box'
             )
         ];
     }
