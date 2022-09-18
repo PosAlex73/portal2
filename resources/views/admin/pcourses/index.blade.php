@@ -8,6 +8,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <x-common.pagination route="pcourses.index" :items="$courses" />
                 <table class="table table-responsive-md">
                     <thead>
                     <tr>
@@ -45,6 +46,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <x-common.pagination route="pcourses.index" :items="$courses" />
             </div>
         </div>
     </div>

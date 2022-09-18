@@ -10,6 +10,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    <x-common.pagination route="tasks.index" :items="$tasks" />
                     <table class="table table-responsive-md">
                         <thead>
                         <tr>
@@ -46,6 +47,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <x-common.pagination route="tasks.index" :items="$tasks" />
                 </div>
             </div>
         </div>

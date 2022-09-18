@@ -10,6 +10,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-responsive-md">
+                    <x-common.pagination route="articles.index" :items="$articles" />
+
                     <thead>
                     <tr>
                         <th style="width:80px;"><strong>#</strong></th>
@@ -23,7 +25,7 @@
                     @foreach($articles as $article)
                         <tr>
                             <td><strong>{{ $article->id }}</strong></td>
-                            <td><a href="{{ route('categories.edit', ['category' => $article->category]) }}">{{ $article->category->title }}</a></td>
+                            <td><a href="{{ route('articles.edit', ['article' => $article->category]) }}">{{ $article->category->title }}</a></td>
                             <td>
                                 <x-common.common-statuses-view :status="$article->status" />
                             </td>
@@ -42,6 +44,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <x-common.pagination route="articles.index" :items="$articles" />
             </div>
         </div>
     </div>

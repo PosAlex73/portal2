@@ -7,6 +7,7 @@
     <div class="card-body">
         @if($progress->count() > 0)
         <div class="table-responsive">
+            <x-common.pagination route="users.progress.index" :items="$progress" />
             <table class="table table-responsive-md">
                 <thead>
                 <tr>
@@ -44,6 +45,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <x-common.pagination route="users.progress.index" :items="$progress" />
         </div>
         @else
             <p>{{ __('vars.no_progress_found') }}</p>

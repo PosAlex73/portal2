@@ -11,6 +11,7 @@
         <div class="card-body">
             @if($users->count() > 0)
             <div class="table-responsive">
+                <x-common.pagination route="users.index" :items="$users" />
                 <table class="table style-1" id="ListDatatableView">
                     <thead>
                     <tr>
