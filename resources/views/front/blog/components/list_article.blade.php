@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row m-b-30">
             <div class="col-md-3 col-xxl-12">
-                <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
+                <div class="mb-4 mb-xxl-4 mb-md-0">
                     <div class="new-arrivals-img-contnent">
                         <x-common.image :image="$article->image" />
                     </div>

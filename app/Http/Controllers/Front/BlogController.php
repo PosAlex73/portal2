@@ -9,14 +9,18 @@ use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\Blog\StoreArticleCommentRequest;
 use App\Models\Article;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
-    public function blog()
+    public function blog(Request $request)
     {
-        $articles = Article::where(['status' => ArticleStatuses::ACTIVE])->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+        $articles = Article::where(['status' => ArticleStatuses::ACTIVE])
+            ->withCategory($request->get('category'))
+            ->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
         return view('front.blog.index', ['articles' => $articles]);
     }

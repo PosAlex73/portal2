@@ -56,6 +56,11 @@ class Settings
                     'title' => SettingTypes::LOGO,
                     'value' => '',
                     'type' => SettingEnums::IMAGE
+                ],
+                SettingTypes::SHOW_ARTICLE_RATING => [
+                    'title' => SettingTypes::SHOW_ARTICLE_RATING,
+                    'value' => 'N',
+                    'type' => SettingEnums::CHECKBOX
                 ]
             ],
             SettingTabs::FRONT_TAB => [

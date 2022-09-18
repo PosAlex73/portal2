@@ -20,4 +20,5 @@ class SettingTypes
     public const MAIN_HERO = 'main_hero';
 
     public const SOCIAL_LOGIN = 'social_login';
+    public const SHOW_ARTICLE_RATING = 'show_article_rating';
 }

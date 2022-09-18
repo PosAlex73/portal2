@@ -4,18 +4,16 @@ namespace App\View\Components\Common;
 
 use Illuminate\View\Component;
 
-class Rating extends Component
+class Badges extends Component
 {
-    public float|int $rating;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(float|int $rating = 0)
+    public function __construct()
     {
-        $this->rating = $rating;
+        //
     }
 
     /**
@@ -25,11 +23,6 @@ class Rating extends Component
      */
     public function render()
     {
-        return view('components.common.rating');
-    }
-
-    protected function calculateRating()
-    {
-
+        return view('components.common.badges');
     }
 }

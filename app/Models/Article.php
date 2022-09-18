@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\Blog\ArticleStatuses;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,5 +40,21 @@ class Article extends Model
     public function scopeSearchText(Builder $builder, string $text)
     {
         return $builder->where('title', 'LIKE', "%{$text}%")->orWhere('text', 'LIKE', "%{$text}%");
+    }
+
+    public function scopeWithCategory(Builder $builder, string|null $category)
+    {
+        if (is_null($category)) {
+            return $builder;
+        }
+
+        $category_id = Category::where('title', $category)->first('id');
+
+        if (empty($category_id)) {
+            //fixme
+            return $builder->where('category_id', -1);
+        }
+
+        return $builder->where('category_id', $category_id->id);
     }
 }

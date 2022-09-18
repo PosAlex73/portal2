@@ -10,7 +10,8 @@ use Illuminate\View\Component;
 
 class BlogFilter extends Component
 {
-    public BlogFilterCollection $filters;
+    public BlogFilterCollection $filters_container;
+    public Collection $filters;
 
     /**
      * Create a new component instance.
@@ -19,7 +20,8 @@ class BlogFilter extends Component
      */
     public function __construct()
     {
-        $this->filters = App::make(BlogFilterCollection::class);
+        $this->filters_container = App::make(BlogFilterCollection::class);
+        $this->filters = $this->filters_container->getFilters();
     }
 
     /**

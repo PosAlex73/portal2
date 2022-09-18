@@ -18,4 +18,9 @@ class BlogFilterCollection
     {
         $this->filters->put($type, $filters);
     }
+
+    public function getFilters($type = null)
+    {
+        return is_null($type) ? $this->filters : $this->filters[$type];
+    }
 }

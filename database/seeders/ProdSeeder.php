@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\CommonStatuses;
 use App\Enums\Users\UserTypes;
+use App\Models\Category;
 use App\Models\User;
 use App\Settings\Settings;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -55,7 +56,9 @@ class ProdSeeder extends Seeder
 
         $this->call([
             PracticeCourseSeeder::class,
-            PlanSeeder::class
+            PlanSeeder::class,
+            CategorySeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }

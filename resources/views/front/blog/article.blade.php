@@ -9,25 +9,13 @@
                             <div class="product-detail-content">
                                 <div class="new-arrival-content pr">
                                     <h4>{{ $article->title }}</h4>
-                                    <div class="comment-review star-rating">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                        <span class="review-text">({{ $article->comments_count  }} {{ __('vars.reviews') }}) / </span><a class="product-review" href=""  data-bs-toggle="modal" data-bs-target="#reviewModal">{{ __('vars.write_review') }}</a>
-                                    </div>
+                                    <x-common.rating />
+                                    <span class="review-text text-black">({{ $article->comments_count  }} {{ __('vars.reviews') }}) / </span><a class="product-review text-primary" href=""  data-bs-toggle="modal" data-bs-target="#reviewModal">{{ __('vars.write_review') }}</a>
+
                                     <p>{{ __('vars.writed') }}: <span class="item">{{ $article->created_at }}</span></p>
 {{--                                    FIXME add article tags--}}
-                                    <p>Product tags:&nbsp;&nbsp;
-                                        <span class="badge badge-success light">bags</span>
-                                        <span class="badge badge-success light">clothes</span>
-                                        <span class="badge badge-success light">shoes</span>
-                                        <span class="badge badge-success light">dresses</span>
-                                    </p>
-                                    <p class="text-content">{{ $article->text }}</p>
+
+                                    <p class="text-content">{!! $article->text !!}</p>
                                 </div>
                             </div>
                         </div>
