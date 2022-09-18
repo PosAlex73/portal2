@@ -1,9 +1,9 @@
 
 <div class="row">
-    <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
+    <div class="col-xl-2 col-lg-6 col-md-6 col-xxl-5 ">
         <x-common.image :image="$course->image" />
     </div>
-    <div class="col-xl-9 col-lg-6 col-md-6 col-xxl-7 col-sm-12">
+    <div class="col-xl-10 col-lg-6 col-md-6 col-xxl-7 col-sm-12">
         <div class="product-detail-content">
             <div class="new-arrival-content pr">
                 <h4>{{ $course->title }}</h4>

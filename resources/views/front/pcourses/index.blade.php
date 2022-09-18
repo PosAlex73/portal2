@@ -15,7 +15,11 @@
                                     {{ $course->title }}
                                 </a>
                             </h3>
-                            <div class="card-footer"><x-common.currency :value="$course->price" /></div>
+                            @if($course->price > 0)
+                                <div class="card-footer"><x-common.currency :value="$course->price" /></div>
+                            @else
+                                <p>{{ __('vars.free_course') }}</p>
+                            @endif
 
                             <p class="card-text">{{ $course->short_description }}</p>
                             <a class="badge-primary p-2" href="{{ route('front.pcourses', ['category_id' => $course->category->id]) }}">

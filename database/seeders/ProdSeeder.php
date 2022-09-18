@@ -54,7 +54,8 @@ class ProdSeeder extends Seeder
         }
 
         $this->call([
-            PracticeCourseSeeder::class
+            PracticeCourseSeeder::class,
+            PlanSeeder::class
         ]);
     }
 }

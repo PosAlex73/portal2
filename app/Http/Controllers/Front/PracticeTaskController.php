@@ -35,21 +35,23 @@ class PracticeTaskController extends Controller
         $user = Auth::user();
         $result = UserProgressHandler::checkDoneTask($task, $user);
 
-        $failed_task_result = session()->pull(static::GET_TASK_DONE_RESULT, []);
+        if ($task->type === TaskTypes::PRACTICE) {
+            $failed_task_result = session()->pull(static::GET_TASK_DONE_RESULT, []);
 
-        //fixme
-        if (!empty($failed_task_result)) {
-            $failed_task_result = json_decode($failed_task_result, JSON_OBJECT_AS_ARRAY);
-            $failed_task_result['result'] = unserialize($failed_task_result['result']);
-            $failed_task_result['result'] = join("\n", $failed_task_result['result']);
-            $failed_task_result['result'] = nl2br($failed_task_result['result']);
+            //fixme
+            if (!empty($failed_task_result)) {
+                $failed_task_result = json_decode($failed_task_result, JSON_OBJECT_AS_ARRAY);
+                $failed_task_result['result'] = unserialize($failed_task_result['result']);
+                $failed_task_result['result'] = join("\n", $failed_task_result['result']);
+                $failed_task_result['result'] = nl2br($failed_task_result['result']);
+            }
         }
 
         return view('front.user_progress.practice_tack', [
             'user' => $user,
             'task' => $task,
             'task_done' => $result,
-            'failed_task_result' => $failed_task_result
+            'failed_task_result' => $failed_task_result ?? []
         ]);
     }
 
