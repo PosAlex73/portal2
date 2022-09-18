@@ -31,8 +31,8 @@ class ImageController extends Controller
     {
         $fields = $imageRequest->validated();
 
-        if ($imageRequest->hasFile('image')) {
-            $fields['path'] = $imageRequest->file('image')->store('images/images', 'public');
+        if ($imageRequest->hasFile('path')) {
+            $fields['path'] = $imageRequest->file('path')->store('images/images', 'public');
         } else {
             return abort(500);
         }

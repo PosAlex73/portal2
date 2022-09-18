@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Enums\CommonStatuses;
+use App\Enums\ImageTypes;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ImageRequest extends FormRequest
 {
@@ -13,7 +16,7 @@ class ImageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,10 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'path' => 'required',
+            'status' => ['required', Rule::in(CommonStatuses::getAll())],
+            'type' => ['required', Rule::in(ImageTypes::getAll())]
         ];
     }
 }

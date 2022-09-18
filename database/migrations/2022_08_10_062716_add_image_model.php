@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\CommonStatuses;
+use App\Enums\ImageTypes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +19,8 @@ return new class extends Migration
             $schema->id();
             $schema->string('title', 255);
             $schema->string('path', 2048);
-            $schema->string('type', 1)->default(\App\Enums\ImageTypes::TASK);
+            $schema->string('type', 1)->default(ImageTypes::COMMON);
+            $schema->string('status', 1)->default(CommonStatuses::ACTIVE);
             $schema->timestamps();
         });
     }

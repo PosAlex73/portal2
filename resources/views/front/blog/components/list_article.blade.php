@@ -12,17 +12,13 @@
                 <div class="new-arrival-content position-relative">
                     <h4><a href="{{ route('front.blog.article', ['article' => $article]) }}">{{ $article->title }}</a></h4>
                     <div class="comment-review star-rating">
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star-half-empty"></i></li>
-                            <li><i class="fa fa-star-half-empty"></i></li>
-                        </ul>
-                        <span class="review-text">({{ $article->comments_count }} {{ __('vars.reviews') }}) / </span><a class="product-review" href=""  data-bs-toggle="modal" data-bs-target="#reviewModal">{{ __('vars.write_review') }}</a>
+                        <x-common.rating />
+                        <span class="review-text">({{ $article->comments_count }} {{ __('vars.reviews') }}) </span>
                     </div>
                     <p>{{ __('vars.write') }}: <span class="item">{{ $article->created_at }}</span> </p>
-                    <p>{{ __('vars.author') }}: <span class="item">{{ $article->author }}</span></p>
+                    @if($article->author)
+                        <p>{{ __('vars.author') }}: <span class="item">{{ $article->author }}</span></p>
+                    @endif
                     <p class="text-content">{!! $article->short_description !!}</p>
                 </div>
             </div>

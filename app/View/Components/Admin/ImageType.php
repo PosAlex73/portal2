@@ -2,22 +2,21 @@
 
 namespace App\View\Components\Admin;
 
+use App\Enums\ImageTypes;
 use Illuminate\View\Component;
 
-class CourseTypes extends Component
+class ImageType extends Component
 {
     public $types;
-    public string $selected;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $selected = '')
+    public function __construct()
     {
-        $this->types = \App\Enums\Courses\CourseTypes::getAll();
-        $this->selected = $selected;
+        $this->types = ImageTypes::getAll();
     }
 
     /**
@@ -27,6 +26,6 @@ class CourseTypes extends Component
      */
     public function render()
     {
-        return view('components.admin.course-types');
+        return view('components.admin.image-type');
     }
 }

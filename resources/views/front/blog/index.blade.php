@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-4 d-md-none d-lg-block">
                 <div class="card">
-                    <div class="card-title m-2">{{ __('vars.select_filter') }}</div>
+                    <div class="card-title m-2 text-center">{{ __('vars.select_filter') }}</div>
                     <hr>
                     <div class="card-body">
                         <x-front.blog-filter />

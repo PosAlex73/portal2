@@ -26,16 +26,16 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    @include('flash.errors')
                     @auth()
                         <form action="{{ route('front.blog.comment', ['article' => $article]) }}" method="post">
                             @csrf
                             <input type="hidden" name="article_id" value="{{ $article->id }}">
                             @include('fields.textarea', ['name' => 'text'])
                             @include('buttons.submit')
+                            <p class="text-muted mt-2">{{ __('vars.min_10_chars') }}</p>
                         </form>
                     @else
-
+                        <p>{{ __('vars.need_login_for_review') }}</p>
                     @endauth
                 </div>
             </div>

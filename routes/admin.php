@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PathController;
@@ -45,6 +46,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('tasks', TaskController::class);
     Route::resource('questions', TestQuestionsController::class);
     Route::resource('appnews', AppNewController::class);
+    Route::resource('images', ImageController::class);
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');

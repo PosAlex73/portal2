@@ -18,7 +18,14 @@ class Sidebar implements IMenu
             new Title(__('vars.users')),
             new Group(__('vars.users'), new Collection(['users.index', 'users.progress.index']), 'box'),
             new Title(__('vars.courses')),
-            new Group(__('vars.courses'), new Collection(['courses.index', 'pcourses.index', 'tasks.index', 'questions.index']), 'user'),
+            new Group(__('vars.courses'), new Collection(
+                [
+                    'courses.index',
+                    'pcourses.index',
+                    'tasks.index',
+                    'questions.index',
+                    'images.index'
+                ]), 'user'),
             new Title(__('vars.commerce'), 'box'),
             new Group(__('vars.commerce'), new Collection(['plans.index', 'orders.index', 'promotions.index']), 'activity'),
             new Title(__('other'), 'box'),

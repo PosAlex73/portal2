@@ -1,6 +1,7 @@
 <?php
 
 use App\Facades\Alert;
+use App\Facades\ImageHelper;
 use App\Facades\Order;
 use App\Facades\Set;
 use Illuminate\Support\Facades\Facade;
@@ -204,6 +205,7 @@ return [
         'Alert' => Alert::class,
         'Order' => Order::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
+        'ImageHelper' => ImageHelper::class
     ])->toArray(),
 
 ];
