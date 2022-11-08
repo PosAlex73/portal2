@@ -18,4 +18,9 @@ class Alert
     {
         session()->flash('error.' . $error, $message);
     }
+
+    public static function notice($error, $message)
+    {
+        session()->flash('notice' . $error, $message);
+    }
 }
