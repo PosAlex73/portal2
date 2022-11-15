@@ -39,8 +39,14 @@ class RoutesTest extends TestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        $this->user_simple->delete();
-        $this->user_admin->delete();
+
+        if (!empty($this->user_simple)) {
+            $this->user_simple->delete();
+        }
+
+        if (!empty($this->user_admin)) {
+            $this->user_admin->delete();
+        }
     }
 
     /**
