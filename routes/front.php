@@ -66,7 +66,7 @@ Route::prefix('user_courses/')->middleware(['auth'])->group(function (){
 
 
     Route::post('/check_task/{task}', [TaskController::class, 'checkTask'])->name('front.task.check');
-    Route::post('/check_task/{task}', [PracticeTaskController::class, 'checkTask'])->name('front.ptask.check');
+    Route::post('/check_ptask/{task}', [PracticeTaskController::class, 'checkTask'])->name('front.ptask.check');
     Route::delete('/destroy_course/{course}', [CourseController::class, 'dropProgress'])->name('front.drop_course');
 });
 
