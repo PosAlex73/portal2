@@ -212,5 +212,6 @@ return [
     'course' => 'Course',
     'register' => 'Sign up',
     'choice_tariff' => 'Chose tariff',
-    'edit_practice_task' => 'Edit practice task'
+    'edit_practice_task' => 'Edit practice task',
+    'rating' => 'Users rating'
 ];

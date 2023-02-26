@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Courses\Progressive;
 use App\Enums\Courses\CoursePractice;
+use App\Enums\Courses\CourseStatuses;
 use App\Enums\Courses\CourseTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -43,5 +44,12 @@ class Course extends Model implements Progressive
         return $builder
             ->where('title', 'LIKE', "%{$text}%")
             ->orWhere('description', 'LIKE', "%{$text}%");
+    }
+
+    public function scopeLandingCourses(Builder $builder)
+    {
+        return $builder
+            ->where('status', CourseStatuses::ACTIVE)
+            ->limit(9);
     }
 }
