@@ -7,6 +7,7 @@ use App\Enums\Langs;
 use App\Enums\Settings\SettingEnums;
 use App\Enums\Settings\SettingTabs;
 use App\Enums\Settings\SettingTypes;
+use App\Enums\YesNo;
 
 class Settings
 {
@@ -59,14 +60,21 @@ class Settings
                 ],
                 SettingTypes::SHOW_ARTICLE_RATING => [
                     'title' => SettingTypes::SHOW_ARTICLE_RATING,
-                    'value' => 'N',
+                    'value' => YesNo::YES,
                     'type' => SettingEnums::CHECKBOX
                 ]
             ],
             SettingTabs::FRONT_TAB => [
                 SettingTypes::SOCIAL_LOGIN => [
                     'title' => SettingTypes::SOCIAL_LOGIN,
-                    'value' => 'N',
+                    'value' => YesNo::YES,
+                    'type' => SettingEnums::CHECKBOX
+                ]
+            ],
+            SettingTabs::SYSTEM_TAB => [
+                SettingTypes::LOGGING_ENABLED => [
+                    'title' => SettingTypes::LOGGING_ENABLED,
+                    'value' => YesNo::YES,
                     'type' => SettingEnums::CHECKBOX
                 ]
             ]

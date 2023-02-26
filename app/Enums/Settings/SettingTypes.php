@@ -21,4 +21,6 @@ class SettingTypes
 
     public const SOCIAL_LOGIN = 'social_login';
     public const SHOW_ARTICLE_RATING = 'show_article_rating';
+
+    public const LOGGING_ENABLED = 'logging_enabled';
 }

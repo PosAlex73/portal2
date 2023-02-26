@@ -70,6 +70,7 @@ return [
     'label_first_name' => 'First name',
     'label_last_name' => 'Last name',
     'label.status' => 'Status',
+    'label.logging_enabled' => 'Logging enabled',
     'en' => 'EN',
     'ru' => 'RU',
     'submit' => 'Submit',
@@ -213,5 +214,6 @@ return [
     'register' => 'Sign up',
     'choice_tariff' => 'Chose tariff',
     'edit_practice_task' => 'Edit practice task',
-    'rating' => 'Users rating'
+    'rating' => 'Users rating',
+    'tabs_system_tab' => 'System settings'
 ];

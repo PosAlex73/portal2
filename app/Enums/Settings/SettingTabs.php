@@ -12,4 +12,5 @@ class SettingTabs
     public const USERS = 'users_tab';
     public const FRONT_TAB = 'front_tab';
     public const ADMIN_TAB = 'admin_tab';
+    public const SYSTEM_TAB = 'system_tab';
 }
