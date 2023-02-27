@@ -5,4 +5,6 @@
     </li>
     <li class="nav-item"><a href="#my-posts" data-bs-toggle="tab" class="nav-link">{{ __('vars.settings') }}</a>
     </li>
+    <li class="nav-item"><a href="#my-achievements" data-bs-toggle="tab" class="nav-link">{{ __('vars.achievements') }}</a>
+    </li>
 </ul>

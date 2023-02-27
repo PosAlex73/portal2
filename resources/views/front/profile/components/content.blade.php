@@ -37,4 +37,32 @@
             </form>
         </div>
     </div>
+    <div id="my-achievements" class="tab-pane fade">
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-interest">
+                    <h5 class="text-primary d-inline">{{ __('vars.achivements') }}</h5>
+                    <div class="row mt-4 sp4" id="lightgallery">
+                        <div class="row">
+                            @forelse($achievements as $achieve)
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <img class="card-img-top img-fluid" src="{{ $achieve->image }}" alt="Card image cap">
+                                            <div class="card-title">{{$achieve->title}}</div>
+                                            <div class="card-body">
+                                                <p class="card-text">{{ $achieve->description }}</p>
+                                                <p class="card-text">{{ __('vars.get_at') . ': ' . $achieve->created_at }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            @empty
+                        </div>
+                        <p>{{ __('vars.you_still_not_have_achieves') }}</p>
+                        @endforelse
+                            <a class="btn btn-secondary btn-sm" href="{{ route('front.achievements.list') }}">{{ __('var.show_all_achievements') }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

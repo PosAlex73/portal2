@@ -40,21 +40,6 @@
         <div class="col-xl-4">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="profile-interest">
-                                <h5 class="text-primary d-inline">{{ __('vars.achivements') }}</h5>
-                                <div class="row mt-4 sp4" id="lightgallery">
-                                    @forelse($achievements as $achieve)
-
-                                    @empty
-                                        <p>{{ __('vars.you_still_not_have_achieves') }}</p>
-                                    @endforelse
-                                        <a class="btn btn-secondary btn-sm" href="{{ route('front.achievements.list') }}">{{ __('var.show_all_achievements') }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-xl-12">
                     <div class="card">
