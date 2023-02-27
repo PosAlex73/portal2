@@ -1,5 +1,5 @@
 <div class="tab-content">
-    <div id="profile-settings" class="tab-pane fade">
+    <div id="profile-settings" class="tab-pane fade active show">
         <div class="my-post-content pt-3">
             @forelse($progress as $user_course)
                 @include('front.profile.components.courses_list', ['user_progress' => $user_course])
@@ -8,7 +8,7 @@
             @endforelse
         </div>
     </div>
-    <div id="about-me" class="tab-pane fade active show">
+    <div id="about-me" class="tab-pane fade">
         <div class="profile-personal-info">
             <form action="{{ route('front.profile.update', ['profile' => $profile]) }}" method="post">
                 @csrf
