@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Log;
 
 class CategoryObserver
 {
@@ -14,7 +15,7 @@ class CategoryObserver
      */
     public function created(Category $category)
     {
-        //
+        Log::info('Category was created: ' . $category->title);
     }
 
     /**
