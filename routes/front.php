@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\AchievementsController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\CourseController;
 use App\Http\Controllers\Front\IndexController;
@@ -36,6 +37,7 @@ Route::get('/pcourses/{pcourse}', [PracticeController::class, 'pcourse'])->name(
 Route::get('/news', [NewsController::class, 'index'])->name('front.news');
 Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.show');
 Route::get('/search', [SearchController::class, 'search'])->name('front.search');
+Route::get('/achievements', [AchievementsController::class, 'index'])->name('front.achievements.list');
 
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {

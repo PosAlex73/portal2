@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Achieves;
 
+use App\Achievements\Achievement;
 use Illuminate\Support\Collection;
 
-class Registration extends Achievement
+class MakeProposal extends Achievement
 {
+    protected const VAR = 'make_proposal';
 
     public function checkCondition(Collection $data): bool
     {

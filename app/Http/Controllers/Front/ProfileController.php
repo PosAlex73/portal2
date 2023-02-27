@@ -27,6 +27,7 @@ class ProfileController extends Controller
         $profile = $user->profile;
         $progress = $user->progress()->with('course')->get();
         $achieves = AchieveRepository::getAllAchievements();
+        $userAchieves = $user->achievements;
 
         $settings = $user->settings()->first(UserSettingTypes::getAll())->toArray();
 
@@ -37,7 +38,8 @@ class ProfileController extends Controller
                 'profile' => $profile,
                 'progress' => $progress,
                 'settings' => $settings,
-                'achieves' => $achieves
+                'achieves' => $achieves,
+                'achievements' => $userAchieves,
             ]
         );
     }
