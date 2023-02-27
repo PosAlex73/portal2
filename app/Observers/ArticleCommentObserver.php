@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\ArticleComment;
+use Illuminate\Support\Facades\Log;
 
 class ArticleCommentObserver
 {
@@ -14,7 +15,7 @@ class ArticleCommentObserver
      */
     public function created(ArticleComment $articleComment)
     {
-        //
+        Log::info('New message from: ' . $articleComment->user->id);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Log;
 
 class OrderObserver
 {
@@ -14,7 +15,7 @@ class OrderObserver
      */
     public function created(Order $order)
     {
-        //
+        Log::info('New order created: ' . $order->id);
     }
 
     /**
@@ -25,7 +26,7 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
-        //
+        Log::info('Order updated: ' . $order->id);
     }
 
     /**
@@ -36,7 +37,7 @@ class OrderObserver
      */
     public function deleted(Order $order)
     {
-        //
+        Log::info('Order deleted: ' . $order->id);
     }
 
     /**

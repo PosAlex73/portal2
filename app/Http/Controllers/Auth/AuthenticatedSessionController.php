@@ -51,7 +51,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Log::info('User logout:' . Auth::user()->full_name);
+        Log::info('User logout: ' . Auth::user()->full_name);
 
         Auth::guard('web')->logout();
 

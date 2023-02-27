@@ -8,8 +8,10 @@ use App\Events\Purchase;
 use App\Events\Redis\ViewCourse;
 use App\Events\TaskDone;
 use App\Events\UserAchivement;
+use App\Events\UserLogin;
 use App\Listeners\AchivementListener;
 use App\Listeners\CourseCompleteListener;
+use App\Listeners\Loginer;
 use App\Listeners\NewMessageListener;
 use App\Listeners\PurchaseListener;
 use App\Listeners\Redis\ViewCourseRedis;
@@ -63,6 +65,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ViewCourse::class => [
             ViewCourseRedis::class
+        ],
+        Loginer::class => [
+            UserLogin::class
         ]
     ];
 

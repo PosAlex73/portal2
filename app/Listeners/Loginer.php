@@ -2,8 +2,10 @@
 
 namespace App\Listeners;
 
+use App\Events\UserLogin;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
 
 class Loginer
 {
@@ -25,6 +27,10 @@ class Loginer
      */
     public function handle($event)
     {
-        //
+        switch ($event::class) {
+            case UserLogin::class:
+                $user = $event->user;
+                Log::info('User login: ' . $user->id);
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Log;
 
 class SettingsObserver
 {
@@ -25,7 +26,7 @@ class SettingsObserver
      */
     public function updated(Setting $setting)
     {
-        //
+        Log::warning('Setting was updated: ' . $setting->title);
     }
 
     /**

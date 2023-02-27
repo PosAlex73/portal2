@@ -7,6 +7,7 @@ use App\Notifications\UserWelcome;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
 class RegisterWelcome
@@ -32,5 +33,6 @@ class RegisterWelcome
         /** @var User $user */
         $user = $event->user;
         $user->notify(new UserWelcome($user));
+        Log::info('User registered: ' . $user->id);
     }
 }
