@@ -10,7 +10,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <img src="images/logo-full-black.png" alt="">
+                                        <x-common.logo />
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form action="{{ route('login') }}" method="post">
@@ -27,19 +27,19 @@
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox ms-1">
                                                     <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
-                                                    <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
+                                                    <label class="form-check-label" for="basic_checkbox_1">{{ __('vars.remember_me') }}</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <a href="page-forgot-password.html">Forgot Password?</a>
+                                                <a href="page-forgot-password.html">{{ __('vars.forgot_password') }}</a>
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                            <button type="submit" class="btn btn-primary btn-block">{{ __('vars.sign_me_in') }}</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
+                                        <p>{{ __('vars.dont_have_account') }} <a class="text-primary" href="{{ route('register') }}">{{ __('vars.sign_up') }}</a></p>
                                     </div>
                                 </div>
                             </div>

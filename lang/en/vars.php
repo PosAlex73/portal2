@@ -215,5 +215,18 @@ return [
     'choice_tariff' => 'Chose tariff',
     'edit_practice_task' => 'Edit practice task',
     'rating' => 'Users rating',
-    'tabs_system_tab' => 'System settings'
+    'tabs_system_tab' => 'System settings',
+    'sign_up_your_account' => 'Sign up',
+    'username' => 'Your firstname',
+    'lastname' => 'Your lastname',
+    'password' => 'Password',
+    'repeat_password' => 'Repeat password',
+    'already_have_account' => 'Already have account?',
+    'dont_have_account' => 'Don\' t have account?',
+    'remember_me' => 'Remember me',
+    'forgot_password' => 'Forgot password',
+    'sign_up' => 'Sign up',
+    'sign_me_in' => 'Sign me in',
+    'search' => 'Search',
+    'view_front' => 'Go to front'
 ];

@@ -11,7 +11,7 @@
                                 <div class="auth-form">
                                     @include('flash.errors')
                                     <div class="text-center mb-3">
-                                        <img src="images/logo-full-black.png" alt="">
+                                        <x-common.logo />
                                     </div>
                                     <h4 class="text-center mb-4">{{ __('vars.sign_up_your_account') }}</h4>
                                     <form action="{{ route('register') }}" method="post">
