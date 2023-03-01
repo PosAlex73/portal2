@@ -228,5 +228,14 @@ return [
     'sign_up' => 'Sign up',
     'sign_me_in' => 'Sign me in',
     'search' => 'Search',
-    'view_front' => 'Go to front'
+    'view_front' => 'Go to front',
+    'no_courses' => 'No courses found',
+    'no_news_found' => 'No news found',
+    'achievements' => 'Achievements',
+    'you_still_not_have_achieves' => 'You still not have achieves',
+    'view_courses' => 'View courses',
+    'show_all_achievements' => 'Show all achievements',
+    'no_news_published' => 'No news published',
+    'select_filter' => 'Filters',
+    'course_categories' => 'Categories'
 ];

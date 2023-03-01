@@ -5,6 +5,7 @@
                 @include('front.profile.components.courses_list', ['user_progress' => $user_course])
             @empty
                 <p class="card-text">{{ __('vars.no_courses') }}</p>
+                @include('buttons.link', ['route' => route('front.courses'), 'text' => __('vars.view_courses')])
             @endforelse
         </div>
     </div>
@@ -59,7 +60,7 @@
                         </div>
                         <p>{{ __('vars.you_still_not_have_achieves') }}</p>
                         @endforelse
-                            <a class="btn btn-secondary btn-sm" href="{{ route('front.achievements.list') }}">{{ __('var.show_all_achievements') }}</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ route('front.achievements.list') }}">{{ __('vars.show_all_achievements') }}</a>
                     </div>
                 </div>
             </div>
