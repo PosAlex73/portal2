@@ -1,8 +1,23 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
+    checker-server:
+        build:
+            dockerfile: ./.docker/checker-sever/Dockerfile
+        volumes:
+            - '../php-checker/:/var/www/html'
+            - './.docker/checker-sever/conf:/etc/nginx/conf.d'
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        networks:
+            - sail
+        links:
+            - checker
+        ports:
+            - "8484:80"
     checker:
-
+        build:
+            dockerfile: ./.docker/checker/Dockerfile
         volumes:
             - '../php-checker/:/var/www/html'
         networks:
