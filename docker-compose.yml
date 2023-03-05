@@ -1,6 +1,16 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
+    checker:
+
+        volumes:
+            - '../php-checker/:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - laravel.test
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
