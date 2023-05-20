@@ -54,11 +54,18 @@ $course = $user_progress->course;
             </div>
             <!--TODO course progress-->
             <div class="col-6">
+                @php
+                    if (!empty($user_progress->data['tasks'])) {
+                        $progress = round(count($user_progress->data['tasks']) / $course->tasks->count() * 100, 2);
+                    } else {
+                        $progress = 0;
+                    }
+                @endphp
                 <h6>Progress
-                    <span class="pull-right">75%</span>
+                    <span class="pull-right">{{ $progress }}%</span>
                 </h6>
                 <div class="progress ">
-                    <div class="progress-bar bg-info progress-animated" style="width: 75%; height:6px;" role="progressbar"></div>
+                    <div class="progress-bar bg-info progress-animated" style="width: {{ $progress }}%; height:6px;" role="progressbar"></div>
                 </div>
             </div>
         </div>

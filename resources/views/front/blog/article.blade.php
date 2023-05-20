@@ -44,8 +44,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    @if($article->comments->count() > 0)
-                        @foreach($article->comments as $comment)
+                    @if($article->comments()->count() > 0)
+                        @foreach($article->comments() as $comment)
                             <p>{{ $comment->user->full_name }}</p>
                             <p>{{ $comment->text }}</p>
                             <p class="text-muted">{{ $comment->created_at }}</p>
