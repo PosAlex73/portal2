@@ -9,4 +9,5 @@ class CourseParam
     use Enumable;
 
     public const SUBSCRIBE = 'S';
+    public const PUBLIC_COURSE = 'P';
 }
