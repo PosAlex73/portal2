@@ -7,12 +7,12 @@
     <meta name="author" content="" />
     <meta name="robots" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:title" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:description" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:image" content="https://zenix.dexignzone.com/xhtml/social-image.png" />
+    <meta name="description" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:title" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:description" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:image" content="" />
     <meta name="format-detection" content="telephone=no">
-    <title>Zenix -  Crypto Admin Dashboard </title>
+    <title>{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}</title>
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link href="{{ asset('./vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('./css/style.css') }}" rel="stylesheet">

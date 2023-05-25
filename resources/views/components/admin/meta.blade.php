@@ -6,10 +6,10 @@
     <meta name="author" content="" />
     <meta name="robots" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:title" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:description" content="Zenix - Crypto Admin Dashboard" />
-    <meta property="og:image" content="https://zenix.dexignzone.com/xhtml/social-image.png" />
+    <meta name="description" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:title" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:description" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
+    <meta property="og:image" content="{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}" />
     <meta name="format-detection" content="telephone=no">
     <title>{{ Set::get(\App\Enums\Settings\SettingTypes::SITE_TILE) }}</title>
     <!-- Favicon icon -->
