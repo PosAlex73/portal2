@@ -238,5 +238,6 @@ return [
     'no_news_published' => 'No news published',
     'select_filter' => 'Filters',
     'course_categories' => 'Categories',
-    'min_10_chars' => 'Minimum 10 letters'
+    'min_10_chars' => 'Minimum 10 letters',
+    'index' => 'Home'
 ];
