@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\Settings\SettingTypes;
 use App\Enums\Users\UserStatuses;
 use App\Enums\Users\UserTypes;
+use App\Enums\YesNo;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;

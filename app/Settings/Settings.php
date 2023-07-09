@@ -69,6 +69,11 @@ class Settings
                     'title' => SettingTypes::SOCIAL_LOGIN,
                     'value' => YesNo::YES,
                     'type' => SettingEnums::CHECKBOX
+                ],
+                SettingTypes::SIGNED_REGISTRATION => [
+                    'title' => SettingTypes::SIGNED_REGISTRATION,
+                    'value' => YesNo::NO,
+                    'type' => SettingEnums::CHECKBOX
                 ]
             ],
             SettingTabs::SYSTEM_TAB => [

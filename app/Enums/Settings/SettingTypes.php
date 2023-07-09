@@ -23,4 +23,5 @@ class SettingTypes
     public const SHOW_ARTICLE_RATING = 'show_article_rating';
 
     public const LOGGING_ENABLED = 'logging_enabled';
+    public const SIGNED_REGISTRATION = 'signed_registration';
 }

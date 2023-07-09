@@ -89,4 +89,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Achievement::class);
     }
+
+    public function signedUrl()
+    {
+        return $this->hasOne(SignedUrl::class);
+    }
 }
