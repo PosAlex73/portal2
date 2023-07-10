@@ -8,6 +8,24 @@ use Tests\TestCase;
 
 class RouteTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->frontUrls = [
+            'front.index',
+            'front.plans',
+            'front.courses',
+            'front.blog',
+            'front.blog',
+            'front.promotions',
+            'front.rating',
+            'front.pcourses',
+            'front.news',
+            'front.search',
+            'front.achievements.list'
+        ];
+    }
+
     /**
      * A basic feature test example.
      *
@@ -20,3 +38,4 @@ class RouteTest extends TestCase
         $response->assertStatus(200);
     }
 }
+
