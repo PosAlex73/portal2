@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Database\Models;
 
+use App\Models\Achievement;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,8 +17,14 @@ class AchievementTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $user = User::factory()->create();
+        $a = Achievement::factory()->create([
+            'user_id' => $user->id
+        ]);
+        $this->assertModelExists($a);
+        $a->delete();
+        $this->assertModelMissing($a);
+        $user->delete();
+        $this->assertModelMissing($user);
     }
 }
