@@ -85,16 +85,4 @@ class RoutesTest extends TestCase
             $this->actingAs($this->user_admin)->get(route($route, ['user' => $this->user_simple]))->assertStatus(200);
         }
     }
-
-    public function testUserCreate()
-    {
-        $user_info = [
-            'first_name',
-            'last_name',
-            'type',
-            'status',
-            'email',
-            'password',
-        ];
-    }
 }
