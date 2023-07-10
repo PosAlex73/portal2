@@ -10,7 +10,9 @@ class Promotion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'status'
+        'title',
+        'description',
+        'status'
     ];
 
     public function getShortDescriptionAttribute()

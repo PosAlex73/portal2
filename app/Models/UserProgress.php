@@ -11,7 +11,12 @@ class UserProgress extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'data', 'course_id', 'order_id', 'status', 'course_type'
+        'user_id',
+        'data',
+        'course_id',
+        'order_id',
+        'status',
+        'course_type'
     ];
 
     protected $casts = [

@@ -2,12 +2,15 @@
 
 namespace Tests\Feature\Front;
 
+use App\Models\Article;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RouteTest extends TestCase
 {
+    use WithFaker;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -16,12 +19,10 @@ class RouteTest extends TestCase
             'front.plans',
             'front.courses',
             'front.blog',
-            'front.blog',
             'front.promotions',
             'front.rating',
             'front.pcourses',
             'front.news',
-            'front.search',
             'front.achievements.list'
         ];
     }
@@ -33,9 +34,29 @@ class RouteTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        foreach ($this->frontUrls as $route) {
+            $this->get(route($route))->assertStatus(200);
+        }
+    }
 
-        $response->assertStatus(200);
+    public function testSearchWrong()
+    {
+        $searchEmpty = route('front.search');
+        $searchWithWrongTag = route('front.search', ['search' => 'some_words']);
+
+        $this->get($searchEmpty)->assertRedirect();
+        $this->get($searchWithWrongTag)->assertStatus(200);
+    }
+
+    public function testSearchRight()
+    {
+        $searchUrl = route('front.search', ['search' => 'test']);
+        Article::factory(1)->create([
+            'title' => 'test',
+            'text' => 'test',
+            ''
+        ]);
+
     }
 }
 

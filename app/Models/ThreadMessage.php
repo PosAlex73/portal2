@@ -10,7 +10,10 @@ class ThreadMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'thread_id', 'message', 'owner_id', 'status'
+        'thread_id',
+        'message',
+        'owner_id',
+        'status'
     ];
 
     public function owner()

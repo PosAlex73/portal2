@@ -12,7 +12,8 @@ class Pathnote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'description', 'type'
+        'description',
+        'type'
     ];
 
     public function scopeBugs(Builder $builder)

@@ -12,7 +12,13 @@ class Task extends Model implements Executable
     use HasFactory, UseShortDesc, UseShortDesc;
 
     protected $fillable = [
-        'title', 'description', 'data', 'status', 'type', 'course_id', 'points'
+        'title',
+        'description',
+        'data',
+        'status',
+        'type',
+        'course_id',
+        'points'
     ];
 
     protected $attributes = [

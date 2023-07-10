@@ -52,25 +52,4 @@ class FrontRoutesTest extends TestCase
         $response = $this->get(route('front.plans.plan', ['plan' => $plan]));
         $response->assertStatus(200);
     }
-
-    public function testUserProfile()
-    {
-        $profile_routes = [
-            'front.user',
-//            'front.settings',
-//            'front.user.courses'
-        ];
-
-        foreach ($profile_routes as $route) {
-            $this->get(route($route, ['user' => 0]))->assertRedirect();
-        }
-
-        $this->actingAs($this->user_simple)
-            ->get(route('front.profile', ['profile' => $this->user_simple->profile]))
-            ->assertStatus(200);
-
-        foreach ($profile_routes as $route) {
-            $this->actingAs($this->user_simple)->get(route($route))->assertStatus(200);
-        }
-    }
 }

@@ -14,7 +14,10 @@ class PracticeTask extends Model implements Executable
     use HasFactory, useShortDesc;
 
     protected $fillable = [
-        'title', 'description', 'status', 'points'
+        'title',
+        'description',
+        'status',
+        'points'
     ];
 
     public function pcourse()

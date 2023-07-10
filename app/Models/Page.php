@@ -10,7 +10,12 @@ class Page extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'text', 'status', 'url', 'category_id', 'image'
+        'title',
+        'text',
+        'status',
+        'url',
+        'category_id',
+        'image'
     ];
 
     public function category()

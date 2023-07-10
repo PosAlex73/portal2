@@ -18,7 +18,13 @@ class PracticeCourse extends Model implements Progressive
     protected $table = 'practice_courses';
 
     protected $fillable = [
-        'title', 'description', 'image', 'status', 'category_id', 'price', 'type',
+        'title',
+        'description',
+        'image',
+        'status',
+        'category_id',
+        'price',
+        'type',
     ];
 
     protected $attributes = [

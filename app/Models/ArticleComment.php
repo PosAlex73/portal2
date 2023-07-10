@@ -10,7 +10,10 @@ class ArticleComment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'article_id', 'status', 'text'
+        'user_id',
+        'article_id',
+        'status',
+        'text'
     ];
 
     public function article()

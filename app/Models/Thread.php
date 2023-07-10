@@ -15,7 +15,8 @@ class Thread extends Model
     ];
 
     protected $fillable = [
-        'user_id', 'status'
+        'user_id',
+        'status'
     ];
 
     public function user()

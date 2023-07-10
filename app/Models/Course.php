@@ -15,7 +15,15 @@ class Course extends Model implements Progressive
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'short_description', 'image', 'status', 'category_id', 'price', 'type', 'practice'
+        'title',
+        'description',
+        'short_description',
+        'image',
+        'status',
+        'category_id',
+        'price',
+        'type',
+        'practice'
     ];
 
     protected $attributes = [

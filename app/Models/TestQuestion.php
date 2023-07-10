@@ -10,7 +10,11 @@ class TestQuestion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'questions', 'right_answer', 'status', 'practice_task_id'
+        'title',
+        'questions',
+        'right_answer',
+        'status',
+        'practice_task_id'
     ];
 
     public function task()

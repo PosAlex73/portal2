@@ -10,7 +10,9 @@ class TaskReview extends Model
     use HasFactory;
 
     protected $fillable = [
-        'task_id', 'user_id', 'text'
+        'task_id',
+        'user_id',
+        'text'
     ];
 
     public function user()
