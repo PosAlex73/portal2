@@ -1,10 +1,12 @@
 <?php
 
-namespace Tests\Feature\Database;
+namespace Tests\Feature\Database\Models;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class CourseSettings extends TestCase
+class UserProfileTest extends TestCase
 {
     /**
      * A basic feature test example.
