@@ -239,5 +239,6 @@ return [
     'select_filter' => 'Filters',
     'course_categories' => 'Categories',
     'min_10_chars' => 'Minimum 10 letters',
-    'index' => 'Home'
+    'index' => 'Home',
+    'courses_not_found' => 'Courses not found'
 ];

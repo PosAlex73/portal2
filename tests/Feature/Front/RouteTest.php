@@ -3,8 +3,10 @@
 namespace Tests\Feature\Front;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Orchid\Support\Assert;
 use Tests\TestCase;
 
 class RouteTest extends TestCase
@@ -45,18 +47,21 @@ class RouteTest extends TestCase
         $searchWithWrongTag = route('front.search', ['search' => 'some_words']);
 
         $this->get($searchEmpty)->assertRedirect();
-        $this->get($searchWithWrongTag)->assertStatus(200);
+        $response = $this->get($searchWithWrongTag);
+        $response->assertStatus(200);
+        $response->assertSee(__('vars.courses_not_found'));
     }
 
     public function testSearchRight()
     {
-        $searchUrl = route('front.search', ['search' => 'test']);
-        Article::factory(1)->create([
-            'title' => 'test',
-            'text' => 'test',
-            ''
-        ]);
+        $searchUrl = route('front.search', ['search' => 'testlolkek']);
+        $category = Category::factory()->create();
+        $article = Article::factory()->create(['text' => 'text', 'category_id' => $category->id]);
+        $response = $this->get($searchUrl);
+        $response->assertSee('testlolkek');
 
+        Article::destroy($article->id);
+        Category::destroy($category->id);
     }
 }
 
