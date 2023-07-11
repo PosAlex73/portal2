@@ -30,7 +30,7 @@ class Set
     public function set(string $setting, mixed $value)
     {
         /** @var Setting $setting */
-        $setting = Setting::where('title', $setting)->get();
+        $setting = Setting::where('title', $setting)->first();
         if (empty($setting)) {
             throw new \Exception('Setting not found');
         }
