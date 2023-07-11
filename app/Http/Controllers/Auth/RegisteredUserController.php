@@ -6,6 +6,7 @@ use App\Enums\Settings\SettingTypes;
 use App\Enums\Users\UserStatuses;
 use App\Enums\Users\UserTypes;
 use App\Enums\YesNo;
+use App\Facades\Alert;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -56,7 +57,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        if (Set::get(SettingTypes::SIGNED_REGISTRATION) === YesNo::NO) {
+            Auth::login($user);
+        } else {
+            Alert::flash(__('status', __('var.registered_mail_was_send')));
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }

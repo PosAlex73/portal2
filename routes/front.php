@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Front\AchievementsController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\CourseController;
@@ -38,6 +39,11 @@ Route::get('/news', [NewsController::class, 'index'])->name('front.news');
 Route::get('/news/{new}', [NewsController::class, 'show'])->name('front.news.show');
 Route::get('/search', [SearchController::class, 'search'])->name('front.search');
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('front.achievements.list');
+
+
+Route::get('/signed-registration/{user_id}', RegisteredUserController::class)
+    ->name('front.signed-registration')
+    ->middleware('signed');
 
 //user profile
 Route::prefix('profile/')->middleware(['auth'])->group(function () {

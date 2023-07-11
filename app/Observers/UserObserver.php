@@ -2,9 +2,17 @@
 
 namespace App\Observers;
 
+use App\Enums\Settings\SettingTypes;
+use App\Enums\Users\SignedRoutes;
 use App\Enums\Users\UserStatuses;
+use App\Facades\Set;
+use App\Models\SignedUrl;
 use App\Models\User;
+use App\Notifications\SignedRoute;
 use App\Notifications\UserBanned;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\URL;
+use Watson\Active\Route;
 
 class UserObserver
 {
@@ -19,6 +27,23 @@ class UserObserver
         $user->profile()->create();
         $user->settings()->create();
         $user->thread()->create();
+
+        if (Set::get(SettingTypes::SIGNED_REGISTRATION)) {
+            $signedRoute = URL::temporarySignedRoute('front.signed-route', now()->addMinutes(60), ['user_id' => $user->id]);
+
+            SignedUrl::create([
+                'user_id' => $user->id,
+                'url' => $signedRoute,
+                'time_life' => 60,
+                'status' => SignedRoutes::CREATED
+            ]);
+
+            User::update([
+                'status' => UserStatuses::DISABLED
+            ]);
+
+            Notification::send(new SignedRoute());
+        }
     }
 
     /**
