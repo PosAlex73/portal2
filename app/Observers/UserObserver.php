@@ -42,7 +42,7 @@ class UserObserver
                 'status' => UserStatuses::DISABLED
             ]);
 
-            Notification::send(new SignedRoute());
+            Notification::send($user, new SignedRoute());
         }
     }
 

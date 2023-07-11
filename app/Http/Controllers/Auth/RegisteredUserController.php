@@ -65,4 +65,14 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    public function signedRegistration(User $user)
+    {
+        $user->update([
+            'status' => UserStatuses::ACTIVE
+        ]);
+
+        Auth::login($user);
+        return redirect(RouteServiceProvider::HOME);
+    }
 }

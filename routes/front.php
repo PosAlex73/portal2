@@ -41,7 +41,7 @@ Route::get('/search', [SearchController::class, 'search'])->name('front.search')
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('front.achievements.list');
 
 
-Route::get('/signed-registration/{user_id}', RegisteredUserController::class)
+Route::get('/signed-registration/{user}', [RegisteredUserController::class, 'signedRegistration'])
     ->name('front.signed-registration')
     ->middleware('signed');
 
