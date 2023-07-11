@@ -2,6 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Enums\Settings\SettingTypes;
+use App\Enums\YesNo;
+use App\Facades\Set;
 use App\Models\User;
 use App\Notifications\UserWelcome;
 use Illuminate\Auth\Events\Registered;
@@ -30,6 +33,10 @@ class RegisterWelcome
      */
     public function handle(Registered $event)
     {
+        if (Set::get(SettingTypes::SIGNED_REGISTRATION) === YesNo::NO) {
+            return false;
+        }
+
         /** @var User $user */
         $user = $event->user;
         $user->notify(new UserWelcome($user));

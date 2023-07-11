@@ -2,12 +2,8 @@
 
 namespace App\Notifications;
 
-use App\Enums\Settings\SettingTypes;
-use App\Enums\YesNo;
-use App\Facades\Set;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -44,10 +40,6 @@ class UserWelcome extends Notification
      */
     public function toMail($notifiable)
     {
-        if (Set::get(SettingTypes::SIGNED_REGISTRATION) === YesNo::NO) {
-            return false;
-        }
-
         return (new MailMessage)
                     ->greeting(__('vars.mail_hello'))
                     ->line(__('vars.register_thanks'))

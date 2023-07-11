@@ -1,11 +1,20 @@
+@php
+
+$mainHeroText = Set::get(\App\Enums\Settings\SettingTypes::MAIN_HERO);
+
+@endphp
+
 @extends('layouts.front')
 @section('content')
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                {!! Set::get(\App\Enums\Settings\SettingTypes::MAIN_HERO) !!}
+        @if(!empty($mainHeroText))
+            <div class="card">
+                <div class="card-body">
+                    {!! $mainHeroText !!}
+                </div>
             </div>
-        </div>
+        @endif
+
         <div class="row">
             @foreach($courses as $course)
                 <div class="col-4">
@@ -25,9 +34,5 @@
                 </div>
             @endforeach
         </div>
-
-        @foreach($categories as $category)
-
-        @endforeach
     </div>
 @endsection

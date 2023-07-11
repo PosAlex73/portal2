@@ -2,6 +2,7 @@
 
 namespace App\Settings;
 
+use App\Models\Setting;
 use Illuminate\Support\Collection;
 
 class Set
@@ -24,5 +25,18 @@ class Set
     public function get(string $setting)
     {
         return $this->settings->get($setting);
+    }
+
+    public function set(string $setting, mixed $value)
+    {
+        /** @var Setting $setting */
+        $setting = Setting::where('title', $setting)->get();
+        if (empty($setting)) {
+            throw new \Exception('Setting not found');
+        }
+
+        $setting->update([
+            'value' => $value
+        ]);
     }
 }

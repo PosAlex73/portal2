@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Database\Models;
 
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,8 +17,17 @@ class CategoryTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        $category = Category::factory()->create();
 
-        $response->assertStatus(200);
+        $article = Article::factory()->create([
+            'category_id' => $category->id
+        ]);
+
+        $this->assertModelExists($category);
+        $this->expectException(\Exception::class);
+
+        $category->delete();
+        $article->delete();
+        $category->delete();
     }
 }

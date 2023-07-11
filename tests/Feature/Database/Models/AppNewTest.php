@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Database\Models;
 
+use App\Models\AppNew;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,8 +16,9 @@ class AppNewTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $news = AppNew::factory()->create();
+        $this->assertModelExists($news);
+        $news->delete();
+        $this->assertModelMissing($news);
     }
 }
