@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
         if (Set::get(SettingTypes::SIGNED_REGISTRATION) === YesNo::NO) {
             Auth::login($user);
         } else {
-            Alert::flash(__('status', __('var.registered_mail_was_send')));
+            Alert::flash(__('status'), __('var.registered_mail_was_send'));
         }
 
         return redirect(RouteServiceProvider::HOME);
