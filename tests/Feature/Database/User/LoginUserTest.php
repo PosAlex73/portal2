@@ -27,17 +27,12 @@ class LoginUserTest extends TestCase
             'password' => $password,
         ]);
 
-        $response = $this->post('login', [
+        $response = $this->post(route('login.post'), [
             'email' => $email,
             'password' => $password
         ]);
 
         $response->assertRedirect(route('front.index'));
         $user->delete();
-    }
-
-    public function testWrongUser()
-    {
-
     }
 }

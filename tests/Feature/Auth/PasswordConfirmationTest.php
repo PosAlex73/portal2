@@ -8,8 +8,6 @@
 //
 //class PasswordConfirmationTest extends TestCase
 //{
-//    use RefreshDatabase;
-//
 //    public function test_confirm_password_screen_can_be_rendered()
 //    {
 //        $user = User::factory()->create();
