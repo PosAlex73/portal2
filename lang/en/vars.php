@@ -240,5 +240,9 @@ return [
     'course_categories' => 'Categories',
     'min_10_chars' => 'Minimum 10 letters',
     'index' => 'Home',
-    'courses_not_found' => 'Courses not found'
+    'courses_not_found' => 'Courses not found',
+    'do_task' => 'Do task',
+    'report_mistake' => 'Report mistake',
+    'all_tasks' => 'All tasks',
+    'task_not_done' => 'Task not done'
 ];
