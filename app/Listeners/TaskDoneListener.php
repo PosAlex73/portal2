@@ -42,12 +42,12 @@ class TaskDoneListener
             'course_id' => $this->course->id,
         ])->first();
 
-        if (empty($user_progress->data)) {
-            $user_progress->data = ['tasks' => []];
-        }
-
         if (empty($user_progress)) {
             throw new Exception(__('Course not found'));
+        }
+
+        if (empty($user_progress->data)) {
+            $user_progress->data = ['tasks' => []];
         }
 
         if (array_key_exists($this->task->id, $user_progress->data['tasks'])) {

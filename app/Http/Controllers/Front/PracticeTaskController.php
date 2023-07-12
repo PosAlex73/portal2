@@ -9,8 +9,6 @@ use App\Events\TaskDone;
 use App\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Models\PracticeTask;
-use App\Models\Task;
-use App\Models\TestQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;

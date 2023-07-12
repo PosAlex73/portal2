@@ -39,7 +39,6 @@ class TaskController extends Controller
 
     public function checkTask(Request $request, Task $task)
     {
-        dd(242342332);
         $course = $task->course;
         $user = Auth::user();
 
