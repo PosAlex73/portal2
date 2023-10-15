@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('practice', 1)->default(CoursePractice::NO);
             $table->string('status', 1)->default(CourseStatuses::IN_PROGRESS);
             $table->smallInteger('position')->default(0)->nullable(true);
+            $table->string('slug');
             $table->timestamps();
         });
 

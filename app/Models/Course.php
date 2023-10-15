@@ -23,7 +23,8 @@ class Course extends Model implements Progressive
         'category_id',
         'price',
         'type',
-        'practice'
+        'practice',
+        'slug'
     ];
 
     protected $attributes = [

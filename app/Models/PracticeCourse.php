@@ -25,6 +25,7 @@ class PracticeCourse extends Model implements Progressive
         'category_id',
         'price',
         'type',
+        'slug'
     ];
 
     protected $attributes = [

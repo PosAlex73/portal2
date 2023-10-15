@@ -21,15 +21,19 @@ use App\Models\AppNew;
 use App\Models\Article;
 use App\Models\ArticleComment;
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\Order;
+use App\Models\PracticeCourse;
 use App\Models\Setting;
 use App\Models\ThreadMessage;
 use App\Models\User;
 use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
+use App\Observers\CourseObserver;
 use App\Observers\MessageObserver;
 use App\Observers\NewsObserver;
 use App\Observers\OrderObserver;
+use App\Observers\PracticeCourseObserver;
 use App\Observers\SettingsObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -85,6 +89,8 @@ class EventServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Order::observe(OrderObserver::class);
         Setting::observe(SettingsObserver::class);
+        Course::observe(CourseObserver::class);
+        PracticeCourse::observe(PracticeCourseObserver::class);
     }
 
     /**
