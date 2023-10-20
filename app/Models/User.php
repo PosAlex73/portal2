@@ -94,4 +94,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(SignedUrl::class);
     }
+
+    public function groups()
+    {
+        return $this->hasMany(UserGroup::class);
+    }
 }

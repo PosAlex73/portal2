@@ -31,7 +31,8 @@ class PracticeCourse extends Model implements Progressive
     protected $attributes = [
         'price' => 0,
         'type' => CourseTypes::FREE,
-        'practice' => CoursePractice::YES
+        'practice' => CoursePractice::YES,
+        'slug' => ''
     ];
 
     public function category()
